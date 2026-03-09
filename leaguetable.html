@@ -1,119 +1,100 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>League One Table</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>League One Table - Whistle FC</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header>
-<h1>League One Table</h1>
+  <h1>League One Table</h1>
 </header>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="news.html">News</a>
-<a href="players.html">Players</a>
-<a href="staff.html">Staff</a>
-<a href="history.html">History</a>
-<a href="fixtures.html">Fixtures</a>
-<a href="results.html">Results</a>
-<a href="leaguetable.html">League Table</a>
+  <a href="index.html">Home</a>
+  <a href="news.html">News</a>
+  <a href="players.html">Players</a>
+  <a href="staff.html">Staff</a>
+  <a href="history.html">History</a>
+  <a href="fixtures.html">Fixtures</a>
+  <a href="results.html">Results</a>
+  <a href="leaguetable.html">League Table</a>
 </nav>
 
 <div class="container">
-
-<table class="league-table" id="leagueTable">
-<thead>
-<tr>
-<th>Pos</th>
-<th>Team</th>
-<th>P</th>
-<th>W</th>
-<th>D</th>
-<th>L</th>
-<th>GD</th>
-<th>Pts</th>
-</tr>
-</thead>
-
-<tbody>
-</tbody>
-
-</table>
-
+  <table class="league-table" id="leagueTable">
+    <thead>
+      <tr>
+        <th>Pos</th>
+        <th>Team</th>
+        <th>P</th>
+        <th>W</th>
+        <th>D</th>
+        <th>L</th>
+        <th>GD</th>
+        <th>Pts</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 </div>
 
 <script>
+const TOURNAMENT_SEASON_ID = "jivQqpTg"; // League One season ID
+const API_KEY = "1f60f7b6a6msh5e5d59f38494e14p164665jsnbafdf3ce4def"; // Your RapidAPI key
 
-function loadTable(){
+function loadLeagueTable() {
+  fetch(`https://flashlive-sports.p.rapidapi.com/v1/tournaments/tables?tournament_season_id=${TOURNAMENT_SEASON_ID}`, {
+    headers: {
+      "X-RapidAPI-Key": API_KEY,
+      "X-RapidAPI-Host": "flashlive-sports.p.rapidapi.com"
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    const tableBody = document.querySelector("#leagueTable tbody");
+    tableBody.innerHTML = ""; // Clear previous rows
 
-fetch("https://api.football-data.org/v4/competitions/FL1/standings", {
-headers: { "X-Auth-Token": "a7ea9ac87d94c3c9f123969bb4f8c84" }
-})
-.then(response => response.json())
-.then(data => {
+    data.teams.forEach(team => {
+      let teamName = team.name;
 
-const tableBody = document.querySelector("#leagueTable tbody");
-tableBody.innerHTML = "";
+      // Replace Luton Town with Whistle FC
+      if(teamName === "Luton Town") teamName = "Whistle FC";
 
-data.standings[0].table.forEach(team => {
+      let row = document.createElement("tr");
 
-let teamName = team.team.name;
-let position = team.position;
+      // Promotion / Playoff / Relegation
+      if(team.position <= 2) row.classList.add("promotion");
+      else if(team.position >= 3 && team.position <= 6) row.classList.add("playoff");
+      else if(team.position >= 21) row.classList.add("relegation");
 
-/* Replace Luton with Whistle FC */
-if(teamName === "Luton Town"){
-teamName = "Whistle FC";
+      // Highlight Whistle FC
+      if(teamName === "Whistle FC") row.classList.add("whistle");
+
+      row.innerHTML = `
+        <td>${team.position}</td>
+        <td>${teamName}</td>
+        <td>${team.played}</td>
+        <td>${team.wins}</td>
+        <td>${team.draws}</td>
+        <td>${team.losses}</td>
+        <td>${team.goalDifference}</td>
+        <td>${team.points}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+  })
+  .catch(err => console.error("Error loading league table:", err));
 }
 
-let row = document.createElement("tr");
+// Load immediately
+loadLeagueTable();
 
-/* Promotion / Playoff / Relegation colours */
-
-if(position <= 2){
-row.classList.add("promotion");
-}
-else if(position >= 3 && position <= 6){
-row.classList.add("playoff");
-}
-else if(position >= 21){
-row.classList.add("relegation");
-}
-
-/* Highlight Whistle FC */
-if(teamName === "Whistle FC"){
-row.classList.add("whistle");
-}
-
-row.innerHTML = `
-<td>${position}</td>
-<td>${teamName}</td>
-<td>${team.playedGames}</td>
-<td>${team.won}</td>
-<td>${team.draw}</td>
-<td>${team.lost}</td>
-<td>${team.goalDifference}</td>
-<td>${team.points}</td>
-`;
-
-tableBody.appendChild(row);
-
-});
-
-});
-
-}
-
-/* Load table immediately */
-loadTable();
-
-/* Refresh every 60 seconds */
-setInterval(loadTable, 60000);
-
+// Refresh every 60 seconds
+setInterval(loadLeagueTable, 60000);
 </script>
+
 </body>
 </html>
-
