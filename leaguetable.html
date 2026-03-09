@@ -48,17 +48,21 @@
 
 <script>
 
+function loadTable(){
+
 fetch("https://api.football-data.org/v4/competitions/FL1/standings", {
-headers: { "X-Auth-Token": "1a7ea9ac87d94c3c9f123969bb4f8c84" }
+headers: { "X-Auth-Token": "a7ea9ac87d94c3c9f123969bb4f8c84" }
 })
 .then(response => response.json())
 .then(data => {
 
 const tableBody = document.querySelector("#leagueTable tbody");
+tableBody.innerHTML = "";
 
 data.standings[0].table.forEach(team => {
 
 let teamName = team.team.name;
+let position = team.position;
 
 /* Replace Luton with Whistle FC */
 if(teamName === "Luton Town"){
@@ -67,13 +71,25 @@ teamName = "Whistle FC";
 
 let row = document.createElement("tr");
 
+/* Promotion / Playoff / Relegation colours */
+
+if(position <= 2){
+row.classList.add("promotion");
+}
+else if(position >= 3 && position <= 6){
+row.classList.add("playoff");
+}
+else if(position >= 21){
+row.classList.add("relegation");
+}
+
 /* Highlight Whistle FC */
 if(teamName === "Whistle FC"){
 row.classList.add("whistle");
 }
 
 row.innerHTML = `
-<td>${team.position}</td>
+<td>${position}</td>
 <td>${teamName}</td>
 <td>${team.playedGames}</td>
 <td>${team.won}</td>
@@ -89,7 +105,15 @@ tableBody.appendChild(row);
 
 });
 
-</script>
+}
 
+/* Load table immediately */
+loadTable();
+
+/* Refresh every 60 seconds */
+setInterval(loadTable, 60000);
+
+</script>
 </body>
 </html>
+
