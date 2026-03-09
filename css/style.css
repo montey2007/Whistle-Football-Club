@@ -63,7 +63,7 @@ color:#ff3b3b;
     position: relative;
 
     /* Stadium background */
-    background-image:"images/stadium.png"
+    background-image: url("images/stadium.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -263,6 +263,7 @@ text-align:center;
 padding:20px;
 margin-top:40px;
 }
+
 
 
 
