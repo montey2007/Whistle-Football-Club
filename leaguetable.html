@@ -55,10 +55,13 @@ function loadLeagueTable() {
   .then(response => response.json())
   .then(data => {
     const tableBody = document.querySelector("#leagueTable tbody");
-    tableBody.innerHTML = ""; // Clear previous rows
+    tableBody.innerHTML = "";
 
-    data.teams.forEach(team => {
-      let teamName = team.name;
+    const rows = data.tables[0].rows; // <-- Correct path
+
+    rows.forEach(team => {
+      let teamName = team.team_name; // <-- API field
+      let position = team.position;
 
       // Replace Luton Town with Whistle FC
       if(teamName === "Luton Town") teamName = "Whistle FC";
@@ -66,21 +69,21 @@ function loadLeagueTable() {
       let row = document.createElement("tr");
 
       // Promotion / Playoff / Relegation
-      if(team.position <= 2) row.classList.add("promotion");
-      else if(team.position >= 3 && team.position <= 6) row.classList.add("playoff");
-      else if(team.position >= 21) row.classList.add("relegation");
+      if(position <= 2) row.classList.add("promotion");
+      else if(position >= 3 && position <= 6) row.classList.add("playoff");
+      else if(position >= 21) row.classList.add("relegation");
 
       // Highlight Whistle FC
       if(teamName === "Whistle FC") row.classList.add("whistle");
 
       row.innerHTML = `
-        <td>${team.position}</td>
+        <td>${position}</td>
         <td>${teamName}</td>
         <td>${team.played}</td>
         <td>${team.wins}</td>
         <td>${team.draws}</td>
         <td>${team.losses}</td>
-        <td>${team.goalDifference}</td>
+        <td>${team.goal_difference}</td>
         <td>${team.points}</td>
       `;
       tableBody.appendChild(row);
@@ -88,7 +91,6 @@ function loadLeagueTable() {
   })
   .catch(err => console.error("Error loading league table:", err));
 }
-
 // Load immediately
 loadLeagueTable();
 
@@ -98,3 +100,4 @@ setInterval(loadLeagueTable, 60000);
 
 </body>
 </html>
+
