@@ -55,7 +55,7 @@ color:#ff3b3b;
 .hero{
 height:400px;
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url("../images/stadium.jpg") center/cover;
+url("images/stadium.jpg") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -242,3 +242,4 @@ text-align:center;
 padding:20px;
 margin-top:40px;
 }
+
