@@ -66,6 +66,8 @@ padding:15px;
 margin-top:40px;
 }
 
+/* League table styling */
+
 .league-table{
 width:100%;
 border-collapse:collapse;
@@ -87,10 +89,24 @@ text-align:center;
 text-align:left;
 }
 
+/* Promotion spots (1st and 2nd) */
+.promotion{
+border-left:6px solid #00a651;
+}
+
+/* Playoff spots (3rd–6th) */
+.playoff{
+border-left:6px solid #1e90ff;
+}
+
+/* Relegation spots (21st–24th) */
+.relegation{
+border-left:6px solid #d90429;
+}
+
 /* Highlight Whistle FC */
 .whistle{
 background:#fff3b0;
 font-weight:bold;
-border-left:5px solid gold;
+border-left:6px solid gold;
 }
-
