@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Whistle FC News</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="main-header">
+<h1>Whistle FC</h1>
+<p>League Tables</p>
+</header>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="players.html">Players</a></li>
+<li><a href="staff.html">Staff</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="fixtures.html">Fixtures</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="leaguetable.html">League Table</a></li>
+</ul>
+</nav>
+
+<div class="container">
+  <table class="league-table" id="leagueTable">
+    <thead>
+      <tr>
+        <th>Pos</th>
+        <th>Team</th>
+        <th>P</th>
+        <th>W</th>
+        <th>D</th>
+        <th>L</th>
+        <th>GD</th>
+        <th>Pts</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script>
+const leagueData = [
+  {position:1, team:"Lincoln City", played:35, wins:22, draws:8, losses:5, goal_difference:34, points:74},
+  {position:2, team:"Cardiff City", played:35, wins:22, draws:6, losses:7, goal_difference:30, points:72},
+  {position:3, team:"Bolton Wanderers", played:36, wins:17, draws:13, losses:6, goal_difference:17, points:64},
+  {position:4, team:"Bradford City", played:35, wins:18, draws:7, losses:10, goal_difference:6, points:61},
+  {position:5, team:"Stockport County", played:34, wins:16, draws:8, losses:10, goal_difference:4, points:56},
+  {position:6, team:"Huddersfield Town", played:36, wins:16, draws:7, losses:13, goal_difference:10, points:55},
+  {position:7, team:"Reading", played:35, wins:14, draws:12, losses:9, goal_difference:7, points:54},
+  {position:8, team:"Stevenage", played:34, wins:15, draws:9, losses:10, goal_difference:3, points:54},
+  {position:9, team:"Wycombe Wanderers", played:36, wins:14, draws:11, losses:11, goal_difference:13, points:53},
+  {position:10, team:"Plymouth Argyle", played:35, wins:15, draws:4, losses:16, goal_difference:0, points:49},
+  {position:11, team:"Luton Town", played:35, wins:13, draws:8, losses:14, goal_difference:1, points:47},
+  {position:12, team:"Barnsley", played:33, wins:13, draws:8, losses:12, goal_difference:0, points:47},
+  {position:13, team:"Peterborough United", played:35, wins:14, draws:4, losses:17, goal_difference:1, points:46},
+  {position:14, team:"AFC Wimbledon", played:34, wins:13, draws:7, losses:14, goal_difference:-6, points:46},
+  {position:15, team:"Exeter City", played:35, wins:11, draws:9, losses:15, goal_difference:-2, points:42},
+  {position:16, team:"Mansfield Town", played:33, wins:10, draws:11, losses:12, goal_difference:2, points:41},
+  {position:17, team:"Burton Albion", played:36, wins:10, draws:10, losses:16, goal_difference:-12, points:40},
+  {position:18, team:"Doncaster Rovers", played:34, wins:11, draws:6, losses:17, goal_difference:-20, points:39},
+  {position:19, team:"Wigan Athletic", played:34, wins:9, draws:11, losses:14, goal_difference:-11, points:38},
+  {position:20, team:"Blackpool", played:35, wins:10, draws:8, losses:17, goal_difference:-14, points:38},
+  {position:21, team:"Leyton Orient", played:34, wins:10, draws:6, losses:18, goal_difference:-13, points:36},
+  {position:22, team:"Rotherham United", played:35, wins:9, draws:8, losses:18, goal_difference:-15, points:35},
+  {position:23, team:"Northampton Town", played:36, wins:9, draws:8, losses:19, goal_difference:-17, points:35},
+  {position:24, team:"Port Vale", played:32, wins:6, draws:9, losses:17, goal_difference:-18, points:27},
+];
+
+function populateTable() {
+  const tableBody = document.querySelector("#leagueTable tbody");
+  tableBody.innerHTML = "";
+
+  leagueData.forEach(team => {
+    let teamName = team.team;
+    if(teamName === "Luton Town") teamName = "Whistle FC";
+
+    let row = document.createElement("tr");
+
+    // Promotion / Playoff / Relegation
+    if(team.position <= 2) row.classList.add("promotion");
+    else if(team.position >= 3 && team.position <= 6) row.classList.add("playoff");
+    else if(team.position >= 21) row.classList.add("relegation");
+
+    // Highlight Whistle FC
+    if(teamName === "Whistle FC") row.classList.add("whistle");
+
+    row.innerHTML = `
+      <td>${team.position}</td>
+      <td>${teamName}</td>
+      <td>${team.played}</td>
+      <td>${team.wins}</td>
+      <td>${team.draws}</td>
+      <td>${team.losses}</td>
+      <td>${team.goal_difference}</td>
+      <td>${team.points}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+// Populate table on page load
+populateTable();
+</script>
+
+</body>
+</html>
