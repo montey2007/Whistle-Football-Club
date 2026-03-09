@@ -2,256 +2,78 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Whistle FC</title>
 
 <link rel="stylesheet" href="css/style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-/* Basic Reset */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  background: #f5f5f5;
-  color: #333;
-}
-
-/* Header */
-.main-header {
-  display: flex;
-  align-items: center;
-  background-color: #e60000; /* red header */
-  color: white;
-  padding: 10px 20px;
-  flex-wrap: wrap; /* allow wrapping on small screens */
-}
-.main-header .logo img {
-  width: 80px;
-  margin-right: 15px;
-}
-.main-header h1 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-.main-header p {
-  margin: 0;
-  font-style: italic;
-  font-size: 0.9rem;
-}
-
-/* Navbar */
-.navbar {
-  background: #e60000; /* red navbar */
-}
-.navbar ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-  flex-wrap: wrap; /* allow wrapping */
-}
-.navbar ul li {
-  margin: 0 10px;
-}
-.navbar ul li a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  display: block;
-  transition: background 0.3s;
-}
-.navbar ul li a:hover {
-  background: #b30000; /* darker red on hover */
-  border-radius: 5px;
-}
-
-/* Hero Section */
-.hero {
-  background: url('images/stadium.jpg') center/cover no-repeat;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  color: white;
-  text-align: center;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  top:0; left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.5);
-}
-.hero-text {
-  position: relative;
-  z-index: 1;
-}
-.hero-text h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-.hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-}
-.btn {
-  background: #e60000;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-.btn:hover {
-  background: #b30000;
-}
-
-/* Container */
-.container {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px 15px;
-  background: white;
-  border-radius: 10px;
-  overflow-x: auto; /* allows scrolling on small screens */
-}
-
-/* Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-table td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-table tr:nth-child(even) {
-  background: #f2f2f2;
-}
-table td b {
-  color: #e60000; /* red headers */
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  background: #e60000;
-  color: white;
-  padding: 10px 0;
-  margin-top: 20px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    text-align: center;
-  }
-  .main-header .logo img {
-    margin: 0 0 10px 0;
-  }
-
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
-  }
-  .navbar ul li {
-    margin: 5px 0;
-  }
-
-  .hero {
-    height: 40vh;
-  }
-  .hero-text h2 {
-    font-size: 1.8rem;
-  }
-  .hero-text p {
-    font-size: 1rem;
-  }
-
-  .container {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 600px) {
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .main-header .logo img {
-    width: 60px;
-  }
-}
-</style>
 </head>
+
 <body>
 
 <header class="main-header">
-  <div class="logo">
-    <img src="images/logo.png" alt="Whistle FC Logo">
-  </div>
-  <div>
-    <h1>Whistle Football Club</h1>
-    <p>Unitate et Fortitudine – With Unity and Strength</p>
-  </div>
+
+<div class="logo">
+<img src="images/logo.png" alt="Whistle FC">
+</div>
+
+<div>
+<h1>Whistle Football Club</h1>
+<p>Unitate et Fortitudine – With Unity and Strength</p>
+</div>
+
 </header>
 
 <nav class="navbar">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="players.html">Players</a></li>
-    <li><a href="staff.html">Staff</a></li>
-    <li><a href="history.html">History</a></li>
-    <li><a href="fixtures.html">Fixtures</a></li>
-    <li><a href="results.html">Results</a></li>
-    <li><a href="leaguetable.html">League Table</a></li>
-  </ul>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="players.html">Players</a></li>
+<li><a href="staff.html">Staff</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="fixtures.html">Fixtures</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="leaguetable.html">League Table</a></li>
+</ul>
 </nav>
 
 <section class="hero">
-  <div class="hero-text">
-    <h2>The Pride of Wetshil</h2>
-    <p>Official website of Whistle Football Club</p>
-    <a class="btn" href="fixtures.html">View Fixtures</a>
-  </div>
+<div class="hero-text">
+<h2>The Pride of Wetshil</h2>
+<p>Official website of Whistle Football Club</p>
+<a class="btn" href="fixtures.html">View Fixtures</a>
+</div>
 </section>
 
 <div class="container">
-  <h2>Club Overview</h2>
-  <table>
-    <tr><td><b>Nickname</b></td><td>The Whistlers</td></tr>
-    <tr><td><b>Founded</b></td><td>1905</td></tr>
-    <tr><td><b>Ground</b></td><td>Mornflake Stadium</td></tr>
-    <tr><td><b>Capacity</b></td><td>10,500</td></tr>
-    <tr><td><b>Owner</b></td><td>Oliver Wilkinson</td></tr>
-    <tr><td><b>CEO</b></td><td>Martin Thrush</td></tr>
-    <tr><td><b>Head Coach</b></td><td>Johannes Hoff Thorup</td></tr>
-    <tr><td><b>League</b></td><td>EFL League One</td></tr>
-    <tr><td><b>Home Colours</b></td><td>🔴⚫</td></tr>
-    <tr><td><b>Away Colours</b></td><td>⚪⚫</td></tr>
-    <tr><td><b>Third Colours</b></td><td>🟡⚫</td></tr>
-  </table>
 
-  <p>
-    Whistle Football Club is a professional football club based in Wetshil,
-    England competing in EFL League One. Founded in 1905 following the
-    Wetshil Workers’ Strikes, the club has long represented the
-    working-class identity of the town.
-  </p>
+<h2>Club Overview</h2>
+
+<table>
+<tr><td><b>Nickname</b></td><td>The Whistlers</td></tr>
+<tr><td><b>Founded</b></td><td>1905</td></tr>
+<tr><td><b>Ground</b></td><td>Mornflake Stadium</td></tr>
+<tr><td><b>Capacity</b></td><td>10,500</td></tr>
+<tr><td><b>Owner</b></td><td>Oliver Wilkinson</td></tr>
+<tr><td><b>CEO</b></td><td>Martin Thrush</td></tr>
+<tr><td><b>Head Coach</b></td><td>Johannes Hoff Thorup</td></tr>
+<tr><td><b>League</b></td><td>EFL League One</td></tr>
+<tr><td><b>Home Colours</b></td><td>🔴⚫</td></tr>
+<tr><td><b>Away Colours</b></td><td>🔵⚪</td></tr>
+<tr><td><b>Third Colours</b></td><td>🟡⚫</td></tr>
+</table>
+
+<p>
+Whistle Football Club is a professional football club based in Wetshil,
+England competing in EFL League One. Founded in 1905 following the
+Wetshil Workers’ Strikes, the club has long represented the
+working-class identity of the town.
+</p>
+
 </div>
 
 <footer class="footer">
-  <p>© 2026 Whistle Football Club</p>
+<p>© 2026 Whistle Football Club</p>
 </footer>
 
 </body>
