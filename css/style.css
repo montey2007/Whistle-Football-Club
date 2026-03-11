@@ -164,10 +164,19 @@ font-weight:700;
 text-align:center;
 }
 
+.team{
+text-align:center;
+width:150px;
+}
+
 .team img{
 width:60px;
-display:block;
-margin:0 auto 8px;
+margin-bottom:8px;
+}
+
+.match-info{
+text-align:center;
+flex:1;
 }
 
 .match-vs{
@@ -439,5 +448,6 @@ padding:25px 18px;
 }
 
 }
+
 
 
