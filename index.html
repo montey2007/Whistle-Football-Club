@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-
 <body>
 
 <!-- HEADER -->
@@ -71,7 +70,7 @@
 <div class="match-card">
 
 <div class="team">
-<img src="doncasterlogo.png" alt="Doncaster Rovers">
+<img src="images/doncasterlogo.png" alt="Doncaster Rovers">
 <h3>Doncaster Rovers</h3>
 </div>
 
@@ -162,8 +161,6 @@
 
 </div>
 
-</p>
-
 </div>
 
 </section>
@@ -198,27 +195,7 @@ and remains a symbol of the town’s football heritage.
 
 <h2 class="section-title">Latest News</h2>
 
-<div class="news-grid">
-
-<article class="news-card">
-<h3>Match Report</h3>
-<p>Whistle FC secure a late victory at Mornflake Stadium.</p>
-<a href="news.html">Read More</a>
-</article>
-
-<article class="news-card">
-<h3>Club Announcement</h3>
-<p>New stadium redevelopment plans revealed.</p>
-<a href="news.html">Read More</a>
-</article>
-
-<article class="news-card">
-<h3>Player Update</h3>
-<p>Captain signs a new three-year contract.</p>
-<a href="news.html">Read More</a>
-</article>
-
-</div>
+<div class="news-grid" id="news-container"></div>
 
 </div>
 
@@ -246,8 +223,32 @@ Follow us:
 </footer>
 
 
+<script>
+
+fetch("news/news.json")
+.then(response => response.json())
+.then(data => {
+
+const container = document.getElementById("news-container");
+
+data.slice(0,3).forEach(article => {
+
+const card = document.createElement("article");
+card.className = "news-card";
+
+card.innerHTML = `
+<h3>${article.title}</h3>
+<p>${article.text}</p>
+<a href="${article.link}">Read More</a>
+`;
+
+container.appendChild(card);
+
+});
+
+});
+
+</script>
+
 </body>
 </html>
-
-
-
