@@ -1,0 +1,52 @@
+[
+  {
+    "date": "10 Mar 2026",
+    "opponent": "Doncaster Rovers",
+    "homeaway": "A",
+    "score": "1-1",
+    "competition": "League One",
+    "result": "D",
+    "venue": "Eco-Power Stadium",
+    "homelogo": "logo.png"
+  },
+  {
+    "date": "7 Mar 2026",
+    "opponent": "Reading FC",
+    "homeaway": "H",
+    "score": "2-3",
+    "competition": "League One",
+    "result": "L",
+    "venue": "Mornflake Stadium",
+    "homelogo": "logo.png"
+  },
+  {
+    "date": "4 Mar 2026",
+    "opponent": "Northampton Town",
+    "homeaway": "H",
+    "score": "2-1",
+    "competition": "Cup",
+    "result": "W",
+    "venue": "Mornflake Stadium",
+    "homelogo": "logo.png"
+  },
+  {
+    "date": "28 Feb 2026",
+    "opponent": "Port Vale",
+    "homeaway": "A",
+    "score": "1-1",
+    "competition": "League One",
+    "result": "D",
+    "venue": "Vale Park",
+    "homelogo": "logo.png"
+  },
+  {
+    "date": "24 Feb 2026",
+    "opponent": "Plymouth Argyle",
+    "homeaway": "H",
+    "score": "2-1",
+    "competition": "Cup",
+    "result": "W",
+    "venue": "Mornflake Stadium",
+    "homelogo": "logo.png"
+  }
+]
