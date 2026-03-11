@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Whistle FC News</title>
+
 <link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header class="main-header">
-<h1>Whistle FC</h1>
+<div class="header-container">
+
+<div class="logo">
+<img src="images/logo.png" alt="Whistle FC Logo">
+</div>
+
+<div class="club-title">
+<h1>Whistle Football Club</h1>
 <p>Official Club News</p>
+</div>
+
+</div>
 </header>
+
+
+<!-- NAVIGATION -->
 
 <nav class="navbar">
 <ul>
 <li><a href="index.html">Home</a></li>
-<li><a href="news.html">News</a></li>
+<li><a class="active" href="news.html">News</a></li>
 <li><a href="players.html">Players</a></li>
 <li><a href="staff.html">Staff</a></li>
 <li><a href="history.html">History</a></li>
@@ -26,53 +47,62 @@
 </ul>
 </nav>
 
+
+<!-- NEWS SECTION -->
+
+<section class="news">
+
 <div class="container">
 
-<h2>Latest News</h2>
+<h2 class="section-title">Latest News</h2>
 
-<div class="news-grid">
-
-  <div class="news-card">
-<h3>10 March 2026</h3>
-<p>Match Report: Doncaster Rovers 1-1 Whistle.</p>
-<a href="https://www.teamstats.net/whistlefc/results/311875/whistle-afc-v-doncaster-rovers-10-mar-2026/">Read report</a>
-</div>
-
-
-<div class="news-card">
-<h3>9 March 2026</h3>
-<p>Wetshil and Dattylandshire Cup Quarter Final Draw.</p>
-<a href="news/news-2026-03-09-wetshil-and-dattylandshire-draw-quarter-final.html">Read more</a>
-</div>
-
-<div class="news-card">
-<h3>8 March 2026</h3>
-<p>Whistle FC announce new coaching set-up.</p>
-<a href="news/news-2026-03-08-coaching-staff-changes-tom-june-departure.html">Read more</a>
-</div>
-
-<div class="news-card">
-<h3>7 March 2026</h3>
-<p>Match Report: Whistle 2–3 Reading.</p>
-<a href="https://www.teamstats.net/whistlefc/results/311533/whistle-afc-v-reading-fc-07-mar-2026">Read report</a>
-</div>
+<div class="news-grid" id="news-container"></div>
 
 </div>
 
-</div>
+</section>
+
+
+<!-- FOOTER -->
 
 <footer class="footer">
-<p>© 2026 Whistle FC</p>
+
+<div class="container">
+<p>© 2026 Whistle Football Club</p>
+<p>Mornflake Stadium | Wetshil, England</p>
+</div>
+
 </footer>
 
+
+<!-- LOAD NEWS AUTOMATICALLY -->
+
+<script>
+
+fetch("news/news.json")
+.then(response => response.json())
+.then(data => {
+
+const container = document.getElementById("news-container");
+
+data.forEach(article => {
+
+const card = document.createElement("article");
+card.className = "news-card";
+
+card.innerHTML = `
+<h3>${article.title}</h3>
+<p>${article.text}</p>
+<a href="${article.link}">Read More</a>
+`;
+
+container.appendChild(card);
+
+});
+
+});
+
+</script>
+
 </body>
-
 </html>
-
-
-
-
-
-
-
-
