@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>League One Table</title>
+
 <link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Highlighting rows */
+table.league-table tr.promotion { background-color: #c8f7c5; }  /* Light green */
+table.league-table tr.playoff { background-color: #fff8b0; }     /* Light yellow */
+table.league-table tr.relegation { background-color: #f7c5c5; } /* Light red */
+table.league-table tr.whistle { font-weight: 700; border: 2px solid #c00000; }
+table.league-table th, table.league-table td { text-align: center; padding: 10px; }
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="main-header">
-<h1>Whistle FC</h1>
-<p>League Tables</p>
+  <div class="header-container">
+    <div class="logo">
+      <img src="images/logo.png" alt="Whistle FC Logo">
+    </div>
+    <div class="club-title">
+      <h1>Whistle Football Club</h1>
+      <p>League One Table</p>
+    </div>
+  </div>
 </header>
 
+<!-- NAVIGATION -->
 <nav class="navbar">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="news.html">News</a></li>
-<li><a href="players.html">Players</a></li>
-<li><a href="staff.html">Staff</a></li>
-<li><a href="history.html">History</a></li>
-<li><a href="fixtures.html">Fixtures</a></li>
-<li><a href="results.html">Results</a></li>
-<li><a href="leaguetable.html">League Table</a></li>
-</ul>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="players.html">Players</a></li>
+    <li><a href="staff.html">Staff</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="fixtures.html">Fixtures</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a class="active" href="leaguetable.html">League Table</a></li>
+  </ul>
 </nav>
 
 <div class="container">
@@ -45,7 +68,7 @@
 </div>
 
 <script>
-  const leagueData = [
+const leagueData = [
   {position:1, team:"Lincoln City", played:36, wins:23, draws:8, losses:5, goal_difference:34, points:77},
   {position:2, team:"Cardiff City", played:36, wins:22, draws:7, losses:7, goal_difference:30, points:73},
   {position:3, team:"Bolton Wanderers", played:36, wins:17, draws:13, losses:6, goal_difference:17, points:64},
@@ -56,7 +79,7 @@
   {position:8, team:"Stevenage", played:35, wins:15, draws:9, losses:11, goal_difference:3, points:54},
   {position:9, team:"Wycombe Wanderers", played:36, wins:14, draws:11, losses:11, goal_difference:13, points:53},
   {position:10, team:"Plymouth Argyle", played:36, wins:16, draws:4, losses:16, goal_difference:0, points:52},
-  {position:11, team:"Luton Town", played:36, wins:13, draws:9, losses:14, goal_difference:1, points:48},
+  {position:11, team:"Luton Town", played:36, wins:13, draws:9, losses:14, goal_difference:1, points:48}, // Whistle FC
   {position:12, team:"Barnsley", played:34, wins:13, draws:9, losses:12, goal_difference:0, points:48},
   {position:13, team:"Peterborough United", played:35, wins:14, draws:4, losses:17, goal_difference:1, points:46},
   {position:14, team:"AFC Wimbledon", played:34, wins:13, draws:7, losses:14, goal_difference:-6, points:46},
@@ -73,14 +96,14 @@
 ];
 
 function populateTable() {
-  const tableBody = document.querySelector("#leagueTable tbody");
-  tableBody.innerHTML = "";
+  const tbody = document.querySelector("#leagueTable tbody");
+  tbody.innerHTML = "";
 
   leagueData.forEach(team => {
-    let teamName = team.team;
-    if(teamName === "Luton Town") teamName = "Whistle FC";
+    const row = document.createElement("tr");
 
-    let row = document.createElement("tr");
+    let displayName = team.team;
+    if(displayName === "Luton Town") displayName = "Whistle FC";
 
     // Promotion / Playoff / Relegation
     if(team.position <= 2) row.classList.add("promotion");
@@ -88,11 +111,11 @@ function populateTable() {
     else if(team.position >= 21) row.classList.add("relegation");
 
     // Highlight Whistle FC
-    if(teamName === "Whistle FC") row.classList.add("whistle");
+    if(displayName === "Whistle FC") row.classList.add("whistle");
 
     row.innerHTML = `
       <td>${team.position}</td>
-      <td>${teamName}</td>
+      <td>${displayName}</td>
       <td>${team.played}</td>
       <td>${team.wins}</td>
       <td>${team.draws}</td>
@@ -100,15 +123,13 @@ function populateTable() {
       <td>${team.goal_difference}</td>
       <td>${team.points}</td>
     `;
-    tableBody.appendChild(row);
+
+    tbody.appendChild(row);
   });
 }
 
-// Populate table on page load
 populateTable();
 </script>
 
 </body>
 </html>
-
-
