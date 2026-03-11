@@ -164,6 +164,11 @@ font-weight:700;
 text-align:center;
 }
 
+.team img{
+width:60px;
+margin-bottom:5px;
+}
+
 .match-vs{
 font-size:22px;
 margin:5px 0;
@@ -433,3 +438,4 @@ padding:25px 18px;
 }
 
 }
+
