@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Whistle FC News</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>Whistle FC</h1>
+        <p>Official Club News</p>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../news.html">News</a></li>
+            <li><a href="../players.html">Players</a></li>
+            <li><a href="../staff.html">Staff</a></li>
+            <li><a href="../history.html">History</a></li>
+            <li><a href="../fixtures.html">Fixtures</a></li>
+            <li><a href="../results.html">Results</a></li>
+            <li><a href="../leaguetable.html">League Table</a></li>
+        </ul>
+    </nav>
+
+
+<div class="container article">
+
+<h1 class="article-title">Chambers Commits</h1>
+
+<p class="article-meta">
+📅 8 March 2026 | Club Announcement
+</p>
+
+<img src="../images/garymillsmkdons.jpg"
+alt="Whistle FC Coaching Team"
+class="article-image">
+
+<div class="article-body">
+
+<p>
+We are delighted to announce that 18-year-old Rowan Chambers has signed a new contract which will keep him at the club until the summmer of 2028!
+</p>
+
+<p>
+The England U18 international has made 10 senior appearances so far this season, including scoring his first senior goal in the Wetshil and Dattylandshire Cup.
+</p>
+
+<p>
+<strong>Here's to a big two years Ro!<strong>
+</p>
+
+
+</div>
+
+<a class="back-btn" href="../news.html">← Back to News</a>
+
+</div>
+
+<footer class="footer">
+© 2026 Whistle Football Club
+</footer>
+
+</body>
+</html>
