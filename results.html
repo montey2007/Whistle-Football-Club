@@ -60,22 +60,43 @@
 </section>
 
 <script>
+<script>
 fetch("results/results.json")
 .then(res => res.json())
 .then(data => {
+
   const table = document.getElementById("results-table");
+  const whistle = "Whistle FC";
+
   data.forEach(match => {
+
+    const opponent = match.home === whistle ? match.away : match.home;
+    const homeAway = match.home === whistle ? "H" : "A";
+
     const row = document.createElement("tr");
-    row.innerHTML = `<td>${match.date}</td><td>${match.opponent}</td><td>${match.homeaway}</td><td>${match.score}</td><td>${match.competition}</td><td class="${match.result.toLowerCase()}">${match.result}</td>`;
+
+    row.innerHTML = `
+      <td>${match.date}</td>
+      <td>${opponent}</td>
+      <td>${homeAway}</td>
+      <td>${match.score}</td>
+      <td>${match.competition}</td>
+      <td class="${match.result.toLowerCase()}">${match.result}</td>
+    `;
+
     table.appendChild(row);
+
   });
+
 });
+</script>
 </script>
 
 </div>
 </body>
 
 </html>
+
 
 
 
