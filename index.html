@@ -2,22 +2,26 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Whistle Football Club</title>
 
 <link rel="stylesheet" href="css/style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <header class="main-header">
+
 <div class="header-container">
 
 <div class="logo">
-<img src="images/logo.png" alt="Whistle FC Logo">
+<img src="images/logos/logo.png" alt="Whistle FC Logo">
 </div>
 
 <div class="club-title">
@@ -26,10 +30,13 @@
 </div>
 
 </div>
+
 </header>
 
 <nav class="navbar">
+
 <ul>
+
 <li><a class="active" href="index.html">Home</a></li>
 <li><a href="news.html">News</a></li>
 <li><a href="players.html">Players</a></li>
@@ -38,32 +45,51 @@
 <li><a href="fixtures.html">Fixtures</a></li>
 <li><a href="results.html">Results</a></li>
 <li><a href="leaguetable.html">League Table</a></li>
+
 </ul>
+
 </nav>
 
 <section class="hero">
+
 <div class="hero-text">
+
 <h2>The Pride of Wetshil</h2>
+
 <p>Official Website of Whistle Football Club</p>
+
 <a class="btn" href="fixtures.html">View Fixtures</a>
+
 </div>
+
 </section>
 
 <section class="latest-result">
+
 <div class="container">
+
 <h2 class="section-title">Latest Result</h2>
+
 <div id="latest-result-container"></div>
+
 </div>
+
 </section>
 
 <section class="next-match">
+
 <div class="container">
+
 <h2 class="section-title">Next Match</h2>
+
 <div id="next-match-container"></div>
+
 </div>
+
 </section>
 
 <section class="club-info">
+
 <div class="container">
 
 <h2 class="section-title">Club Information</h2>
@@ -96,17 +122,25 @@
 </div>
 
 </div>
+
 </div>
+
 </section>
 
 <section class="news">
+
 <div class="container">
+
 <h2 class="section-title">Latest News</h2>
+
 <div class="news-grid" id="news-container"></div>
+
 </div>
+
 </section>
 
 <footer class="footer">
+
 <div class="container">
 
 <p>© 2026 Whistle Football Club</p>
@@ -114,9 +148,12 @@
 <p>Follow us: Twitter | Instagram | YouTube</p>
 
 </div>
+
 </footer>
 
 <script>
+
+/* NEWS */
 
 fetch("news/news.json")
 .then(res => res.json())
@@ -143,6 +180,8 @@ container.appendChild(card);
 });
 
 
+/* LATEST RESULT */
+
 fetch("results/results.json")
 .then(res => res.json())
 .then(data => {
@@ -150,18 +189,20 @@ fetch("results/results.json")
 const container = document.getElementById("latest-result-container");
 
 const latest = data[0];
-
 const whistle = "Whistle FC";
 
 const opponent = latest.home === whistle ? latest.away : latest.home;
 
-const opponentLogo = latest.home === whistle ? latest.homelogo : "logo.png";
+const opponentLogo = latest.home === whistle
+? latest.homelogo
+: "logo.png";
 
 const card = document.createElement("div");
 
 card.className = "match-card";
 
 card.innerHTML = `
+
 <div class="team">
 <img src="images/logo.png">
 <h3>Whistle FC</h3>
@@ -178,12 +219,15 @@ card.innerHTML = `
 </div>
 
 <a class="btn" href="results.html">View All Results</a>
+
 `;
 
 container.appendChild(card);
 
 });
 
+
+/* NEXT MATCH */
 
 fetch("fixtures/fixtures.json")
 .then(res => res.json())
@@ -198,6 +242,7 @@ const card = document.createElement("div");
 card.className = "match-card";
 
 card.innerHTML = `
+
 <div class="team">
 <img src="images/logo.png">
 <h3>Whistle FC</h3>
@@ -215,6 +260,7 @@ card.innerHTML = `
 </div>
 
 <a class="btn" href="fixtures.html">View All Fixtures</a>
+
 `;
 
 container.appendChild(card);
@@ -224,4 +270,5 @@ container.appendChild(card);
 </script>
 
 </body>
+
 </html>
