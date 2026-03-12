@@ -1,9 +1,8 @@
 [
-
-    {
+  {
     "date": "10 Mar 2026",
-    "opponent": "Doncaster Rovers",
-    "homeaway": "A",
+    "home": "Doncaster Rovers",
+    "away": "Whistle FC",
     "score": "1-1",
     "competition": "League One",
     "result": "D",
@@ -12,8 +11,8 @@
   },
   {
     "date": "7 Mar 2026",
-    "opponent": "Reading FC",
-    "homeaway": "H",
+    "home": "Whistle FC",
+    "away": "Reading FC",
     "score": "2-3",
     "competition": "League One",
     "result": "L",
@@ -22,8 +21,8 @@
   },
   {
     "date": "4 Mar 2026",
-    "opponent": "Northampton Town",
-    "homeaway": "H",
+    "home": "Whistle FC",
+    "away": "Northampton Town",
     "score": "2-1",
     "competition": "Cup",
     "result": "W",
@@ -32,18 +31,18 @@
   },
   {
     "date": "28 Feb 2026",
-    "opponent": "Port Vale",
-    "homeaway": "A",
+    "home": "Port Vale",
+    "away": "Whistle FC",
     "score": "1-1",
     "competition": "League One",
     "result": "D",
     "venue": "Vale Park",
-    "homelogo": "logo.png"
+    "homelogo": "portvalelogo.png"
   },
   {
     "date": "24 Feb 2026",
-    "opponent": "Plymouth Argyle",
-    "homeaway": "H",
+    "home": "Whistle FC",
+    "away": "Plymouth Argyle",
     "score": "2-1",
     "competition": "Cup",
     "result": "W",
