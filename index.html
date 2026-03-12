@@ -62,31 +62,7 @@
 
 </div>
 
-</section>
-
-<section class="latest-result">
-
-<div class="container">
-
-<h2 class="section-title">Latest Result</h2>
-
-<div id="latest-result-container"></div>
-
-</div>
-
-</section>
-
-<section class="next-match">
-
-<div class="container">
-
-<h2 class="section-title">Next Match</h2>
-
-<div id="next-match-container"></div>
-
-</div>
-
-</section>
+/section>
 
 <section class="club-info">
 
@@ -179,96 +155,11 @@ container.appendChild(card);
 
 });
 
-
-/* LATEST RESULT */
-
-fetch("results/results.json")
-.then(res => res.json())
-.then(data => {
-
-const container = document.getElementById("latest-result-container");
-
-const latest = data[0];
-const whistle = "Whistle FC";
-
-const opponent = latest.home === whistle ? latest.away : latest.home;
-
-const opponentLogo = latest.home === whistle
-? latest.homelogo
-: "logo.png";
-
-const card = document.createElement("div");
-
-card.className = "match-card";
-
-card.innerHTML = `
-
-<div class="team">
-<img src="images/logo.png">
-<h3>Whistle FC</h3>
-</div>
-
-<div class="match-info">
-<p class="match-vs"><strong>${latest.score}</strong></p>
-<p>${latest.venue}</p>
-</div>
-
-<div class="team">
-<img src="images/logos/${opponentLogo}">
-<h3>${opponent}</h3>
-</div>
-
-<a class="btn" href="results.html">View All Results</a>
-
-`;
-
-container.appendChild(card);
-
-});
-  
-/* NEXT MATCH */
-fetch("fixtures/fixtures.json")
-.then(res => res.json())
-.then(data => {
-
-const container = document.getElementById("next-match-container");
-
-const next = data[0];
-
-const card = document.createElement("div");
-
-card.className = "match-card";
-
-card.innerHTML = `
-
-<div class="team">
-<img src="images/logo.png">
-<h3>Whistle FC</h3>
-</div>
-
-<div class="match-info">
-<p class="match-vs">vs</p>
-<p>${next.date} ${next.time}</p>
-<p><strong>${next.venue}</strong></p>
-</div>
-
-<div class="team">
-<img src="images/logos/${next.awaylogo}">
-<h3>${next.away}</h3>
-</div>
-
-<a class="btn" href="fixtures.html">View All Fixtures</a>
-
-`;
-
-container.appendChild(card);
-
-});
-
 </script>
 
 </body>
 
 </html>
+
 
 
