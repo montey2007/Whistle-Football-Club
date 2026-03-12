@@ -52,5 +52,59 @@
     "competition": "League One",
     "time": "15:00",
     "venue": "Mornflake Stadium"
+  },
+  {
+    "date": "Mon 6 Apr 2026",
+    "away": "AFC Wimbledon",
+    "awaylogo": "wimbledonlogo.png",
+    "homeaway": "A",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Plough Lane"
+  },
+  {
+    "date": "Sun 12 Apr 2026",
+    "away": "Stockport County",
+    "awaylogo": "stockportlogo.png",
+    "homeaway": "H",
+    "competition": "EFL Trophy Final",
+    "time": "15:00",
+    "venue": "Wembley Stadium"
+  },
+  {
+    "date": "Wed 15 Apr 2026",
+    "away": "Northampton Town",
+    "awaylogo": "northamptonlogo.png",
+    "homeaway": "H",
+    "competition": "League One",
+    "time": "19:45",
+    "venue": "Mornflake Stadium"
+  },
+  {
+    "date": "Sat 18 Apr 2026",
+    "away": "Mansfield Town",
+    "awaylogo": "mansfieldlogo.png",
+    "homeaway": "A",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Field Mill"
+  },
+  {
+    "date": "Sat 25 Apr 2026",
+    "away": "Barnsley",
+    "awaylogo": "barnsleylogo.png",
+    "homeaway": "H",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Mornflake Stadium"
+  },
+  {
+    "date": "Sat 2 May 2026",
+    "away": "Bolton Wanderers",
+    "awaylogo": "boltonlogo.png",
+    "homeaway": "A",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Toughsheet Community Stadium"
   }
 ]
