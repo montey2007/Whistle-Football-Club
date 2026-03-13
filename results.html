@@ -78,12 +78,11 @@ fetch("results/results.json")
 .then(data => {
 
 const table = document.getElementById("results-table");
-const whistle = "Whistle FC";
 
 data.forEach(match => {
 
-const opponent = match.home === whistle ? match.away : match.home;
-const homeAway = match.home === whistle ? "H" : "A";
+const opponent = match.home === "Whistle FC" ? match.away : match.home;
+const homeAway = match.home === "Whistle FC" ? "H" : "A";
 
 const row = document.createElement("tr");
 
@@ -106,3 +105,4 @@ table.appendChild(row);
 
 </body>
 </html>
+
