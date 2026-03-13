@@ -2,49 +2,57 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whistle Football Club</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whistle Football Club</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Whistle Football Club Logo">
-            </div>
-            <div class="club-title">
-                <h1>Whistle Football Club</h1>
-                <p>Unitate et Fortitudine – With Unity and Strength</p>
-            </div>
-        </div>
-    </header>
+<header class="main-header">
+<div class="header-container">
 
-    <nav class="navbar">
-        <ul>
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="players.html">Players</a></li>
-            <li><a href="staff.html">Staff</a></li>
-            <li><a href="history.html">History</a></li>
-            <li><a href="fixtures.html">Fixtures</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="leaguetable.html">League Table</a></li>
-        </ul>
-    </nav>
+<div class="logo">
+<img src="images/logo.png" alt="Whistle Football Club logo">
+</div>
 
-  <section class="hero">
-    <div class="hero-text">
-        <h2>The Pride of Wetshil</h2>
-        <p>Official Website of Whistle Football Club</p>
-        <a class="btn" href="fixtures.html">View Fixtures</a>
-    </div>
+<div class="club-title">
+<h1>Whistle Football Club</h1>
+<p>Unitate et Fortitudine – With Unity and Strength</p>
+</div>
+
+</div>
+</header>
+
+<nav class="navbar">
+<ul>
+<li><a class="active" href="index.html">Home</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="players.html">Players</a></li>
+<li><a href="staff.html">Staff</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="fixtures.html">Fixtures</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="leaguetable.html">League Table</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<div class="hero-text">
+<h2>The Pride of Wetshil</h2>
+<p>Official Website of Whistle Football Club</p>
+<a class="btn" href="fixtures.html">View Fixtures</a>
+</div>
 </section>
 
-    <section class="next-match">
+<!-- NEXT MATCH -->
+
+<section class="next-match">
+
 <div class="container">
 
 <h2 class="section-title">Next Match</h2>
@@ -52,7 +60,7 @@
 <div class="match-card">
 
 <div class="team">
-<img src="images/logos/wycombelogo.png" alt="Wycombe Wanderers">
+<img src="images/logos/wycombelogo.png" alt="Wycombe logo">
 <span>Wycombe Wanderers</span>
 </div>
 
@@ -64,7 +72,7 @@
 </div>
 
 <div class="team">
-<img src="images/logo.png" alt="Whistle FC">
+<img src="images/logo.png" alt="Whistle logo">
 <span>Whistle FC</span>
 </div>
 
@@ -74,7 +82,13 @@
 <a class="btn" href="fixtures.html">All Fixtures</a>
 </div>
 
+</div>
+</section>
+
+<!-- LATEST RESULT -->
+
 <section class="latest-result">
+
 <div class="container">
 
 <h2 class="section-title">Latest Result</h2>
@@ -82,18 +96,18 @@
 <div class="result-card">
 
 <div class="team">
-<img src="images/logos/doncasterlogo.png" alt="Doncaster Rovers">
+<img src="images/logos/doncasterlogo.png" alt="Doncaster logo">
 <span>Doncaster Rovers</span>
 </div>
 
 <div class="result-score">
-<span class="score">1-1</span>
+<span class="score">1 - 1</span>
 <p class="competition">EFL League One</p>
 <p class="stadium">Eco-Power Stadium</p>
 </div>
 
 <div class="team">
-<img src="images/logo.png" alt="Whistle FC">
+<img src="images/logo.png" alt="Whistle logo">
 <span>Whistle FC</span>
 </div>
 
@@ -107,76 +121,102 @@
 </div>
 </section>
 
-    <section class="club-info">
-        <div class="container">
-            <h2 class="section-title">Club Information</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>Founded</h3>
-                    <p>1905</p>
-                </div>
-                <div class="info-card">
-                    <h3>Ground</h3>
-                    <p>Mornflake Stadium</p>
-                </div>
-                <div class="info-card">
-                    <h3>Capacity</h3>
-                    <p>10,500</p>
-                </div>
-                <div class="info-card">
-                    <h3>League</h3>
-                    <p>EFL League One</p>
-                </div>
-                <div class="info-card">
-                    <h3>Head Coach</h3>
-                    <p>Johannes Hoff Thorup</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- CLUB INFO -->
 
-    <section class="news">
-        <div class="container">
-            <h2 class="section-title">Latest News</h2>
-            <div class="news-grid" id="news-container"></div>
-        </div>
-    </section>
+<section class="club-info">
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 Whistle Football Club</p>
-            <p>Mornflake Stadium | Wetshil, England</p>
-            <p>Follow us: Twitter | Instagram | YouTube</p>
-        </div>
-    </footer>
+<div class="container">
 
-    <script>
-        /* NEWS */
-        fetch("news/news.json")
-            .then(res => res.json())
-            .then(data => {
-                const container = document.getElementById("news-container");
-                data.slice(0, 3).forEach(article => {
-                    const card = document.createElement("article");
-                    card.className = "news-card";
-                    card.innerHTML = `
-                      card.innerHTML = `
-    <img src="${article.image}" alt="">
-    <h3>${article.title}</h3>
-    <p>${article.text}</p>
-    <a class="read-more" href="${article.link}">Read More →</a>
+<h2 class="section-title">Club Information</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h3>Founded</h3>
+<p>1905</p>
+</div>
+
+<div class="info-card">
+<h3>Ground</h3>
+<p>Mornflake Stadium</p>
+</div>
+
+<div class="info-card">
+<h3>Capacity</h3>
+<p>10,500</p>
+</div>
+
+<div class="info-card">
+<h3>League</h3>
+<p>EFL League One</p>
+</div>
+
+<div class="info-card">
+<h3>Head Coach</h3>
+<p>Johannes Hoff Thorup</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- NEWS -->
+
+<section class="news">
+
+<div class="container">
+
+<h2 class="section-title">Latest News</h2>
+
+<div class="news-grid" id="news-container"></div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div class="container">
+<p>© 2026 Whistle Football Club</p>
+<p>Mornflake Stadium | Wetshil, England</p>
+<p>Follow us: Twitter | Instagram | YouTube</p>
+</div>
+
+</footer>
+
+<script>
+
+/* LOAD NEWS */
+
+fetch("news/news.json")
+
+.then(res => res.json())
+
+.then(data => {
+
+const container = document.getElementById("news-container");
+
+data.slice(0,3).forEach(article => {
+
+const card = document.createElement("article");
+
+card.className = "news-card";
+
+card.innerHTML = `
+<img src="${article.image}" alt="">
+<h3>${article.title}</h3>
+<p>${article.text}</p>
+<a href="${article.link}">Read More →</a>
 `;
-                    `;
-                    container.appendChild(card);
-                });
-            });
-    </script>
+
+container.appendChild(card);
+
+});
+
+});
+
+</script>
 
 </body>
-
 </html>
-
-
-
-
-
