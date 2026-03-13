@@ -159,6 +159,12 @@ padding:60px 0;
 
 /* NEXT MATCH CARD */
 
+.next-match{
+background:#f5f5f5;
+padding:60px 0;
+text-align:center;
+}
+
 .match-card{
 max-width:750px;
 margin:40px auto;
@@ -174,14 +180,17 @@ box-shadow:0 6px 20px rgba(0,0,0,0.25);
 
 .team{
 text-align:center;
-width:150px;
-font-size:22px;
-font-weight:600;
+width:160px;
 }
 
 .team img{
 width:60px;
 margin-bottom:8px;
+}
+
+.team span{
+font-weight:600;
+display:block;
 }
 
 .match-info{
@@ -191,10 +200,30 @@ flex:1;
 
 .match-vs{
 font-size:22px;
-margin:5px 0;
+margin:6px 0;
 color:#ff3b3b;
+font-weight:700;
 }
 
+.competition{
+font-size:14px;
+opacity:0.8;
+}
+
+.kickoff{
+font-size:16px;
+font-weight:600;
+}
+
+.stadium{
+font-size:14px;
+opacity:0.8;
+margin-top:4px;
+}
+
+.match-links{
+margin-top:10px;
+}
 /* INFO GRID */
 
 .info-grid{
@@ -441,3 +470,4 @@ padding:25px 18px;
 }
 
 }
+
