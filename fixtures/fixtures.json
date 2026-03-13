@@ -34,5 +34,77 @@
     "competition": "Wetshil & Dattylandshire Cup",
     "time": "19:45",
     "venue": "Mornflake Stadium"
+  },
+  {
+    "date": "2026-03-28",
+    "opponent": "Rotherham United",
+    "logo": "rotherhamlogo.png",
+    "homeaway": "A",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "New York Stadium"
+  },
+  {
+    "date": "2026-04-03",
+    "opponent": "Peterborough United",
+    "logo": "peterboroughlogo.png",
+    "homeaway": "H",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Mornflake Stadium"
+  },
+  {
+    "date": "2026-04-06",
+    "opponent": "AFC Wimbledon",
+    "logo": "wimbledonlogo.png",
+    "homeaway": "A",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Plough Lane"
+  },
+  {
+    "date": "2026-04-12",
+    "opponent": "Stockport County",
+    "logo": "stockportlogo.png",
+    "homeaway": "H",
+    "competition": "EFL Trophy Final",
+    "time": "15:00",
+    "venue": "Wembley Stadium"
+  },
+  {
+    "date": "2026-04-15",
+    "opponent": "Northampton Town",
+    "logo": "northamptonlogo.png",
+    "homeaway": "H",
+    "competition": "League One",
+    "time": "19:45",
+    "venue": "Mornflake Stadium"
+  },
+  {
+    "date": "2026-04-18",
+    "opponent": "Mansfield Town",
+    "logo": "mansfieldlogo.png",
+    "homeaway": "A",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Field Mill"
+  },
+  {
+    "date": "2026-04-25",
+    "opponent": "Barnsley",
+    "logo": "barnsleylogo.png",
+    "homeaway": "H",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Mornflake Stadium"
+  },
+  {
+    "date": "2026-05-02",
+    "opponent": "Bolton Wanderers",
+    "logo": "boltonlogo.png",
+    "homeaway": "A",
+    "competition": "League One",
+    "time": "15:00",
+    "venue": "Toughsheet Community Stadium"
   }
 ]
