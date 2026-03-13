@@ -85,19 +85,15 @@ fetch("fixtures/fixtures.json")
 .then(data => {
 
 const table = document.getElementById("fixtures-table");
-const whistle = "Whistle FC";
 
 data.forEach(match => {
-
-const opponent = match.away;
-const homeAway = match.homeaway;
 
 const row = document.createElement("tr");
 
 row.innerHTML = `
-<td>${match.date}</td>
-<td>${opponent}</td>
-<td>${homeAway}</td>
+<td>${new Date(match.date).toDateString()}</td>
+<td>${match.opponent}</td>
+<td>${match.homeaway}</td>
 <td>${match.competition}</td>
 <td>${match.time}</td>
 `;
@@ -107,9 +103,9 @@ table.appendChild(row);
 });
 
 });
-
 </script>
 
 </body>
 
 </html>
+
