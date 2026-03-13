@@ -53,65 +53,67 @@
 
 <section class="next-match">
 
-<script>
+<div class="container">
 
-fetch("fixtures/fixtures.json")
-.then(res => res.json())
-.then(data => {
+<h2 class="section-title">Next Match</h2>
 
-const next = data[0];
+<div class="match-card">
 
-const opponent = next.opponent;
-const venue = next.venue;
-const comp = next.competition;
-const time = next.time;
-const date = new Date(next.date).toDateString();
+<div class="team">
+<img id="next-logo" src="" alt="">
+<span id="next-opponent"></span>
+</div>
 
-const logo = "images/logos/" + next.logo;
+<div class="match-info">
+<p class="competition" id="next-competition"></p>
+<p class="match-vs">VS</p>
+<p class="kickoff" id="next-date"></p>
+<p class="stadium" id="next-venue"></p>
+</div>
 
-document.querySelector(".next-match .team img").src = logo;
-document.querySelector(".next-match .team span").innerText = opponent;
+<div class="team">
+<img src="images/logo.png" alt="Whistle logo">
+<span>Whistle FC</span>
+</div>
 
-document.querySelector(".competition").innerText = comp;
-document.querySelector(".kickoff").innerText = date + " · " + time;
-document.querySelector(".stadium").innerText = venue;
+</div>
 
-});
-
-</script>
-  <div class="fixtures-links">
+<div class="fixtures-links">
 <a class="btn" href="fixtures.html">All Fixtures</a>
 </div>
+  
 </section>
 
 <!-- LATEST RESULT -->
 
 <section class="latest-result">
 
-<script>
+<div class="container">
 
-fetch("results/results.json")
-.then(res => res.json())
-.then(data => {
+<h2 class="section-title">Latest Result</h2>
 
-const match = data[0];
+<div class="result-card">
 
-const opponent = match.home === "Whistle FC" ? match.away : match.home;
-const logo = "images/logos/" + match.homelogo;
+<div class="team">
+<img id="result-logo" src="" alt="">
+<span id="result-opponent"></span>
+</div>
 
-document.querySelector(".result-card .team img").src = logo;
-document.querySelector(".result-card .team span").innerText = opponent;
+<div class="result-score">
+<span class="score" id="result-score"></span>
+<p class="competition" id="result-competition"></p>
+<p class="stadium" id="result-venue"></p>
+</div>
 
-document.querySelector(".score").innerText = match.score;
-document.querySelector(".latest-result .competition").innerText = match.competition;
-document.querySelector(".latest-result .stadium").innerText = match.venue;
+<div class="team">
+<img src="images/logo.png" alt="Whistle logo">
+<span>Whistle FC</span>
+</div>
 
-});
+</div>
 
-</script>
 <div class="result-links">
 <a class="btn" href="results.html">All Results</a>
-<a class="btn match-report" href="https://www.teamstats.net/whistlefc/results/311875/whistle-afc-v-doncaster-rovers-10-mar-2026/">Match Report</a>
 </div>
 
 </div>
@@ -186,9 +188,7 @@ document.querySelector(".latest-result .stadium").innerText = match.venue;
 /* LOAD NEWS */
 
 fetch("news/news.json")
-
 .then(res => res.json())
-
 .then(data => {
 
 const container = document.getElementById("news-container");
@@ -196,7 +196,6 @@ const container = document.getElementById("news-container");
 data.slice(0,3).forEach(article => {
 
 const card = document.createElement("article");
-
 card.className = "news-card";
 
 card.innerHTML = `
@@ -212,8 +211,66 @@ container.appendChild(card);
 
 });
 
+
+/* NEXT MATCH */
+
+fetch("fixtures/fixtures.json")
+.then(res => res.json())
+.then(data => {
+
+const next = data[0];
+
+document.getElementById("next-logo").src =
+"images/logos/" + next.logo;
+
+document.getElementById("next-opponent").innerText =
+next.opponent;
+
+document.getElementById("next-competition").innerText =
+next.competition;
+
+document.getElementById("next-date").innerText =
+new Date(next.date).toDateString() + " · " + next.time;
+
+document.getElementById("next-venue").innerText =
+next.venue;
+
+});
+
+
+/* LATEST RESULT */
+
+fetch("results/results.json")
+.then(res => res.json())
+.then(data => {
+
+const match = data[0];
+
+const opponent =
+match.home === "Whistle FC" ? match.away : match.home;
+
+document.getElementById("result-logo").src =
+"images/logos/" + match.homelogo;
+
+document.getElementById("result-opponent").innerText =
+opponent;
+
+document.getElementById("result-score").innerText =
+match.score;
+
+document.getElementById("result-competition").innerText =
+match.competition;
+
+document.getElementById("result-venue").innerText =
+match.venue;
+
+});
+
 </script>
 
 </body>
 </html>
+</body>
+</html>
+
 
