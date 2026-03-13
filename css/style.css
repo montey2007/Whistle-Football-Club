@@ -373,6 +373,15 @@ transition:0.2s;
 background:#a00000;
 }
 
+.player-quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  border-left: 4px solid #c8102e;
+  padding-left: 15px;
+  margin: 20px 0;
+  color: #444;
+}
+
 /* PLAYERS GRID */
 
 .players-grid{
@@ -470,6 +479,7 @@ padding:25px 18px;
 }
 
 }
+
 
 
 
