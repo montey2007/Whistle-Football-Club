@@ -44,6 +44,24 @@
     </div>
 </section>
 
+    <section class="next-match">
+<div class="container">
+
+<h2 class="section-title">Next Match</h2>
+
+<div class="match-card">
+    <div>Wycombe Wanderers</div>
+    <div class="vs">vs</div>
+    <div>Whistle FC</div>
+</div>
+
+<p>Saturday 14 March | Adams Park</p>
+
+<a class="btn" href="fixtures.html">All Fixtures</a>
+
+</div>
+</section>
+
     <section class="club-info">
         <div class="container">
             <h2 class="section-title">Club Information</h2>
@@ -97,9 +115,12 @@
                     const card = document.createElement("article");
                     card.className = "news-card";
                     card.innerHTML = `
-                        <h3>${article.title}</h3>
-                        <p>${article.text}</p>
-                        <a href="${article.link}">Read More</a>
+                      card.innerHTML = `
+    <img src="${article.image}" alt="">
+    <h3>${article.title}</h3>
+    <p>${article.text}</p>
+    <a class="read-more" href="${article.link}">Read More →</a>
+`;
                     `;
                     container.appendChild(card);
                 });
@@ -109,4 +130,5 @@
 </body>
 
 </html>
+
 
