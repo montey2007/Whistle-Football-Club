@@ -278,17 +278,27 @@ next.venue;
 
 /* LATEST RESULT */
 
+/* LATEST RESULT */
+
 fetch("results/results.json")
 .then(res => res.json())
 .then(data => {
 
-  // ✅ Ensure newest match is used
   data.sort((a, b) => new Date(b.date) - new Date(a.date));
   const match = data[0];
 
-  // ✅ HOME TEAM (always left)
+  // ✅ Function to get correct logo path
+  function getLogo(teamName, logoFile) {
+    if (teamName === "Whistle FC") {
+      return "images/logo.png"; // your main logo location
+    } else {
+      return "images/logos/" + logoFile;
+    }
+  }
+
+  // ✅ HOME TEAM
   document.getElementById("result-home-logo").src =
-    "images/logos/" + match.homelogo;
+    getLogo(match.home, match.homelogo);
 
   document.getElementById("result-home-logo").alt =
     match.home + " logo";
@@ -296,9 +306,9 @@ fetch("results/results.json")
   document.getElementById("result-home-name").innerText =
     match.home;
 
-  // ✅ AWAY TEAM (always right)
+  // ✅ AWAY TEAM
   document.getElementById("result-away-logo").src =
-    "images/logos/" + match.awaylogo;
+    getLogo(match.away, match.awaylogo);
 
   document.getElementById("result-away-logo").alt =
     match.away + " logo";
@@ -316,7 +326,7 @@ fetch("results/results.json")
   document.getElementById("result-venue").innerText =
     match.venue;
 
-  // ✅ RESULT COLOUR (W/D/L)
+  // ✅ RESULT COLOUR
   const scoreEl = document.getElementById("result-score");
   scoreEl.className = "score " + match.result.toLowerCase();
 
@@ -324,7 +334,6 @@ fetch("results/results.json")
 .catch(err => {
   console.error("Error loading results:", err);
 });
-  
 </script>
 
 </body>
