@@ -102,7 +102,6 @@ row.innerHTML = `
 <td>${formattedDate}</td>
 
 <td class="opponent-cell">
-  <img src="images/logos/${opponentLogo}" alt="${opponent} logo" class="team-logo">
   ${opponent}
 </td>
 
@@ -114,7 +113,6 @@ row.innerHTML = `
 
 <td class="result ${match.result.toLowerCase()}">${match.result}</td>
 `;
-
 table.appendChild(row);
 
 });
