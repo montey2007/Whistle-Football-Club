@@ -216,6 +216,8 @@ container.appendChild(card);
 
 /* NEXT MATCH */
 
+/* NEXT MATCH */
+
 fetch("fixtures/fixtures.json")
 .then(res => res.json())
 .then(data => {
@@ -230,18 +232,27 @@ const leftName = teams[0].querySelector("span");
 const rightLogo = teams[1].querySelector("img");
 const rightName = teams[1].querySelector("span");
 
+// ✅ Logo helper (same as results)
+function getLogo(teamName, logoFile) {
+  if (teamName === "Whistle FC") {
+    return "images/logo.png";
+  } else {
+    return "images/logos/" + logoFile;
+  }
+}
+
 /* CASE 1: New format (home/away) */
 if (next.home && next.away) {
 
-  leftLogo.src = "images/logos/" + next.homelogo;
+  leftLogo.src = getLogo(next.home, next.homelogo);
   leftName.innerText = next.home;
 
-  rightLogo.src = "images/logos/" + next.awaylogo;
+  rightLogo.src = getLogo(next.away, next.awaylogo);
   rightName.innerText = next.away;
 
 }
 
-/* CASE 2: Old format (homeaway/opponent) */
+/* CASE 2: Old format */
 else {
 
   const isHome = next.homeaway === "H";
@@ -250,10 +261,10 @@ else {
     leftLogo.src = "images/logo.png";
     leftName.innerText = "Whistle FC";
 
-    rightLogo.src = "images/logos/" + next.logo;
+    rightLogo.src = getLogo(next.opponent, next.logo);
     rightName.innerText = next.opponent;
   } else {
-    leftLogo.src = "images/logos/" + next.logo;
+    leftLogo.src = getLogo(next.opponent, next.logo);
     leftName.innerText = next.opponent;
 
     rightLogo.src = "images/logo.png";
