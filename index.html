@@ -220,30 +220,47 @@ fetch("fixtures/fixtures.json")
 
 const next = data[0];
 
-const isHome = next.homeaway === "H";
+const teams = document.querySelectorAll(".match-card .team");
 
-const leftLogo = document.querySelector(".match-card .team:first-child img");
-const leftName = document.querySelector(".match-card .team:first-child span");
+const leftLogo = teams[0].querySelector("img");
+const leftName = teams[0].querySelector("span");
 
-const rightLogo = document.querySelector(".match-card .team:last-child img");
-const rightName = document.querySelector(".match-card .team:last-child span");
+const rightLogo = teams[1].querySelector("img");
+const rightName = teams[1].querySelector("span");
 
-if (isHome) {
-  // Whistle is HOME → show them first
-  leftLogo.src = "images/logo.png";
-  leftName.innerText = "Whistle FC";
+/* CASE 1: New format (home/away) */
+if (next.home && next.away) {
 
-  rightLogo.src = "images/logos/" + next.logo;
-  rightName.innerText = next.opponent;
-} else {
-  // Whistle is AWAY → opponent first
-  leftLogo.src = "images/logos/" + next.logo;
-  leftName.innerText = next.opponent;
+  leftLogo.src = "images/logos/" + next.homelogo;
+  leftName.innerText = next.home;
 
-  rightLogo.src = "images/logo.png";
-  rightName.innerText = "Whistle FC";
+  rightLogo.src = "images/logos/" + next.awaylogo;
+  rightName.innerText = next.away;
+
 }
 
+/* CASE 2: Old format (homeaway/opponent) */
+else {
+
+  const isHome = next.homeaway === "H";
+
+  if (isHome) {
+    leftLogo.src = "images/logo.png";
+    leftName.innerText = "Whistle FC";
+
+    rightLogo.src = "images/logos/" + next.logo;
+    rightName.innerText = next.opponent;
+  } else {
+    leftLogo.src = "images/logos/" + next.logo;
+    leftName.innerText = next.opponent;
+
+    rightLogo.src = "images/logo.png";
+    rightName.innerText = "Whistle FC";
+  }
+
+}
+
+/* Common info */
 document.getElementById("next-competition").innerText =
 next.competition;
 
@@ -254,7 +271,6 @@ document.getElementById("next-venue").innerText =
 next.venue;
 
 });
-
 
 /* LATEST RESULT */
 
