@@ -278,28 +278,45 @@ fetch("results/results.json")
 .then(res => res.json())
 .then(data => {
 
-const match = data[0];
+  // Get latest match (assumes newest first)
+  const match = data[0];
 
-const opponent =
-match.home === "Whistle FC" ? match.away : match.home;
+  // Determine if Whistle is home or away
+  const isWhistleHome = match.home === "Whistle FC";
 
-document.getElementById("result-logo").src =
-"images/logos/" + match.homelogo;
+  // Get opponent name + logo
+  const opponentName = isWhistleHome ? match.away : match.home;
+  const opponentLogo = isWhistleHome ? match.awaylogo : match.homelogo;
 
-document.getElementById("result-opponent").innerText =
-opponent;
+  // Set opponent info
+  document.getElementById("result-logo").src =
+    "images/logos/" + opponentLogo;
 
-document.getElementById("result-score").innerText =
-match.score;
+  document.getElementById("result-logo").alt =
+    opponentName + " logo";
 
-document.getElementById("result-competition").innerText =
-match.competition;
+  document.getElementById("result-opponent").innerText =
+    opponentName;
 
-document.getElementById("result-venue").innerText =
-match.venue;
+  // Set match details
+  document.getElementById("result-score").innerText =
+    match.score;
 
+  document.getElementById("result-competition").innerText =
+    match.competition;
+
+  document.getElementById("result-venue").innerText =
+    match.venue;
+
+  // Optional: colour result (W/D/L)
+  const scoreEl = document.getElementById("result-score");
+  scoreEl.className = "score " + match.result.toLowerCase();
+
+})
+.catch(err => {
+  console.error("Error loading results:", err);
 });
-
+  
 </script>
 
 </body>
