@@ -1,9 +1,10 @@
 [
   {
     "date": "2026-03-21",
-    "opponent": "Stockport County",
-    "logo": "stockportlogo.png",
-    "homeaway": "H",
+    "home": "Whistle FC"
+    "home logo": "logo.png
+    "away": "Stockport County",
+    "away logo": "stockportlogo.png",
     "competition": "League One",
     "time": "12:30",
     "venue": "Mornflake Stadium"
