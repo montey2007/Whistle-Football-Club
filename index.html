@@ -86,6 +86,8 @@
 
 <!-- LATEST RESULT -->
 
+<!-- LATEST RESULT -->
+
 <section class="latest-result">
 
 <div class="container">
@@ -95,8 +97,8 @@
 <div class="result-card">
 
 <div class="team">
-<img id="result-logo" src="" alt="">
-<span id="result-opponent"></span>
+<img id="result-home-logo" src="" alt="">
+<span id="result-home-name"></span>
 </div>
 
 <div class="result-score">
@@ -106,8 +108,8 @@
 </div>
 
 <div class="team">
-<img src="images/logo.png" alt="Whistle logo">
-<span>Whistle FC</span>
+<img id="result-away-logo" src="" alt="">
+<span id="result-away-name"></span>
 </div>
 
 </div>
@@ -118,7 +120,7 @@
 
 </div>
 </section>
-
+  
 <!-- CLUB INFO -->
 
 <section class="club-info">
@@ -274,31 +276,37 @@ next.venue;
 
 /* LATEST RESULT */
 
+/* LATEST RESULT */
+
 fetch("results/results.json")
 .then(res => res.json())
 .then(data => {
 
-  // Get latest match (assumes newest first)
+  // ✅ Ensure newest match is used
+  data.sort((a, b) => new Date(b.date) - new Date(a.date));
   const match = data[0];
 
-  // Determine if Whistle is home or away
-  const isWhistleHome = match.home === "Whistle FC";
+  // ✅ HOME TEAM (always left)
+  document.getElementById("result-home-logo").src =
+    "images/logos/" + match.homelogo;
 
-  // Get opponent name + logo
-  const opponentName = isWhistleHome ? match.away : match.home;
-  const opponentLogo = isWhistleHome ? match.awaylogo : match.homelogo;
+  document.getElementById("result-home-logo").alt =
+    match.home + " logo";
 
-  // Set opponent info
-  document.getElementById("result-logo").src =
-    "images/logos/" + opponentLogo;
+  document.getElementById("result-home-name").innerText =
+    match.home;
 
-  document.getElementById("result-logo").alt =
-    opponentName + " logo";
+  // ✅ AWAY TEAM (always right)
+  document.getElementById("result-away-logo").src =
+    "images/logos/" + match.awaylogo;
 
-  document.getElementById("result-opponent").innerText =
-    opponentName;
+  document.getElementById("result-away-logo").alt =
+    match.away + " logo";
 
-  // Set match details
+  document.getElementById("result-away-name").innerText =
+    match.away;
+
+  // ✅ MATCH INFO
   document.getElementById("result-score").innerText =
     match.score;
 
@@ -308,7 +316,7 @@ fetch("results/results.json")
   document.getElementById("result-venue").innerText =
     match.venue;
 
-  // Optional: colour result (W/D/L)
+  // ✅ RESULT COLOUR (W/D/L)
   const scoreEl = document.getElementById("result-score");
   scoreEl.className = "score " + match.result.toLowerCase();
 
