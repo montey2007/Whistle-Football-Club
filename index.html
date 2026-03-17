@@ -220,11 +220,29 @@ fetch("fixtures/fixtures.json")
 
 const next = data[0];
 
-document.getElementById("next-logo").src =
-"images/logos/" + next.logo;
+const isHome = next.homeaway === "H";
 
-document.getElementById("next-opponent").innerText =
-next.opponent;
+const leftLogo = document.querySelector(".match-card .team:first-child img");
+const leftName = document.querySelector(".match-card .team:first-child span");
+
+const rightLogo = document.querySelector(".match-card .team:last-child img");
+const rightName = document.querySelector(".match-card .team:last-child span");
+
+if (isHome) {
+  // Whistle is HOME → show them first
+  leftLogo.src = "images/logo.png";
+  leftName.innerText = "Whistle FC";
+
+  rightLogo.src = "images/logos/" + next.logo;
+  rightName.innerText = next.opponent;
+} else {
+  // Whistle is AWAY → opponent first
+  leftLogo.src = "images/logos/" + next.logo;
+  leftName.innerText = next.opponent;
+
+  rightLogo.src = "images/logo.png";
+  rightName.innerText = "Whistle FC";
+}
 
 document.getElementById("next-competition").innerText =
 next.competition;
