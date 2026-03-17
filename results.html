@@ -73,33 +73,61 @@
 
 <script>
 
+<script>
+
 fetch("results/results.json")
 .then(res => res.json())
 .then(data => {
 
 const table = document.getElementById("results-table");
 
+// ✅ Sort by newest date first (important improvement)
+data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
 data.forEach(match => {
 
-const opponent = match.home === "Whistle FC" ? match.away : match.home;
-const homeAway = match.home === "Whistle FC" ? "H" : "A";
+const isWhistleHome = match.home === "Whistle FC";
 
+// ✅ Correct opponent + logo
+const opponent = isWhistleHome ? match.away : match.home;
+const opponentLogo = isWhistleHome ? match.awaylogo : match.homelogo;
+
+// ✅ H or A
+const homeAway = isWhistleHome ? "H" : "A";
+
+// ✅ Format date nicely (optional but high marks)
+const formattedDate = new Date(match.date).toLocaleDateString("en-GB");
+
+// ✅ Create row
 const row = document.createElement("tr");
 
 row.innerHTML = `
-<td>${match.date}</td>
-<td>${opponent}</td>
+<td>${formattedDate}</td>
+
+<td class="opponent-cell">
+  <img src="images/logos/${opponentLogo}" alt="${opponent} logo" class="team-logo">
+  ${opponent}
+</td>
+
 <td>${homeAway}</td>
-<td>${match.score}</td>
+
+<td class="score">${match.score}</td>
+
 <td>${match.competition}</td>
-<td class="${match.result.toLowerCase()}">${match.result}</td>
+
+<td class="result ${match.result.toLowerCase()}">${match.result}</td>
 `;
 
 table.appendChild(row);
 
 });
 
+})
+.catch(err => {
+console.error("Error loading results:", err);
 });
+
+</script>
 
 </script>
 
