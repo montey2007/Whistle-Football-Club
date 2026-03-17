@@ -90,10 +90,17 @@ data.forEach(match => {
 
 const row = document.createElement("tr");
 
+// Work out if Whistle is home or away
+const isHome = match.home === "Whistle FC";
+
+// Set opponent + H/A
+const opponent = isHome ? match.away : match.home;
+const homeAway = isHome ? "H" : "A";
+
 row.innerHTML = `
 <td>${new Date(match.date).toDateString()}</td>
-<td>${match.opponent}</td>
-<td>${match.homeaway}</td>
+<td>${opponent}</td>
+<td>${homeAway}</td>
 <td>${match.competition}</td>
 <td>${match.time}</td>
 `;
