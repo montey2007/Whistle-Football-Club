@@ -43,7 +43,7 @@
     "date": "2026-04-15",
     "home": "Whistle FC",
     "homelogo": "logo.png",
-    "away": "Northampton Town",
+    "away": "Dartley United",
     "awaylogo": "northamptonlogo.png",
     "competition": "League One",
     "time": "19:45",
@@ -51,13 +51,13 @@
   },
   {
     "date": "2026-04-18",
-    "home": "Mansfield Town",
-    "homelogo": "mansfieldlogo.png",
+    "home": "Tiddlyahrn Town",
+    "homelogo": "tiddlyharnlogo.png",
     "away": "Whistle FC",
     "awaylogo": "logo.png",
     "competition": "League One",
     "time": "15:00",
-    "venue": "Field Mill"
+    "venue": "Mill Park"
   },
   {
     "date": "2026-04-25",
