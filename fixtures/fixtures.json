@@ -1,15 +1,5 @@
 [
   {
-    "date": "2026-03-28",
-    "home": "Rotherham United",
-    "homelogo": "rotherhamlogo.png",
-    "away": "Whistle FC",
-    "awaylogo": "logo.png",
-    "competition": "League One",
-    "time": "15:00",
-    "venue": "New York Stadium"
-  },
-  {
     "date": "2026-04-03",
     "home": "Whistle FC",
     "homelogo": "logo.png",
@@ -58,6 +48,16 @@
     "competition": "League One",
     "time": "15:00",
     "venue": "Mill Park"
+  },
+    {
+    "date": "2026-04-21",
+    "home": "Rotherham United",
+    "homelogo": "rotherhamlogo.png",
+    "away": "Whistle FC",
+    "awaylogo": "logo.png",
+    "competition": "League One",
+    "time": "19:45",
+    "venue": "New York Stadium"
   },
   {
     "date": "2026-04-25",
