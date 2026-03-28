@@ -297,21 +297,153 @@ margin-top:0;
 }
 
 /* TABLES */
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
+/* =========================
+   GENERAL PAGE STYLING
+========================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f5f7fa;
+  color: #1f2937;
 }
 
-td,th{
-padding:12px;
-border-bottom:1px solid #ddd;
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
 }
 
-th{
-background:#c00000;
-color:white;
+section {
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #0f172a;
+  border-left: 6px solid #1d4ed8;
+  padding-left: 14px;
+}
+
+h3 {
+  color: #1e3a8a;
+  margin-top: 30px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background: white;
+}
+
+/* =========================
+   SMART TABLE DESIGN
+========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+table thead {
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  color: white;
+}
+
+table thead th {
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+table tbody td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  vertical-align: top;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+table tbody tr:hover {
+  background-color: #eaf2ff;
+  transition: 0.2s ease;
+}
+
+/* Last row no border */
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================
+   SPECIAL COLUMN EMPHASIS
+========================= */
+table tbody td:first-child {
+  font-weight: 600;
+  color: #111827;
+}
+
+table tbody td:last-child {
+  color: #374151;
+}
+
+/* =========================
+   LIST STYLING
+========================= */
+ul {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  line-height: 1.9;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #0f172a;
+  color: white;
+  margin-top: 50px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  table thead th,
+  table tbody td {
+    padding: 12px 14px;
+    font-size: 0.88rem;
+  }
 }
 
 /* NEWS GRID */
