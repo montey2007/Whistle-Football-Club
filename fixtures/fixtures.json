@@ -1,15 +1,5 @@
 [
   {
-    "date": "2026-04-03",
-    "home": "Whistle FC",
-    "homelogo": "logo.png",
-    "away": "Peterborough United",
-    "awaylogo": "peterboroughlogo.png",
-    "competition": "League One",
-    "time": "15:00",
-    "venue": "Mornflake Stadium"
-  },
-  {
     "date": "2026-04-06",
     "home": "AFC Wimbledon",
     "homelogo": "wimbledonlogo.png",
