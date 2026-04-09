@@ -264,6 +264,17 @@ margin-top:4px;
   50% { opacity: 0.6; }
   100% { opacity: 1; }
 }
+
+.goal-flash {
+  animation: goalFlash 0.8s ease;
+}
+
+@keyframes goalFlash {
+  0% { transform: scale(1); color: white; }
+  25% { transform: scale(1.2); color: yellow; }
+  50% { transform: scale(1.1); color: red; }
+  100% { transform: scale(1); color: white; }
+}
 .match-links{
 margin-top:10px;
 }
