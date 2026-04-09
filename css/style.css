@@ -12,6 +12,7 @@ body {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 .container {
@@ -69,8 +70,9 @@ img {
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 14px 0;
+  padding: 14px 20px;
   gap: 18px;
+  flex-wrap: wrap;
 }
 
 .navbar li {
@@ -82,7 +84,7 @@ img {
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
 .navbar a:hover,
@@ -140,7 +142,7 @@ img {
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
-  transition: 0.2s;
+  transition: background 0.2s ease;
 }
 
 .btn {
@@ -263,7 +265,7 @@ img {
 .team img {
   width: 60px;
   height: auto;
-  margin-bottom: 8px;
+  margin: 0 auto 8px;
 }
 
 .team span {
@@ -385,7 +387,7 @@ img {
   text-align: center;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   border-top: 4px solid #c00000;
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
 .info-card:hover {
@@ -431,7 +433,7 @@ th {
   padding: 22px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   border-top: 4px solid #c00000;
-  transition: 0.25s;
+  transition: 0.25s ease;
   display: flex;
   flex-direction: column;
 }
@@ -444,7 +446,6 @@ th {
   width: 100%;
   max-width: 380px;
   height: auto;
-  display: block;
   margin: 0 auto 15px;
   border-radius: 8px;
   object-fit: cover;
@@ -479,17 +480,24 @@ th {
   font-size: 14px;
 }
 
+/* =========================
+   ARTICLE IMAGES
+   (THIS IS THE IMPORTANT FIX)
+========================= */
 .article-image,
 .article-body img {
   width: 100%;
   max-width: 650px;
   height: auto;
   display: block;
-  margin: 0 auto 25px;
-  border-radius: 8px;
+  margin: 24px auto;
+  border-radius: 10px;
   object-fit: contain;
 }
 
+/* =========================
+   ARTICLE TEXT
+========================= */
 .article-body p {
   font-size: 18px;
   line-height: 1.7;
@@ -503,6 +511,15 @@ th {
   border-bottom: 2px solid #c00000;
   padding-bottom: 8px;
   font-size: 1.6rem;
+}
+
+.article-body ul {
+  padding-left: 22px;
+  margin-bottom: 20px;
+}
+
+.article-body li {
+  margin-bottom: 8px;
 }
 
 /* =========================
@@ -565,7 +582,7 @@ th {
   border-radius: 10px;
   box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  transition: 0.25s;
+  transition: 0.25s ease;
 }
 
 .player-card:hover {
@@ -617,7 +634,7 @@ th {
 }
 
 /* =========================
-   RESPONSIVE
+   RESPONSIVE - TABLET
 ========================= */
 @media (max-width: 768px) {
   .header-container {
@@ -626,7 +643,6 @@ th {
   }
 
   .navbar ul {
-    flex-wrap: wrap;
     gap: 10px;
     padding: 14px 15px;
   }
@@ -637,6 +653,10 @@ th {
 
   .hero h2 {
     font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 18px;
   }
 
   .container {
@@ -654,9 +674,11 @@ th {
     width: auto;
   }
 
+  /* Smaller article images on tablet */
   .article-image,
   .article-body img {
-    max-width: 90%;
+    max-width: 88%;
+    margin: 20px auto;
   }
 
   .news-card img {
@@ -673,6 +695,9 @@ th {
   }
 }
 
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
 @media (max-width: 480px) {
   .hero h2 {
     font-size: 22px;
@@ -704,8 +729,14 @@ th {
     font-size: 16px;
   }
 
+  /* Smaller article images on phones */
   .article-image,
-  .article-body img,
+  .article-body img {
+    max-width: 82%;
+    margin: 18px auto;
+    border-radius: 8px;
+  }
+
   .news-card img {
     max-width: 85%;
   }
