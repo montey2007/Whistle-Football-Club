@@ -629,6 +629,26 @@ font-size:14px;
 margin:6px 0;
 }
 
+/* HISTORY PAGE */
+
+.history-section h3{
+margin-top:35px;
+margin-bottom:12px;
+font-size:1.45rem;
+color:#111;
+}
+
+.history-section p{
+font-size:17px;
+line-height:1.8;
+margin-bottom:18px;
+}
+
+#players-of-the-season,
+#managers{
+margin-top:60px;
+}
+
 /* =========================
    TABLET
 ========================= */
