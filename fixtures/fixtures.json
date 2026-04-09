@@ -10,7 +10,7 @@
     "venue": "Wembley Stadium",
     "status": "live",
     "homeScore": 2,
-    "awayScore": 0,
+    "awayScore": 1,
     "stoppageFirstHalf": 2,
     "stoppageSecondHalf": 4,
     "extraTime": false,
