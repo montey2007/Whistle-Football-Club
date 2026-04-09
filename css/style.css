@@ -4,6 +4,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -12,10 +14,9 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  margin: 0;
+  line-height: 1.6;
   background: #f4f4f4;
   color: #222;
-  line-height: 1.6;
   overflow-x: hidden;
 }
 
@@ -28,6 +29,7 @@ img {
 a {
   transition: 0.2s ease;
   text-decoration: none;
+  color: inherit;
 }
 
 /* =========================
@@ -56,7 +58,9 @@ a {
   padding: 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .logo img {
@@ -65,14 +69,12 @@ a {
 }
 
 .club-title h1 {
-  margin: 0;
-  font-weight: 700;
   font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+  font-weight: 700;
   line-height: 1.15;
 }
 
 .club-title p {
-  margin: 0;
   font-size: 14px;
   opacity: 0.95;
 }
@@ -94,18 +96,15 @@ a {
   margin: auto;
   padding: 0 20px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 10px 18px;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-links li {
@@ -127,12 +126,13 @@ a {
   background: rgba(255,255,255,0.06);
 }
 
+/* Mobile Menu Button */
 .menu-toggle {
   display: none;
   background: none;
   border: none;
+  font-size: 28px;
   color: white;
-  font-size: 26px;
   cursor: pointer;
 }
 
@@ -214,14 +214,117 @@ a {
 }
 
 /* =========================
+   CARDS
+========================= */
+
+.match-card,
+.result-card,
+.news-card,
+.info-card,
+.player-card {
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  background: white;
+  transition: 0.25s;
+}
+
+.match-card:hover,
+.result-card:hover,
+.news-card:hover,
+.info-card:hover,
+.player-card:hover {
+  transform: translateY(-6px);
+}
+
+.match-card {
+  background: #111;
+  color: white;
+}
+
+.result-card {
+  background: #1b1b1b;
+  color: white;
+}
+
+/* =========================
+   TEAMS / SCORES
+========================= */
+
+.team {
+  text-align: center;
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.team img {
+  width: 60px;
+  margin: 0 auto 8px;
+}
+
+.team span {
+  font-weight: 600;
+  display: block;
+}
+
+.match-info,
+.result-score {
+  text-align: center;
+  flex: 1;
+}
+
+.match-vs {
+  font-size: 22px;
+  color: #ff3b3b;
+  font-weight: 700;
+  margin: 6px 0;
+}
+
+.competition,
+.stadium {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.kickoff {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.score {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.score.win { color: #32cd32; }
+.score.draw { color: #f5c542; }
+.score.loss { color: #ff4d4d; }
+
+/* =========================
+   INFO GRID / PLAYERS
+========================= */
+
+.info-grid,
+.news-grid,
+.players-grid {
+  display: grid;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.info-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.news-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.players-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+/* =========================
    TABLES
 ========================= */
 
 .table-wrapper {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   border-radius: 8px;
-  margin-top: 20px;
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
@@ -237,8 +340,8 @@ table {
 th,
 td {
   padding: 12px;
-  text-align: left;
   border-bottom: 1px solid #ddd;
+  text-align: left;
 }
 
 th {
@@ -255,9 +358,7 @@ tbody tr:hover {
    LEAGUE TABLE
 ========================= */
 
-.league-section {
-  padding: 40px 0 20px;
-}
+.league-section { padding: 40px 0 20px; }
 
 .league-legend {
   display: flex;
@@ -289,10 +390,7 @@ tbody tr:hover {
   text-align: center;
 }
 
-.league-table td:nth-child(2) {
-  text-align: left;
-  font-weight: 600;
-}
+.league-table td:nth-child(2) { text-align: left; font-weight: 600; }
 
 .league-table tr.promotion { background: #c8f7c5; }
 .league-table tr.playoff { background: #fff8b0; }
@@ -316,30 +414,34 @@ footer {
    RESPONSIVE
 ========================= */
 
+/* Tablet */
 @media (max-width: 992px) {
   .hero { min-height: 360px; }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
+
   .container { padding: 25px 18px; }
+
   .header-container { flex-direction: column; text-align: center; padding: 18px; }
   .logo img { height: 58px; margin: 0 auto; }
   .club-title h1 { font-size: 1.7rem; }
   .club-title p { font-size: 13px; }
 
   /* Mobile nav */
+  .menu-toggle { display: block; }
   .nav-links { flex-direction: column; display: none; width: 100%; }
   .nav-links.show { display: flex; }
   .nav-links li { width: 100%; border-top: 1px solid rgba(255,255,255,0.08); }
-  .nav-links a { width: 100%; padding: 14px 18px; text-align: center; border-radius: 0; }
-  .menu-toggle { display: block; }
+  .nav-links a { width: 100%; padding: 14px 18px; border-radius: 0; text-align: center; }
 
-  /* Tables */
   table { min-width: 560px; }
   .league-table { min-width: 650px; }
   .league-legend { font-size: 13px; gap: 12px; }
 }
 
+/* Small Mobile */
 @media (max-width: 480px) {
   .container { padding: 22px 14px; }
   .hero { min-height: 280px; }
