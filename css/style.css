@@ -164,13 +164,32 @@ body {
   font-size: 18px;
   margin-bottom: 18px;
 }
-
-.article-body img {
-  max-width: 100%;
-  height: auto;
+.article-body img,
+.news-card img {
+  max-width: 600px; /* Limits image width on large screens */
+  width: 100%;      /* Still responsive in smaller containers */
+  height: auto;     /* Maintains aspect ratio */
   display: block;
   margin: 0 auto 15px auto;
   border-radius: 6px;
+  object-fit: cover; /* Ensures images don’t stretch */
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .article-body img,
+  .news-card img {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-body img,
+  .news-card img {
+    max-width: 100%;
+  }
 }
 
 /* =========================
