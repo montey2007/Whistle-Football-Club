@@ -884,3 +884,99 @@ font-size:1.5rem;
 }
 
 }
+
+/* LEAGUE TABLE PAGE */
+
+.league-section{
+  padding:40px 0 20px;
+}
+
+.league-legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  align-items:center;
+  margin-bottom:20px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.legend-box{
+  display:inline-block;
+  width:16px;
+  height:16px;
+  border-radius:4px;
+  margin-right:6px;
+  vertical-align:middle;
+}
+
+.promotion-box{
+  background:#c8f7c5;
+}
+
+.playoff-box{
+  background:#fff8b0;
+}
+
+.relegation-box{
+  background:#f7c5c5;
+}
+
+.whistle-box{
+  background:#fff;
+  border:2px solid #c00000;
+}
+
+.league-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px;
+  background:white;
+  margin-top:10px;
+}
+
+.league-table th,
+.league-table td{
+  padding:12px;
+  border-bottom:1px solid #ddd;
+  text-align:center;
+}
+
+.league-table th{
+  background:#111;
+  color:white;
+}
+
+.league-table td:nth-child(2){
+  text-align:left;
+  font-weight:600;
+}
+
+.league-table tr.promotion{
+  background:#c8f7c5;
+}
+
+.league-table tr.playoff{
+  background:#fff8b0;
+}
+
+.league-table tr.relegation{
+  background:#f7c5c5;
+}
+
+.league-table tr.whistle{
+  font-weight:700;
+  outline:2px solid #c00000;
+  outline-offset:-2px;
+}
+
+@media (max-width:768px){
+  .league-legend{
+    font-size:13px;
+    gap:12px;
+  }
+
+  .league-table{
+    min-width:650px;
+  }
+}
