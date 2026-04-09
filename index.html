@@ -147,18 +147,15 @@ fetch("news/news.json")
 .then(res => res.json())
 .then(data => {
   const container = document.getElementById("news-container");
-
   data.slice(0,3).forEach(article => {
     const card = document.createElement("article");
     card.className = "news-card";
-
     card.innerHTML = `
       <img src="${article.image}">
       <h3>${article.title}</h3>
       <p>${article.text}</p>
       <a href="${article.link}">Read More →</a>
     `;
-
     container.appendChild(card);
   });
 });
@@ -168,110 +165,79 @@ function getLogo(name, file){
   return name === "Whistle FC" ? clubLogo : "images/logos/" + file;
 }
 
-/* NEXT MATCH */
-fetch("fixtures/fixtures.json")
-.then(res => res.json())
-.then(data => {
+/* NEXT MATCH (polling every 10 seconds) */
+function updateNextMatch() {
+  fetch("fixtures/fixtures.json?t=" + new Date().getTime())
+  .then(res => res.json())
+  .then(data => {
+    const next = data[0]; // first match
+    const matchDate = new Date(next.date + "T" + next.time);
 
-  const next = data[0];
+    const left = { name: next.home, logo: next.homelogo };
+    const right = { name: next.away, logo: next.awaylogo };
 
-  const left = { name: next.home, logo: next.homelogo };
-  const right = { name: next.away, logo: next.awaylogo };
+    document.getElementById("next-left-logo").src = getLogo(left.name, left.logo);
+    document.getElementById("next-left-name").innerText = left.name;
 
-  document.getElementById("next-left-logo").src = getLogo(left.name, left.logo);
-  document.getElementById("next-left-name").innerText = left.name;
+    document.getElementById("next-right-logo").src = getLogo(right.name, right.logo);
+    document.getElementById("next-right-name").innerText = right.name;
 
-  document.getElementById("next-right-logo").src = getLogo(right.name, right.logo);
-  document.getElementById("next-right-name").innerText = right.name;
+    document.getElementById("next-competition").innerText = next.competition;
+    document.getElementById("next-venue").innerText = next.venue;
 
-  document.getElementById("next-competition").innerText = next.competition;
-  document.getElementById("next-venue").innerText = next.venue;
+    document.getElementById("next-date").innerText =
+      matchDate.toDateString() + " · " + next.time;
 
-  const matchDate = new Date(next.date + "T" + next.time);
-
-  document.getElementById("next-date").innerText =
-    matchDate.toDateString() + " · " + next.time;
-
-  const countdownEl = document.getElementById("countdown");
-  const liveScoreEl = document.getElementById("live-score");
-
-  let lastHome = next.homeScore ?? 0;
-  let lastAway = next.awayScore ?? 0;
-
-  function goalFlash(){
-    liveScoreEl.classList.add("goal-flash");
-    setTimeout(() => liveScoreEl.classList.remove("goal-flash"), 800);
-  }
-
-  function update(){
-    const now = new Date();
-    const diff = matchDate - now;
+    const countdownEl = document.getElementById("countdown");
+    const liveScoreEl = document.getElementById("live-score");
 
     countdownEl.className = "countdown upcoming";
 
-    /* LIVE */
+    // LIVE
     if(next.status === "live"){
       countdownEl.className = "countdown live";
       countdownEl.innerText = "🔴 LIVE";
-
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
-
-      if(next.homeScore !== lastHome || next.awayScore !== lastAway){
-        goalFlash();
-        lastHome = next.homeScore;
-        lastAway = next.awayScore;
-      }
-
-      return;
     }
-
-    /* FINISHED */
-    if(next.status === "finished"){
+    // FINISHED
+    else if(next.status === "finished"){
       countdownEl.className = "countdown finished";
       countdownEl.innerText = "Full Time";
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
-      return;
     }
-
-    /* COUNTDOWN */
-    if(diff <= 0){
-      countdownEl.innerText = "Kick-off!";
-      return;
+    // UPCOMING
+    else {
+      const diff = matchDate - new Date();
+      if(diff <= 0){
+        countdownEl.innerText = "Kick-off!";
+      } else {
+        const d = Math.floor(diff / (1000*60*60*24));
+        const h = Math.floor((diff / (1000*60*60)) % 24);
+        const m = Math.floor((diff / (1000*60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+        countdownEl.innerText = `${d}d ${h}h ${m}m ${s}s`;
+      }
+      liveScoreEl.innerText = "";
     }
+  });
+}
 
-    const d = Math.floor(diff / (1000*60*60*24));
-    const h = Math.floor((diff / (1000*60*60)) % 24);
-    const m = Math.floor((diff / (1000*60)) % 60);
-    const s = Math.floor((diff / 1000) % 60);
+// Initial call and repeat every 10 seconds
+updateNextMatch();
+setInterval(updateNextMatch, 10000);
 
-    countdownEl.innerText = `${d}d ${h}h ${m}m ${s}s`;
-  }
-
-  update();
-  setInterval(update, 1000);
-
-});
-
-  fetch("results/results.json")
+/* LATEST RESULT */
+fetch("results/results.json")
 .then(res => res.json())
 .then(data => {
-
   const last = data[0]; // most recent result
-
-  document.getElementById("result-home-logo").src =
-    getLogo(last.home, last.homelogo);
-
-  document.getElementById("result-away-logo").src =
-    getLogo(last.away, last.awaylogo);
-
+  document.getElementById("result-home-logo").src = getLogo(last.home, last.homelogo);
+  document.getElementById("result-away-logo").src = getLogo(last.away, last.awaylogo);
   document.getElementById("result-home-name").innerText = last.home;
   document.getElementById("result-away-name").innerText = last.away;
-
   document.getElementById("result-score").innerText = last.score;
-
   document.getElementById("result-competition").innerText = last.competition;
   document.getElementById("result-venue").innerText = last.venue;
-
 });
 </script>
 
