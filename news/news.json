@@ -1,75 +1,80 @@
 [
-{"title":"Wembley Loading!",
-"text":"Read as Johannes Hoff Thorup previews this weekends game...",
-"link":"news/efl-trophy-final-preview.html"
-},
-{
-"title":"CLUB ANNOUNCEMENT: STADIUM UPDATE",
-"text":"Plans revealed as new agreement reached with...",
-"link":"news/stadium-update-09-04-26.html"
-},
-{
-"title":"Match Report: Whistle 3-0 Wimbledon.",
-"text":"Read report as Whistlers dominate in London!",
-"link":"https://www.teamstats.net/whistlefc/results/314160/whistle-afc-v-afc-wimbledon-06-apr-2026/details?season=1375451&match=all&venue=all"
-},
-{
-"title":"Match Report: Whistle 2-1 Peterborough United.",
-"text":"Read report as Whistlers keep up Play-off chase.",
-"link":"https://www.teamstats.net/whistlefc/results/313932/whistle-afc-v-peterborough-united-03-apr-2026/details?season=1375451&match=all&venue=all"
-},
-{
-"title":"Match Report: Whistle 0-2 Southerd United.",
-"text":"Read report as Whistlers exit Wetshil and Dattylandshire Cup.",
-"link":"https://www.teamstats.net/whistlefc/results/313130/whistle-afc-v-southerd-fc-23-mar-2026/details?season=1375451&match=all&venue=all"
-},
-{
-"title":"Match Report: Whistle 1-1 Stockport County.",
-"text":"Read report as Whistlers pegged back by County.",
-"link":"https://www.teamstats.net/whistlefc/results/312767/whistle-afc-v-stockport-county-21-mar-2026/details?season=1375451&match=all&venue=all"
-},
-{
-"title":"Match Report: Whistle 3-2 Exeter City.",
-"text":"Read report as Whistlers take all three points on Tuesday night.",
-"link":"https://www.teamstats.net/whistlefc/results/312430/whistle-afc-v-exeter-city-17-mar-2026/details?season=1375451&match=all&venue=all"
-},
-  
-{
-"title":"Injury Update: Emmanuel Dennis and Lucas Brgstrom.",
-"text":"Read as Johannes Hoff Thorup provides an injury update ahead of tonight.",
-"link":"news/news-2026-03-17-emmanuel-dennis-injury.html"
-},
-  
-{
-"title":"Match Report: Wycombe Wanderers 1-2 Whistle.",
-"text":"Read report as Whistlers win on the road.",
-"link":"https://www.teamstats.net/whistlefc/results/312119/whistle-afc-v-wycombe-wanderers-14-mar-2026/details?season=1375451&match=all&venue=all"
-},
-{
-"title":"Rowan Committed!",
-"text":"Whistle youngster pens first Pro deal!",
-"link":"news/news-2026-03-12-chambers-committed.html"
-},
-  
-{
-"title":"Match Report: Doncaster Rovers 1-1 Whistle.",
-"text":"Read report as Whistlers secure point on the road.",
-"link":"https://www.teamstats.net/whistlefc/results/311875/whistle-afc-v-doncaster-rovers-10-mar-2026/"
-},
-{
-"title":"Wetshil and Dattylandshire Cup Quarter Final Draw.",
-"text":"Quarter Final opponents revealed.",
-"link":"news/news-2026-03-09-wetshil-and-dattylandshire-draw-quarter-final.html"
-},
-{
-"title":"Club Statement: Coaching Changes",
-"text":"Whistle FC announce new coaching set-up.",
-"link":"news/news-2026-03-08-coaching-staff-changes-tom-june-departure.html"
-}
+  {
+    "title": "Wembley Loading!",
+    "text": "Read as Johannes Hoff Thorup previews this weekend's game...",
+    "link": "news/efl-trophy-final-preview.html",
+    "image": "images/news/wembley-preview.jpg"
+  },
+  {
+    "title": "CLUB ANNOUNCEMENT: STADIUM UPDATE",
+    "text": "Plans revealed as new agreement reached with...",
+    "link": "news/stadium-update-09-04-26.html",
+    "image": "images/news/stadium-update.jpg"
+  },
+  {
+    "title": "Match Report: Whistle 3-0 Wimbledon",
+    "text": "Read report as Whistlers dominate in London!",
+    "link": "https://www.teamstats.net/whistlefc/results/314160/whistle-afc-v-afc-wimbledon-06-apr-2026/details?season=1375451&match=all&venue=all",
+    "image": "images/news/wimbledon-report.jpg"
+  },
+  {
+    "title": "Match Report: Whistle 2-1 Peterborough United",
+    "text": "Read report as Whistlers keep up play-off chase.",
+    "link": "https://www.teamstats.net/whistlefc/results/313932/whistle-afc-v-peterborough-united-03-apr-2026/details?season=1375451&match=all&venue=all",
+    "image": "images/news/peterborough-report.jpg"
+  },
+  {
+    "title": "Match Report: Whistle 0-2 Southerd United",
+    "text": "Read report as Whistlers exit the Wetshil & Dattylandshire Cup.",
+    "link": "https://www.teamstats.net/whistlefc/results/313130/whistle-afc-v-southerd-fc-23-mar-2026/details?season=1375451&match=all&venue=all",
+    "image": "images/news/southerd-report.jpg"
+  },
+  {
+    "title": "Match Report: Whistle 1-1 Stockport County",
+    "text": "Read report as Whistlers are pegged back by County.",
+    "link": "https://www.teamstats.net/whistlefc/results/312767/whistle-afc-v-stockport-county-21-mar-2026/details?season=1375451&match=all&venue=all",
+    "image": "images/news/stockport-report.jpg"
+  },
+  {
+    "title": "Match Report: Whistle 3-2 Exeter City",
+    "text": "Read report as Whistlers take all three points on Tuesday night.",
+    "link": "https://www.teamstats.net/whistlefc/results/312430/whistle-afc-v-exeter-city-17-mar-2026/details?season=1375451&match=all&venue=all",
+    "image": "images/news/exeter-report.jpg"
+  },
+  {
+    "title": "Injury Update: Emmanuel Dennis and Lucas Brgstrom",
+    "text": "Read as Johannes Hoff Thorup provides an injury update ahead of tonight.",
+    "link": "news/news-2026-03-17-emmanuel-dennis-injury.html",
+    "image": "images/news/injury-update.jpg"
+  },
+  {
+    "title": "Match Report: Wycombe Wanderers 1-2 Whistle",
+    "text": "Read report as Whistlers win on the road.",
+    "link": "https://www.teamstats.net/whistlefc/results/312119/whistle-afc-v-wycombe-wanderers-14-mar-2026/details?season=1375451&match=all&venue=all",
+    "image": "images/news/wycombe-report.jpg"
+  },
+  {
+    "title": "Rowan Committed!",
+    "text": "Whistle youngster pens first professional deal!",
+    "link": "news/news-2026-03-12-chambers-committed.html",
+    "image": "images/news/rowan-committed.jpg"
+  },
+  {
+    "title": "Match Report: Doncaster Rovers 1-1 Whistle",
+    "text": "Read report as Whistlers secure a point on the road.",
+    "link": "https://www.teamstats.net/whistlefc/results/311875/whistle-afc-v-doncaster-rovers-10-mar-2026/",
+    "image": "images/news/doncaster-report.jpg"
+  },
+  {
+    "title": "Wetshil and Dattylandshire Cup Quarter Final Draw",
+    "text": "Quarter-final opponents revealed.",
+    "link": "news/news-2026-03-09-wetshil-and-dattylandshire-draw-quarter-final.html",
+    "image": "images/news/cup-draw.jpg"
+  },
+  {
+    "title": "Club Statement: Coaching Changes",
+    "text": "Whistle FC announce a new coaching set-up.",
+    "link": "news/news-2026-03-08-coaching-staff-changes-tom-june-departure.html",
+    "image": "images/news/coaching-changes.jpg"
+  }
 ]
-
-
-
-
-
-
