@@ -537,35 +537,159 @@ font-size:14px;
 }
 
 /* MOBILE */
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
-@media (max-width:768px){
+/* TABLET + SMALL LAPTOPS */
+@media (max-width: 1024px) {
 
-.header-container{
-flex-direction:column;
-text-align:center;
+.container {
+  padding: 30px 20px;
 }
 
-.navbar ul{
-flex-wrap:wrap;
-gap:10px;
+.hero h2 {
+  font-size: 36px;
 }
 
-.hero{
-height:320px;
+.match-card,
+.result-card {
+  max-width: 95%;
+}
 }
 
-.hero h2{
-font-size:28px;
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+
+.header-container {
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
 }
 
-.match-card{
-flex-direction:column;
-gap:15px;
-text-align:center;
+.logo img {
+  height: 55px;
 }
 
-.container{
-padding:25px 18px;
+/* NAVBAR FIX (IMPORTANT) */
+.navbar ul {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: flex-start;
+  padding: 12px 10px;
+  scrollbar-width: none;
+}
+
+.navbar ul::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar li {
+  margin: 0 12px;
+  white-space: nowrap;
+}
+
+/* HERO */
+.hero {
+  height: 300px;
+}
+
+.hero h2 {
+  font-size: 26px;
+}
+
+.hero p {
+  font-size: 16px;
+}
+
+/* MATCH CARD STACK */
+.match-card,
+.result-card {
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* TEAM BLOCKS */
+.team {
+  width: 100%;
+}
+
+/* MATCH INFO */
+.match-info {
+  width: 100%;
+}
+
+/* COUNTDOWN + SCORE */
+.countdown,
+.live-score {
+  display: block;
+  margin: 8px auto;
+}
+
+/* GRID FIXES */
+.info-grid {
+  grid-template-columns: 1fr;
+}
+
+.news-grid {
+  grid-template-columns: 1fr;
+}
+
+/* TEXT SPACING */
+.section-title {
+  font-size: 22px;
+}
+
+/* CONTAINER */
+.container {
+  padding: 20px 15px;
+}
+
+/* BUTTONS */
+.btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* RESULT SCORE BIG FIX */
+.score {
+  font-size: 30px;
+}
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+@media (max-width: 480px) {
+
+.hero h2 {
+  font-size: 22px;
+}
+
+.hero p {
+  font-size: 14px;
+}
+
+.match-card,
+.result-card {
+  padding: 15px;
+}
+
+.countdown {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+}
+
+.live-score {
+  font-size: 1.2rem;
+}
+  .team img {
+  max-width: 60px;
+  height: auto;
 }
 
   /* Article page extras */
