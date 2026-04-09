@@ -138,12 +138,11 @@
 <script>
 const clubLogo = "images/logo.png";
 
-/* LOGO HELPER */
 function getLogo(name, file) {
   return name === "Whistle FC" ? clubLogo : "images/logos/" + file;
 }
 
-/* LOAD NEWS */
+/* NEWS */
 async function loadNews() {
   try {
     const res = await fetch("news/news.json");
@@ -161,17 +160,17 @@ async function loadNews() {
       `;
       container.appendChild(card);
     });
-  } catch (err) {
+  } catch(err) {
     console.error("Error loading news:", err);
   }
 }
 
-/* LOAD LATEST RESULT */
+/* LATEST RESULT */
 async function loadLatestResult() {
   try {
     const res = await fetch("results/results.json");
     const data = await res.json();
-    if (!data.length) return;
+    if(!data.length) return;
     const last = data[0];
     document.getElementById("result-home-logo").src = getLogo(last.home, last.homelogo);
     document.getElementById("result-away-logo").src = getLogo(last.away, last.awaylogo);
@@ -180,36 +179,51 @@ async function loadLatestResult() {
     document.getElementById("result-score").innerText = last.score;
     document.getElementById("result-competition").innerText = last.competition;
     document.getElementById("result-venue").innerText = last.venue;
-  } catch (err) {
+  } catch(err) {
     console.error("Error loading latest result:", err);
   }
 }
 
-/* LIVE MATCH CLOCK */
-function getElapsedTime(startTime) {
-  const now = new Date();
-  let elapsed = Math.floor((now - startTime)/(1000*60)); // elapsed in minutes
+/* LIVE MATCH CLOCK WITH STOPPAGE TIME */
+function getElapsedTime(match, now) {
+  let elapsed = Math.floor((now - match.startTime) / (1000*60)); // minutes
 
-  // Phase durations
   const firstHalf = 45;
   const halfTime = 15;
   const secondHalf = 45;
   const extraTime = 15;
 
-  if(elapsed < firstHalf) return `${elapsed}'`; // 0-44 mins
-  if(elapsed < firstHalf + halfTime) return `HT · ${firstHalf}'`; // 45-59 mins
-  if(elapsed < firstHalf + halfTime + secondHalf) {
+  const stoppage1 = match.stoppageFirstHalf || 0;
+  const stoppage2 = match.stoppageSecondHalf || 0;
+  const stoppageET1 = match.stoppageExtraTime1 || 0;
+  const stoppageET2 = match.stoppageExtraTime2 || 0;
+
+  // First Half
+  if(elapsed < firstHalf) return `${elapsed}'`;
+
+  // Half-time
+  if(elapsed < firstHalf + halfTime) return `HT · ${firstHalf}'`;
+
+  // Second Half
+  if(elapsed < firstHalf + halfTime + secondHalf + stoppage2) {
     let min = elapsed - halfTime;
-    return `${min}'`; // 60-104 mins
+    if(min > firstHalf + secondHalf + stoppage1 + stoppage2) min = firstHalf + secondHalf + stoppage1 + stoppage2;
+    return `${min}'`;
   }
-  if(elapsed < firstHalf + halfTime + secondHalf + extraTime) {
-    let min = elapsed - halfTime; 
-    return `${min}'`; // Extra Time 1
+
+  // Extra Time 1
+  if(elapsed < firstHalf + halfTime + secondHalf + extraTime + stoppageET1) {
+    let min = elapsed - halfTime;
+    return `${min}'`;
   }
-  if(elapsed < firstHalf + halfTime + secondHalf + 2*extraTime) {
-    let min = elapsed - halfTime; 
-    return `${min}'`; // Extra Time 2
+
+  // Extra Time 2
+  if(elapsed < firstHalf + halfTime + secondHalf + 2*extraTime + stoppageET2) {
+    let min = elapsed - halfTime;
+    return `${min}'`;
   }
+
+  // Penalties
   return "Penalties";
 }
 
@@ -234,7 +248,7 @@ async function updateNextMatch() {
 
     if(next.status === "live") {
       countdownEl.className = "countdown live";
-      countdownEl.innerText = `🔴 LIVE · ${getElapsedTime(matchDate)}`;
+      countdownEl.innerText = `🔴 LIVE · ${getElapsedTime(next, new Date())}`;
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
     } else if(next.status === "finished") {
       countdownEl.className = "countdown finished";
@@ -264,7 +278,7 @@ loadNews();
 loadLatestResult();
 updateNextMatch();
 setInterval(updateNextMatch, 10000);
-</script>
 
+</script>
 </body>
 </html>
