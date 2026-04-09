@@ -52,7 +52,6 @@
     <h2 class="section-title">Next Match</h2>
 
     <div class="match-card">
-
       <div class="team">
         <img id="next-left-logo" alt="">
         <span id="next-left-name"></span>
@@ -73,7 +72,6 @@
         <img id="next-right-logo" alt="">
         <span id="next-right-name"></span>
       </div>
-
     </div>
 
     <a class="btn" href="fixtures.html">All Fixtures</a>
@@ -86,7 +84,6 @@
     <h2 class="section-title">Latest Result</h2>
 
     <div class="result-card">
-
       <div class="team">
         <img id="result-home-logo" alt="">
         <span id="result-home-name"></span>
@@ -102,7 +99,6 @@
         <img id="result-away-logo" alt="">
         <span id="result-away-name"></span>
       </div>
-
     </div>
 
     <a class="btn" href="results.html">All Results</a>
@@ -189,12 +185,39 @@ async function loadLatestResult() {
   }
 }
 
-/* UPDATE NEXT MATCH */
+/* LIVE MATCH CLOCK */
+function getElapsedTime(startTime) {
+  const now = new Date();
+  let elapsed = Math.floor((now - startTime)/(1000*60)); // elapsed in minutes
+
+  // Phase durations
+  const firstHalf = 45;
+  const halfTime = 15;
+  const secondHalf = 45;
+  const extraTime = 15;
+
+  if(elapsed < firstHalf) return `${elapsed}'`; // 0-44 mins
+  if(elapsed < firstHalf + halfTime) return `HT · ${firstHalf}'`; // 45-59 mins
+  if(elapsed < firstHalf + halfTime + secondHalf) {
+    let min = elapsed - halfTime;
+    return `${min}'`; // 60-104 mins
+  }
+  if(elapsed < firstHalf + halfTime + secondHalf + extraTime) {
+    let min = elapsed - halfTime; 
+    return `${min}'`; // Extra Time 1
+  }
+  if(elapsed < firstHalf + halfTime + secondHalf + 2*extraTime) {
+    let min = elapsed - halfTime; 
+    return `${min}'`; // Extra Time 2
+  }
+  return "Penalties";
+}
+
 async function updateNextMatch() {
   try {
     const res = await fetch("fixtures/fixtures.json?t=" + new Date().getTime());
     const data = await res.json();
-    if (!data.length) return;
+    if(!data.length) return;
     const next = data[0];
     const matchDate = new Date(next.date + "T" + next.time);
 
@@ -209,54 +232,18 @@ async function updateNextMatch() {
     const countdownEl = document.getElementById("countdown");
     const liveScoreEl = document.getElementById("live-score");
 
-    countdownEl.className = "countdown upcoming";
-
-    if(next.status === "live"){
+    if(next.status === "live") {
       countdownEl.className = "countdown live";
-      const now = new Date();
-      let elapsed = Math.floor((now - matchDate) / (1000 * 60));
-
-      const phases = [
-        { name: "1H", start: 0, duration: 45 },
-        { name: "HT", start: 45, duration: 15 },
-        { name: "2H", start: 60, duration: 45 },
-        { name: "ET1", start: 105, duration: 15 },
-        { name: "ET2", start: 120, duration: 15 },
-      ];
-
-      let displayTime = "";
-      if (elapsed < 0) {
-        displayTime = "Kick-off soon";
-      } else if (elapsed >= 135) {
-        displayTime = "Penalties";
-      } else {
-        for (const phase of phases) {
-          if (elapsed >= phase.start && elapsed < phase.start + phase.duration) {
-            if (phase.name === "HT") {
-              displayTime = "Half-Time · 45'";
-            } else {
-              let minute = elapsed - phase.start;
-              if(phase.name === "2H") minute += 45;
-              if(phase.name === "ET1") minute += 90;
-              if(phase.name === "ET2") minute += 105;
-              displayTime = `${minute}' (${phase.name})`;
-            }
-            break;
-          }
-        }
-      }
-
-      countdownEl.innerText = `🔴 LIVE · ${displayTime}`;
+      countdownEl.innerText = `🔴 LIVE · ${getElapsedTime(matchDate)}`;
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
-    } else if(next.status === "finished"){
+    } else if(next.status === "finished") {
       countdownEl.className = "countdown finished";
       countdownEl.innerText = "Full Time";
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
     } else {
       const diff = matchDate - new Date();
-      if(diff <= 0){
-        countdownEl.innerText = "Kick-off!";
-      } else {
+      if(diff <= 0) countdownEl.innerText = "Kick-off!";
+      else {
         const d = Math.floor(diff / (1000*60*60*24));
         const h = Math.floor((diff / (1000*60*60)) % 24);
         const m = Math.floor((diff / (1000*60)) % 60);
@@ -264,10 +251,11 @@ async function updateNextMatch() {
         countdownEl.innerText = `${d}d ${h}h ${m}m ${s}s`;
       }
       liveScoreEl.innerText = "";
+      countdownEl.className = "countdown upcoming";
     }
 
-  } catch(err){
-    console.error("Error loading next match:", err);
+  } catch(err) {
+    console.error("Error updating next match:", err);
   }
 }
 
