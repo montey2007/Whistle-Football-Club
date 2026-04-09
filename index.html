@@ -220,8 +220,10 @@ async function updateNextMatch() {
     const next = data[0];
 
     // Ensure startTime is calculated
-    next.startTime = new Date(next.date + "T" + next.time);
-
+const [year, month, day] = next.date.split('-').map(Number);
+const [hours, minutes] = next.time.split(':').map(Number);
+next.startTime = new Date(year, month - 1, day, hours, minutes); // local time
+    
     document.getElementById("next-left-logo").src = getLogo(next.home, next.homelogo);
     document.getElementById("next-left-name").innerText = next.home;
     document.getElementById("next-right-logo").src = getLogo(next.away, next.awaylogo);
