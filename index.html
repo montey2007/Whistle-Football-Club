@@ -17,7 +17,6 @@
     <div class="logo">
       <img src="images/logo.png" alt="Whistle FC logo">
     </div>
-
     <div class="club-title">
       <h1>Whistle Football Club</h1>
       <p>Unitate et Fortitudine – With Unity and Strength</p>
@@ -50,7 +49,6 @@
 <section class="next-match">
   <div class="container">
     <h2 class="section-title">Next Match</h2>
-
     <div class="match-card">
       <div class="team">
         <img id="next-left-logo" alt="">
@@ -64,7 +62,6 @@
 
         <p class="countdown" id="countdown"></p>
         <p class="live-score" id="live-score"></p>
-
         <p class="stadium" id="next-venue"></p>
       </div>
 
@@ -82,25 +79,21 @@
 <section class="latest-result">
   <div class="container">
     <h2 class="section-title">Latest Result</h2>
-
     <div class="result-card">
       <div class="team">
         <img id="result-home-logo" alt="">
         <span id="result-home-name"></span>
       </div>
-
       <div class="result-score">
         <span class="score" id="result-score"></span>
         <p class="competition" id="result-competition"></p>
         <p class="stadium" id="result-venue"></p>
       </div>
-
       <div class="team">
         <img id="result-away-logo" alt="">
         <span id="result-away-name"></span>
       </div>
     </div>
-
     <a class="btn" href="results.html">All Results</a>
   </div>
 </section>
@@ -109,7 +102,6 @@
 <section class="club-info">
   <div class="container">
     <h2 class="section-title">Club Information</h2>
-
     <div class="info-grid">
       <div class="info-card"><h3>Founded</h3><p>1905</p></div>
       <div class="info-card"><h3>Ground</h3><p>Vitality Stadium</p></div>
@@ -137,7 +129,6 @@
 
 <script>
 const clubLogo = "images/logo.png";
-
 function getLogo(name, file) {
   return name === "Whistle FC" ? clubLogo : "images/logos/" + file;
 }
@@ -184,8 +175,9 @@ async function loadLatestResult() {
   }
 }
 
-/* LIVE MATCH CLOCK WITH STOPPAGE TIME */
+/* LIVE MATCH CLOCK */
 function getElapsedTime(match, now) {
+  if(!match.startTime) return "";
   let elapsed = Math.floor((now - match.startTime) / (1000*60)); // minutes since kickoff
 
   const firstHalf = 45;
@@ -196,14 +188,10 @@ function getElapsedTime(match, now) {
   const stoppage2 = match.stoppageSecondHalf || 0;
 
   // First Half
-  if(elapsed <= firstHalf + stoppage1) {
-    return `${elapsed}'`;
-  }
+  if(elapsed <= firstHalf + stoppage1) return `${elapsed}'`;
 
-  // Half-time break
-  if(elapsed <= firstHalf + stoppage1 + halfTimeBreak) {
-    return `HT · ${firstHalf + stoppage1}'`;
-  }
+  // Half-time
+  if(elapsed <= firstHalf + stoppage1 + halfTimeBreak) return `HT · ${firstHalf + stoppage1}'`;
 
   // Second Half
   const secondHalfElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak;
@@ -214,15 +202,13 @@ function getElapsedTime(match, now) {
 
   // Extra Time
   if(match.extraTime) {
-    return "ET · " + (elapsed - firstHalf - stoppage1 - halfTimeBreak - secondHalf - stoppage2) + "'";
+    let extraElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak - secondHalf - stoppage2;
+    return `ET · ${extraElapsed}'`;
   }
 
   // Penalties
-  if(match.penalties) {
-    return "Penalties";
-  }
+  if(match.penalties) return "Penalties";
 
-  // Match finished
   return "Full Time";
 }
 
@@ -232,7 +218,9 @@ async function updateNextMatch() {
     const data = await res.json();
     if(!data.length) return;
     const next = data[0];
-    const matchDate = new Date(next.date + "T" + next.time);
+
+    // Ensure startTime is calculated
+    next.startTime = new Date(next.date + "T" + next.time);
 
     document.getElementById("next-left-logo").src = getLogo(next.home, next.homelogo);
     document.getElementById("next-left-name").innerText = next.home;
@@ -240,23 +228,25 @@ async function updateNextMatch() {
     document.getElementById("next-right-name").innerText = next.away;
     document.getElementById("next-competition").innerText = next.competition;
     document.getElementById("next-venue").innerText = next.venue;
-    document.getElementById("next-date").innerText = matchDate.toDateString() + " · " + next.time;
+    document.getElementById("next-date").innerText = new Date(next.date + "T" + next.time).toDateString() + " · " + next.time;
 
     const countdownEl = document.getElementById("countdown");
     const liveScoreEl = document.getElementById("live-score");
 
+    const now = new Date();
     if(next.status === "live") {
       countdownEl.className = "countdown live";
-      countdownEl.innerText = `🔴 LIVE · ${getElapsedTime(next, new Date())}`;
+      countdownEl.innerText = `🔴 LIVE · ${getElapsedTime(next, now)}`;
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
     } else if(next.status === "finished") {
       countdownEl.className = "countdown finished";
       countdownEl.innerText = "Full Time";
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
     } else {
-      const diff = matchDate - new Date();
-      if(diff <= 0) countdownEl.innerText = "Kick-off!";
-      else {
+      const diff = next.startTime - now;
+      if(diff <= 0) {
+        countdownEl.innerText = "Kick-off!";
+      } else {
         const d = Math.floor(diff / (1000*60*60*24));
         const h = Math.floor((diff / (1000*60*60)) % 24);
         const m = Math.floor((diff / (1000*60)) % 60);
@@ -277,7 +267,6 @@ loadNews();
 loadLatestResult();
 updateNextMatch();
 setInterval(updateNextMatch, 10000);
-
 </script>
 </body>
 </html>
