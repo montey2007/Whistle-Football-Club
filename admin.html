@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Match Admin Panel</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Match Admin Panel</h1>
+
+  <button onclick="startMatch()">Start Match</button>
+  <button onclick="halfTime()">Half Time</button>
+  <button onclick="fullTime()">Full Time</button>
+
+  <hr>
+
+  <h2>Goals</h2>
+  <button onclick="goal('home')">+ Whistle FC Goal</button>
+  <button onclick="goal('away')">+ Opponent Goal</button>
+
+  <h2>Cards</h2>
+  <button onclick="card('yellow')">Yellow Card</button>
+  <button onclick="card('red')">Red Card</button>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
