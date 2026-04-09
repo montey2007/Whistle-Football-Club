@@ -24,22 +24,17 @@
   </div>
 </header>
 
-<!-- NAVBAR WITH HAMBURGER -->
 <nav class="navbar">
-  <div class="navbar-container">
-    <a href="index.html" class="logo">Whistle FC</a>
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-    <ul class="nav-links">
-      <li><a class="active" href="index.html">Home</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="players.html">Players</a></li>
-      <li><a href="staff.html">Staff</a></li>
-      <li><a href="history.html">History</a></li>
-      <li><a href="fixtures.html">Fixtures</a></li>
-      <li><a href="results.html">Results</a></li>
-      <li><a href="leaguetable.html">League Table</a></li>
-    </ul>
-  </div>
+  <ul>
+    <li><a class="active" href="index.html">Home</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="players.html">Players</a></li>
+    <li><a href="staff.html">Staff</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="fixtures.html">Fixtures</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="leaguetable.html">League Table</a></li>
+  </ul>
 </nav>
 
 <section class="hero">
@@ -59,19 +54,23 @@
         <img id="next-left-logo" alt="">
         <span id="next-left-name"></span>
       </div>
+
       <div class="match-info">
         <p class="competition" id="next-competition"></p>
         <p class="match-vs">VS</p>
         <p class="kickoff" id="next-date"></p>
+
         <p class="countdown" id="countdown"></p>
         <p class="live-score" id="live-score"></p>
         <p class="stadium" id="next-venue"></p>
       </div>
+
       <div class="team">
         <img id="next-right-logo" alt="">
         <span id="next-right-name"></span>
       </div>
     </div>
+
     <a class="btn" href="fixtures.html">All Fixtures</a>
   </div>
 </section>
@@ -128,7 +127,6 @@
   </div>
 </footer>
 
-<!-- JS SCRIPTS -->
 <script>
 const clubLogo = "images/logo.png";
 
@@ -181,19 +179,43 @@ async function loadLatestResult() {
 /* LIVE MATCH CLOCK */
 function getElapsedTime(match, now) {
   if (!match.startTime) return "";
-  const elapsed = Math.floor((now - match.startTime) / (1000 * 60));
+  const elapsed = Math.floor((now - match.startTime) / (1000 * 60)); // minutes since kickoff
+
   const firstHalf = 45;
   const secondHalf = 45;
   const halfTimeBreak = 15;
   const stoppage1 = match.stoppageFirstHalf || 0;
   const stoppage2 = match.stoppageSecondHalf || 0;
+
   if (elapsed < 0) return "Upcoming";
-  if (elapsed <= firstHalf + stoppage1) return `${elapsed}'`;
-  if (elapsed <= firstHalf + stoppage1 + halfTimeBreak) return `HT · ${firstHalf + stoppage1}'`;
+
+  // First Half
+  if (elapsed <= firstHalf + stoppage1) {
+    return `${elapsed}'`;
+  }
+
+  // Halftime
+  if (elapsed <= firstHalf + stoppage1 + halfTimeBreak) {
+    return `HT · ${firstHalf + stoppage1}'`;
+  }
+
+  // Second Half
   const secondHalfElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak;
-  if (secondHalfElapsed <= secondHalf + stoppage2) return `${45 + secondHalfElapsed}'`;
-  if (match.extraTime) return `ET · ${elapsed}'`;
+  if (secondHalfElapsed <= secondHalf + stoppage2) {
+    // Clock resets to 45 at start of second half
+    const clockMin = 45 + secondHalfElapsed;
+    return `${clockMin}'`;
+  }
+
+  // Extra Time
+  if (match.extraTime) {
+    const extraElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak - secondHalf - stoppage2;
+    return `ET · ${extraElapsed}'`;
+  }
+
+  // Penalties
   if (match.penalties) return "Penalties";
+
   return "Full Time";
 }
 
@@ -203,9 +225,11 @@ async function updateNextMatch() {
     const data = await res.json();
     if(!data.length) return;
     const next = data[0];
+
     const [year, month, day] = next.date.split('-').map(Number);
     const [hours, minutes] = next.time.split(':').map(Number);
     next.startTime = new Date(year, month - 1, day, hours, minutes);
+
     document.getElementById("next-left-logo").src = getLogo(next.home, next.homelogo);
     document.getElementById("next-left-name").innerText = next.home;
     document.getElementById("next-right-logo").src = getLogo(next.away, next.awaylogo);
@@ -213,9 +237,11 @@ async function updateNextMatch() {
     document.getElementById("next-competition").innerText = next.competition;
     document.getElementById("next-venue").innerText = next.venue;
     document.getElementById("next-date").innerText = new Date(next.date + "T" + next.time).toDateString() + " · " + next.time;
+
     const countdownEl = document.getElementById("countdown");
     const liveScoreEl = document.getElementById("live-score");
     const now = new Date();
+
     if(next.status === "live") {
       countdownEl.className = "countdown live";
       countdownEl.innerText = `🔴 LIVE · ${getElapsedTime(next, now)}`;
@@ -238,6 +264,7 @@ async function updateNextMatch() {
       liveScoreEl.innerText = "";
       countdownEl.className = "countdown upcoming";
     }
+
   } catch(err) {
     console.error("Error updating next match:", err);
   }
@@ -248,12 +275,6 @@ loadNews();
 loadLatestResult();
 updateNextMatch();
 setInterval(updateNextMatch, 10000);
-
-/* HAMBURGER TOGGLE */
-const toggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
 </script>
-
 </body>
 </html>
