@@ -52,6 +52,7 @@
     <h2 class="section-title">Next Match</h2>
 
     <div class="match-card">
+
       <div class="team">
         <img id="next-left-logo" alt="">
         <span id="next-left-name"></span>
@@ -61,8 +62,10 @@
         <p class="competition" id="next-competition"></p>
         <p class="match-vs">VS</p>
         <p class="kickoff" id="next-date"></p>
+
         <p class="countdown" id="countdown"></p>
         <p class="live-score" id="live-score"></p>
+
         <p class="stadium" id="next-venue"></p>
       </div>
 
@@ -70,6 +73,7 @@
         <img id="next-right-logo" alt="">
         <span id="next-right-name"></span>
       </div>
+
     </div>
 
     <a class="btn" href="fixtures.html">All Fixtures</a>
@@ -82,6 +86,7 @@
     <h2 class="section-title">Latest Result</h2>
 
     <div class="result-card">
+
       <div class="team">
         <img id="result-home-logo" alt="">
         <span id="result-home-name"></span>
@@ -97,6 +102,7 @@
         <img id="result-away-logo" alt="">
         <span id="result-away-name"></span>
       </div>
+
     </div>
 
     <a class="btn" href="results.html">All Results</a>
@@ -166,10 +172,11 @@ function getLogo(name, file){
 fetch("fixtures/fixtures.json")
 .then(res => res.json())
 .then(data => {
+
   const next = data[0];
 
-  const left = {name: next.home, logo: next.homelogo};
-  const right = {name: next.away, logo: next.awaylogo};
+  const left = { name: next.home, logo: next.homelogo };
+  const right = { name: next.away, logo: next.awaylogo };
 
   document.getElementById("next-left-logo").src = getLogo(left.name, left.logo);
   document.getElementById("next-left-name").innerText = left.name;
@@ -188,107 +195,61 @@ fetch("fixtures/fixtures.json")
   const countdownEl = document.getElementById("countdown");
   const liveScoreEl = document.getElementById("live-score");
 
-  let lastHomeScore = next.homeScore ?? 0;
-  let lastAwayScore = next.awayScore ?? 0;
+  let lastHome = next.homeScore ?? 0;
+  let lastAway = next.awayScore ?? 0;
 
-  function flashGoal(){
+  function goalFlash(){
     liveScoreEl.classList.add("goal-flash");
     setTimeout(() => liveScoreEl.classList.remove("goal-flash"), 800);
   }
 
-  function updateCountdown(){
+  function update(){
     const now = new Date();
     const diff = matchDate - now;
 
-    countdownEl.className = "countdown";
+    countdownEl.className = "countdown upcoming";
 
-    // 🔴 LIVE MODE
+    /* LIVE */
     if(next.status === "live"){
-      countdownEl.classList.add("live");
+      countdownEl.className = "countdown live";
       countdownEl.innerText = "🔴 LIVE";
 
-      const scoreText = `${next.homeScore} - ${next.awayScore}`;
-      liveScoreEl.innerText = scoreText;
+      liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
 
-      // ⚽ detect goal change
-      if(next.homeScore !== lastHomeScore || next.awayScore !== lastAwayScore){
-        flashGoal();
-        lastHomeScore = next.homeScore;
-        lastAwayScore = next.awayScore;
+      if(next.homeScore !== lastHome || next.awayScore !== lastAway){
+        goalFlash();
+        lastHome = next.homeScore;
+        lastAway = next.awayScore;
       }
 
       return;
     }
 
-    // ✅ FINISHED
+    /* FINISHED */
     if(next.status === "finished"){
-      countdownEl.classList.add("finished");
+      countdownEl.className = "countdown finished";
       countdownEl.innerText = "Full Time";
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
       return;
     }
 
-    // ⏳ UPCOMING
-    countdownEl.classList.add("upcoming");
-
-    // ⚡ kickoff soon message
+    /* COUNTDOWN */
     if(diff <= 0){
       countdownEl.innerText = "Kick-off!";
       return;
     }
 
-    const minutes = Math.floor(diff / (1000 * 60));
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff / (1000*60*60)) % 24);
+    const m = Math.floor((diff / (1000*60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
 
-    if(minutes <= 60){
-      countdownEl.innerText = `Kick-off in ${minutes} mins`;
-      return;
-    }
-
-    const days = Math.floor(diff / (1000*60*60*24));
-    const hours = Math.floor((diff / (1000*60*60)) % 24);
-    const mins = Math.floor((diff / (1000*60)) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-
-    countdownEl.innerText =
-      `${days}d ${hours}h ${mins}m ${secs}s`;
+    countdownEl.innerText = `${d}d ${h}h ${m}m ${s}s`;
   }
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  update();
+  setInterval(update, 1000);
 
-  // 🔁 AUTO REFRESH DATA EVERY 10 SECONDS
-  setInterval(() => {
-    fetch("fixtures/fixtures.json")
-      .then(res => res.json())
-      .then(updated => {
-        const newNext = updated[0];
-
-        next.homeScore = newNext.homeScore;
-        next.awayScore = newNext.awayScore;
-        next.status = newNext.status;
-      });
-  }, 10000);
-});
-
-/* RESULTS */
-fetch("results/results.json")
-.then(res => res.json())
-.then(data => {
-  data.sort((a,b)=> new Date(b.date)-new Date(a.date));
-  const m = data[0];
-
-  document.getElementById("result-home-logo").src = getLogo(m.home, m.homelogo);
-  document.getElementById("result-home-name").innerText = m.home;
-
-  document.getElementById("result-away-logo").src = getLogo(m.away, m.awaylogo);
-  document.getElementById("result-away-name").innerText = m.away;
-
-  document.getElementById("result-score").innerText = m.score;
-  document.getElementById("result-competition").innerText = m.competition;
-  document.getElementById("result-venue").innerText = m.venue;
-
-  document.getElementById("result-score").className =
-    "score " + m.result.toLowerCase();
 });
 </script>
 
