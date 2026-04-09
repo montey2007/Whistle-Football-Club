@@ -85,6 +85,22 @@ body {
   color: #ff3b3b;
 }
 
+.live-log {
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.event {
+  padding: 10px;
+  border-left: 4px solid #c00000;
+  margin-bottom: 10px;
+  background: #f7f7f7;
+  border-radius: 6px;
+}
+
 /* =========================
    HERO
 ========================= */
