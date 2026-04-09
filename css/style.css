@@ -212,6 +212,16 @@ a {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: bold;
 }
+/* COUNTDOWN */
+.countdown {
+  color: #ff3b3b;
+  font-weight: bold;
+}
+
+/* MATCH STATUS */
+.match-status.live { color: #32cd32; }
+.match-status.ht { color: orange; }
+.match-status.ft { color: #aaa; }
 
 /* =========================
    TABLE FIX (IMPORTANT)
