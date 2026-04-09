@@ -1,74 +1,62 @@
 [
   {
-    "datetime": "2026-04-12T15:00:00",
+    "date": "2026-04-12",
     "home": "Whistle FC",
     "homelogo": "logo.png",
     "away": "Stockport County",
     "awaylogo": "stockportlogo.png",
     "competition": "EFL Trophy Final",
-    "venue": "Wembley Stadium",
-    "status": "upcoming",
-    "score": "",
-    "minute": ""
+    "time": "15:00",
+    "venue": "Wembley Stadium"
   },
   {
-    "datetime": "2026-04-15T19:45:00",
+    "date": "2026-04-15",
     "home": "Whistle FC",
     "homelogo": "logo.png",
     "away": "Dartley United",
     "awaylogo": "northamptonlogo.png",
     "competition": "League One",
-    "venue": "Vitality Stadium",
-    "status": "upcoming",
-    "score": "",
-    "minute": ""
+    "time": "19:45",
+    "venue": "Mornflake Stadium"
   },
   {
-    "datetime": "2026-04-18T15:00:00",
-    "home": "Tiddlyharn Town",
+    "date": "2026-04-18",
+    "home": "Tiddlyahrn Town",
     "homelogo": "tiddlyharnlogo.png",
     "away": "Whistle FC",
     "awaylogo": "logo.png",
     "competition": "League One",
-    "venue": "Mill Park",
-    "status": "upcoming",
-    "score": "",
-    "minute": ""
+    "time": "15:00",
+    "venue": "Mill Park"
   },
-  {
-    "datetime": "2026-04-21T19:45:00",
+    {
+    "date": "2026-04-21",
     "home": "Rotherham United",
     "homelogo": "rotherhamlogo.png",
     "away": "Whistle FC",
     "awaylogo": "logo.png",
     "competition": "League One",
-    "venue": "New York Stadium",
-    "status": "upcoming",
-    "score": "",
-    "minute": ""
+    "time": "19:45",
+    "venue": "New York Stadium"
   },
   {
-    "datetime": "2026-04-25T15:00:00",
+    "date": "2026-04-25",
     "home": "Whistle FC",
     "homelogo": "logo.png",
     "away": "Barnsley",
     "awaylogo": "barnsleylogo.png",
     "competition": "League One",
-    "venue": "Vitality Stadium",
-    "status": "upcoming",
-    "score": "",
-    "minute": ""
+    "time": "15:00",
+    "venue": "Mornflake Stadium"
   },
   {
-    "datetime": "2026-05-02T15:00:00",
+    "date": "2026-05-02",
     "home": "Bolton Wanderers",
     "homelogo": "boltonlogo.png",
     "away": "Whistle FC",
     "awaylogo": "logo.png",
     "competition": "League One",
-    "venue": "Toughsheet Community Stadium",
-    "status": "upcoming",
-    "score": "",
-    "minute": ""
+    "time": "15:00",
+    "venue": "Toughsheet Community Stadium"
   }
 ]
