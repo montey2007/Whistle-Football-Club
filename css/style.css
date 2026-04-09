@@ -46,35 +46,45 @@ body {
   opacity: 0.9;
 }
 
-/* NAV */
 
+/* NAVBAR */
 .navbar {
-  background: #111;
+  background-color: #111;
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
 .navbar ul {
-  display: flex;
-  justify-content: center;
   list-style: none;
+  display: flex;              /* makes it horizontal */
+  justify-content: center;    /* center items */
+  align-items: center;
   margin: 0;
-  padding: 14px 0;
+  padding: 0;
 }
 
 .navbar li {
-  margin: 0 18px;
+  margin: 0;
 }
 
 .navbar a {
+  display: block;
+  padding: 15px 20px;
   color: white;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.navbar a:hover,
+/* Hover effect */
+.navbar a:hover {
+  background-color: #e63946;
+}
+
+/* Active page */
 .navbar a.active {
-  color: #ff3b3b;
+  background-color: #e63946;
 }
 
 /* HERO */
