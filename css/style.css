@@ -333,8 +333,12 @@ body {
 
 .news-card img {
   width: 100%;
+  max-width: 400px;  /* LIMIT IMAGE SIZE */
+  height: auto;
+  display: block;
+  margin: 0 auto 15px auto;
   border-radius: 8px;
-  margin-bottom: 15px;
+  object-fit: cover;
 }
 
 .news-card a {
@@ -342,6 +346,20 @@ body {
   color: #c00000;
   font-weight: 600;
   text-decoration: none;
+}
+
+/* =========================
+   ARTICLE IMAGES
+========================= */
+.article-body img,
+.article-image {
+  width: 100%;
+  max-width: 600px; /* LIMIT IMAGE SIZE ON DESKTOP */
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
 /* =========================
@@ -447,6 +465,10 @@ th {
 ========================= */
 @media (max-width: 1024px) {
   .hero h2 { font-size: 36px; }
+  .article-body img,
+  .news-card img {
+    max-width: 90%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -505,5 +527,10 @@ th {
 
   .live-score {
     font-size: 1.6rem;
+  }
+
+  .article-body img,
+  .news-card img {
+    max-width: 100%;
   }
 }
