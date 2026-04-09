@@ -222,6 +222,48 @@ opacity:0.8;
 margin-top:4px;
 }
 
+.countdown {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 14px;
+  background: #e53935;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.countdown {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 14px;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* Upcoming */
+.countdown.upcoming {
+  background: #e53935;
+}
+
+/* Live (flashing) */
+.countdown.live {
+  background: #b71c1c;
+  animation: pulse 1s infinite;
+}
+
+/* Finished */
+.countdown.finished {
+  background: #555;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
 .match-links{
 margin-top:10px;
 }
