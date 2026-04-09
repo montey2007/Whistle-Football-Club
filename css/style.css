@@ -83,6 +83,25 @@ body {
 }
 
 /* =========================
+   LIVE LOG
+========================= */
+.live-log {
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.event {
+  padding: 10px;
+  border-left: 4px solid #c00000;
+  margin-bottom: 10px;
+  background: #f7f7f7;
+  border-radius: 6px;
+}
+
+/* =========================
    HERO
 ========================= */
 .hero {
@@ -140,6 +159,235 @@ body {
 }
 
 /* =========================
+   SECTIONS
+========================= */
+.section-title {
+  border-left: 6px solid #c00000;
+  padding-left: 12px;
+  margin-bottom: 25px;
+  font-size: 26px;
+}
+
+.club-info {
+  background: #f0f0f0;
+  padding: 60px 0;
+}
+
+.news {
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.next-match {
+  background: #f5f5f5;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.latest-result {
+  background: white;
+  padding: 60px 0;
+  text-align: center;
+}
+
+/* =========================
+   MATCH CARDS & LIVE SCORE
+========================= */
+.match-card,
+.result-card {
+  max-width: 750px;
+  margin: 40px auto;
+  background: #111;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.team {
+  text-align: center;
+  width: 160px;
+}
+
+.team img {
+  width: 60px;
+  margin-bottom: 8px;
+}
+
+.team span {
+  font-weight: 600;
+  display: block;
+  font-size: 18px;
+}
+
+.match-info {
+  text-align: center;
+  flex: 1;
+}
+
+.match-vs {
+  font-size: 22px;
+  margin: 6px 0;
+  color: #ff3b3b;
+  font-weight: 700;
+}
+
+.competition {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.kickoff {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.stadium {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* =========================
+   COUNTDOWN TIMER
+========================= */
+.countdown {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 14px;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: #e53935;
+}
+
+.countdown.upcoming {
+  background: #e53935;
+}
+
+.countdown.live {
+  background: #b71c1c;
+  animation: pulse 1s infinite;
+}
+
+.countdown.finished {
+  background: #555;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* =========================
+   LIVE SCORE
+========================= */
+.live-score {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 10px 0;
+  color: #ff3b3b;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.goal-flash {
+  animation: goalFlash 0.8s ease;
+}
+
+@keyframes goalFlash {
+  0% { transform: scale(1); color: #fff; }
+  25% { transform: scale(1.3); color: #ffeb3b; }
+  50% { transform: scale(1.1); color: #e53935; }
+  100% { transform: scale(1); color: #ff3b3b; }
+}
+
+/* =========================
+   NEWS
+========================= */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.news-card {
+  background: white;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  border-top: 4px solid #c00000;
+  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+}
+
+.news-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.news-card a {
+  margin-top: auto;
+  color: #c00000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* =========================
+   INFO GRID
+========================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.info-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  border-top: 4px solid #c00000;
+  transition: 0.2s;
+}
+
+.info-card:hover {
+  transform: translateY(-6px);
+}
+
+/* =========================
+   TABLES
+========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+td, th {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #c00000;
+  color: white;
+}
+
+/* =========================
    ARTICLE
 ========================= */
 .article {
@@ -164,41 +412,41 @@ body {
   font-size: 18px;
   margin-bottom: 18px;
 }
-.article-body img,
-.news-card img {
-  max-width: 600px; /* Limits image width on large screens */
-  width: 100%;      /* Still responsive in smaller containers */
-  height: auto;     /* Maintains aspect ratio */
-  display: block;
-  margin: 0 auto 15px auto;
-  border-radius: 6px;
-  object-fit: cover; /* Ensures images don’t stretch */
+
+/* =========================
+   PLAYERS
+========================= */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.player-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 50px;
+  font-size: 14px;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 @media (max-width: 1024px) {
-  .article-body img,
-  .news-card img {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 768px) {
-  .article-body img,
-  .news-card img {
-    max-width: 100%;
-  }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 1024px) {
-  .hero h2 {
-    font-size: 36px;
-  }
+  .hero h2 { font-size: 36px; }
 }
 
 @media (max-width: 768px) {
@@ -239,11 +487,6 @@ body {
   .news-grid {
     grid-template-columns: 1fr;
   }
-
-  /* Shrink article images slightly on tablets */
-  .article-body img {
-    max-width: 90%;
-  }
 }
 
 @media (max-width: 480px) {
@@ -263,9 +506,24 @@ body {
   .live-score {
     font-size: 1.6rem;
   }
-
-  /* Make article images fit mobile screens */
+   /* =========================
+   ARTICLE IMAGES RESPONSIVE
+========================= */
+@media (max-width: 768px) {
   .article-body img {
-    max-width: 100%;
+    max-width: 90%; /* Shrinks images slightly on tablets */
+    margin-left: auto;
+    margin-right: auto;
   }
+}
+
+@media (max-width: 480px) {
+  .article-body img {
+    max-width: 100%; /* Ensures full width but can shrink further if needed */
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+  }
+}
 }
