@@ -166,67 +166,87 @@ function getLogo(name, file){
 }
 
 /* NEXT MATCH WITH LIVE TIMER */
+/* NEXT MATCH WITH LIVE TIMER */
 function updateNextMatch() {
   fetch("fixtures/fixtures.json?t=" + new Date().getTime())
-  .then(res => res.json())
-  .then(data => {
-    const next = data[0]; // first match
-    const matchDate = new Date(next.date + "T" + next.time);
+    .then(res => res.json())
+    .then(data => {
+      const next = data[0]; // first match
+      const matchDate = new Date(next.date + "T" + next.time);
 
-    const left = { name: next.home, logo: next.homelogo };
-    const right = { name: next.away, logo: next.awaylogo };
+      const left = { name: next.home, logo: next.homelogo };
+      const right = { name: next.away, logo: next.awaylogo };
 
-    document.getElementById("next-left-logo").src = getLogo(left.name, left.logo);
-    document.getElementById("next-left-name").innerText = left.name;
+      document.getElementById("next-left-logo").src = getLogo(left.name, left.logo);
+      document.getElementById("next-left-name").innerText = left.name;
 
-    document.getElementById("next-right-logo").src = getLogo(right.name, right.logo);
-    document.getElementById("next-right-name").innerText = right.name;
+      document.getElementById("next-right-logo").src = getLogo(right.name, right.logo);
+      document.getElementById("next-right-name").innerText = right.name;
 
-    document.getElementById("next-competition").innerText = next.competition;
-    document.getElementById("next-venue").innerText = next.venue;
+      document.getElementById("next-competition").innerText = next.competition;
+      document.getElementById("next-venue").innerText = next.venue;
 
-    document.getElementById("next-date").innerText =
-      matchDate.toDateString() + " · " + next.time;
+      document.getElementById("next-date").innerText =
+        matchDate.toDateString() + " · " + next.time;
 
-    const countdownEl = document.getElementById("countdown");
-    const liveScoreEl = document.getElementById("live-score");
+      const countdownEl = document.getElementById("countdown");
+      const liveScoreEl = document.getElementById("live-score");
 
-    countdownEl.className = "countdown upcoming";
+      countdownEl.className = "countdown upcoming";
 
-    // LIVE
-    if(next.status === "live"){
-      countdownEl.className = "countdown live";
+      if(next.status === "live"){
+        countdownEl.className = "countdown live";
+        const now = new Date();
+        let elapsed = Math.floor((now - matchDate) / (1000 * 60));
 
-      // Calculate minutes elapsed
-      const now = new Date();
-      let elapsed = Math.floor((now - matchDate) / (1000 * 60));
-      if(elapsed < 0) elapsed = 0;
-      if(elapsed > 90) elapsed = 90; // cap at 90 mins
-      countdownEl.innerText = `🔴 LIVE · ${elapsed}'`;
+        let displayTime = "";
+        // First half
+        if(elapsed <= 45){
+          displayTime = `${elapsed}' (1H)`;
+        }
+        // Half-time break
+        else if(elapsed > 45 && elapsed <= 60){
+          displayTime = `HT · 45'`;
+        }
+        // Second half
+        else if(elapsed > 60 && elapsed <= 105){ // 45 + 15 halftime + 45
+          let secondHalf = elapsed - 60; // elapsed in second half
+          displayTime = `${secondHalf + 45}' (2H)`; 
+        }
+        // Extra time (ET)
+        else if(elapsed > 105 && elapsed <= 120){
+          let extra = elapsed - 105; // ET minutes
+          displayTime = `${extra}' (ET)`;
+        }
+        // Penalties
+        else if(elapsed > 120){
+          displayTime = "Penalties";
+        }
 
-      liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
-    }
-    // FINISHED
-    else if(next.status === "finished"){
-      countdownEl.className = "countdown finished";
-      countdownEl.innerText = "Full Time";
-      liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
-    }
-    // UPCOMING
-    else {
-      const diff = matchDate - new Date();
-      if(diff <= 0){
-        countdownEl.innerText = "Kick-off!";
-      } else {
-        const d = Math.floor(diff / (1000*60*60*24));
-        const h = Math.floor((diff / (1000*60*60)) % 24);
-        const m = Math.floor((diff / (1000*60)) % 60);
-        const s = Math.floor((diff / 1000) % 60);
-        countdownEl.innerText = `${d}d ${h}h ${m}m ${s}s`;
+        countdownEl.innerText = `🔴 LIVE · ${displayTime}`;
+        liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
       }
-      liveScoreEl.innerText = "";
-    }
-  });
+      else if(next.status === "finished"){
+        countdownEl.className = "countdown finished";
+        countdownEl.innerText = "Full Time";
+        liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
+      }
+      else {
+        // Upcoming match countdown
+        const diff = matchDate - new Date();
+        if(diff <= 0){
+          countdownEl.innerText = "Kick-off!";
+        } else {
+          const d = Math.floor(diff / (1000*60*60*24));
+          const h = Math.floor((diff / (1000*60*60)) % 24);
+          const m = Math.floor((diff / (1000*60)) % 60);
+          const s = Math.floor((diff / 1000) % 60);
+          countdownEl.innerText = `${d}d ${h}h ${m}m ${s}s`;
+        }
+        liveScoreEl.innerText = "";
+      }
+    });
+}
 }
 
 // Initial call and repeat every 10 seconds
