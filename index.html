@@ -129,6 +129,7 @@
 
 <script>
 const clubLogo = "images/logo.png";
+
 function getLogo(name, file) {
   return name === "Whistle FC" ? clubLogo : "images/logos/" + file;
 }
@@ -178,24 +179,23 @@ async function loadLatestResult() {
 /* LIVE MATCH CLOCK */
 function getElapsedTime(match, now) {
   if(!match.startTime) return "";
-  let elapsed = Math.floor((now - match.startTime) / (1000*60)); // minutes since kickoff
+  let elapsed = Math.floor((now - match.startTime) / (1000*60)); // minutes
 
   const firstHalf = 45;
   const halfTimeBreak = 15;
   const secondHalf = 45;
-
-  const stoppage1 = match.stoppageFirstHalf || 0; // added to first half only
-  const stoppage2 = match.stoppageSecondHalf || 0; // added to second half only
+  const stoppage1 = match.stoppageFirstHalf || 0;
+  const stoppage2 = match.stoppageSecondHalf || 0;
 
   if(elapsed < 0) return "Upcoming";
 
-  // First Half (with stoppage)
+  // First Half
   if(elapsed <= firstHalf + stoppage1) return `${elapsed}'`;
 
-  // Halftime is always 15 minutes regardless of stoppage
+  // Halftime is always 15 minutes
   if(elapsed <= firstHalf + stoppage1 + halfTimeBreak) return `HT · ${firstHalf + stoppage1}'`;
 
-  // Second Half (with stoppage)
+  // Second Half
   const secondHalfElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak;
   if(secondHalfElapsed <= secondHalf + stoppage2) {
     let min = firstHalf + stoppage1 + secondHalfElapsed;
@@ -221,11 +221,10 @@ async function updateNextMatch() {
     if(!data.length) return;
     const next = data[0];
 
-    // Ensure startTime is calculated
-const [year, month, day] = next.date.split('-').map(Number);
-const [hours, minutes] = next.time.split(':').map(Number);
-next.startTime = new Date(year, month - 1, day, hours, minutes); // local time
-    
+    const [year, month, day] = next.date.split('-').map(Number);
+    const [hours, minutes] = next.time.split(':').map(Number);
+    next.startTime = new Date(year, month - 1, day, hours, minutes);
+
     document.getElementById("next-left-logo").src = getLogo(next.home, next.homelogo);
     document.getElementById("next-left-name").innerText = next.home;
     document.getElementById("next-right-logo").src = getLogo(next.away, next.awaylogo);
@@ -236,8 +235,8 @@ next.startTime = new Date(year, month - 1, day, hours, minutes); // local time
 
     const countdownEl = document.getElementById("countdown");
     const liveScoreEl = document.getElementById("live-score");
-
     const now = new Date();
+
     if(next.status === "live") {
       countdownEl.className = "countdown live";
       countdownEl.innerText = `🔴 LIVE · ${getElapsedTime(next, now)}`;
