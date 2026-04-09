@@ -184,16 +184,18 @@ function getElapsedTime(match, now) {
   const halfTimeBreak = 15;
   const secondHalf = 45;
 
-  const stoppage1 = match.stoppageFirstHalf || 0;
-  const stoppage2 = match.stoppageSecondHalf || 0;
+  const stoppage1 = match.stoppageFirstHalf || 0; // added to first half only
+  const stoppage2 = match.stoppageSecondHalf || 0; // added to second half only
 
-  // First Half
+  if(elapsed < 0) return "Upcoming";
+
+  // First Half (with stoppage)
   if(elapsed <= firstHalf + stoppage1) return `${elapsed}'`;
 
-  // Half-time
+  // Halftime is always 15 minutes regardless of stoppage
   if(elapsed <= firstHalf + stoppage1 + halfTimeBreak) return `HT · ${firstHalf + stoppage1}'`;
 
-  // Second Half
+  // Second Half (with stoppage)
   const secondHalfElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak;
   if(secondHalfElapsed <= secondHalf + stoppage2) {
     let min = firstHalf + stoppage1 + secondHalfElapsed;
