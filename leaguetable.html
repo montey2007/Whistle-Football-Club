@@ -4,10 +4,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whistle FC League Table</title>
+  <title>League One Table</title>
 
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Highlighting rows */
+    table.league-table tr.promotion { background-color: #c8f7c5; }   /* Light green */
+    table.league-table tr.playoff { background-color: #fff8b0; }      /* Light yellow */
+    table.league-table tr.relegation { background-color: #f7c5c5; }   /* Light red */
+    table.league-table tr.whistle { font-weight: 700; border: 2px solid #c00000; }
+
+    table.league-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    table.league-table th,
+    table.league-table td {
+      text-align: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table.league-table th {
+      background: #111;
+      color: white;
+    }
+
+    table.league-table td:nth-child(2) {
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 30px auto;
+    }
+  </style>
 </head>
 
 <body>
@@ -18,76 +56,45 @@
       <div class="logo">
         <img src="images/logo.png" alt="Whistle FC Logo">
       </div>
-
       <div class="club-title">
         <h1>Whistle Football Club</h1>
-        <p>League Table</p>
+        <p>League One Table</p>
       </div>
     </div>
   </header>
 
   <!-- NAVIGATION -->
   <nav class="navbar">
-    <div class="nav-container">
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
-        ☰
-      </button>
-
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="players.html">Players</a></li>
-        <li><a href="staff.html">Staff</a></li>
-        <li><a href="history.html">History</a></li>
-        <li><a href="fixtures.html">Fixtures</a></li>
-        <li><a href="results.html">Results</a></li>
-        <li><a class="active" href="leaguetable.html">League Table</a></li>
-      </ul>
-    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a href="history.html">History</a></li>
+      <li><a href="fixtures.html">Fixtures</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a class="active" href="leaguetable.html">League Table</a></li>
+    </ul>
   </nav>
 
-  <!-- MAIN CONTENT -->
-  <main class="container">
-    <section class="league-section">
-      <h2 class="section-title">League One Table</h2>
+  <div class="container">
+    <table class="league-table" id="leagueTable">
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Team</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 
-      <div class="league-legend">
-        <span class="legend-box promotion-box"></span> Automatic Promotion
-        <span class="legend-box playoff-box"></span> Play-Offs
-        <span class="legend-box relegation-box"></span> Relegation
-        <span class="legend-box whistle-box"></span> Whistle FC
-      </div>
-
-      <div class="table-wrapper">
-        <table class="league-table" id="leagueTable">
-          <thead>
-            <tr>
-              <th>Pos</th>
-              <th>Team</th>
-              <th>P</th>
-              <th>W</th>
-              <th>D</th>
-              <th>L</th>
-              <th>GD</th>
-              <th>Pts</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 Whistle Football Club</p>
-      <p>Vitality Stadium | Wetshil, England</p>
-      <p>Follow us: Twitter | Instagram | YouTube</p>
-    </div>
-  </footer>
-
-  <!-- SCRIPTS -->
   <script>
     const leagueData = [
       { position: 1, team: "Lincoln City", played: 41, wins: 27, draws: 9, losses: 5, goals_for: 77, goals_against: 35, points: 90 },
@@ -99,7 +106,7 @@
       { position: 7, team: "Plymouth Argyle", played: 41, wins: 19, draws: 5, losses: 17, goals_for: 63, goals_against: 57, points: 62 },
       { position: 8, team: "Reading", played: 42, wins: 16, draws: 14, losses: 12, goals_for: 62, goals_against: 54, points: 62 },
       { position: 9, team: "Huddersfield Town", played: 41, wins: 17, draws: 10, losses: 14, goals_for: 61, goals_against: 53, points: 61 },
-      { position: 10, team: "Whistle FC", played: 41, wins: 17, draws: 10, losses: 14, goals_for: 55, goals_against: 51, points: 61 },
+      { position: 10, team: "Luton Town", played: 41, wins: 17, draws: 10, losses: 14, goals_for: 55, goals_against: 51, points: 61 },
       { position: 11, team: "Wycombe Wanderers", played: 42, wins: 16, draws: 11, losses: 15, goals_for: 60, goals_against: 48, points: 59 },
       { position: 12, team: "Mansfield Town", played: 39, wins: 13, draws: 14, losses: 12, goals_for: 50, goals_against: 42, points: 53 },
       { position: 13, team: "Peterborough United", played: 40, wins: 15, draws: 6, losses: 19, goals_for: 59, goals_against: 55, points: 51 },
@@ -122,17 +129,23 @@
 
       leagueData.forEach(team => {
         const row = document.createElement("tr");
+
         const goalDifference = team.goals_for - team.goals_against;
 
+        let displayName = team.team;
+        if (displayName === "Luton Town") displayName = "Whistle FC";
+
+        // Promotion / Playoff / Relegation
         if (team.position <= 2) row.classList.add("promotion");
         else if (team.position >= 3 && team.position <= 6) row.classList.add("playoff");
         else if (team.position >= 21) row.classList.add("relegation");
 
-        if (team.team === "Whistle FC") row.classList.add("whistle");
+        // Highlight Whistle FC
+        if (displayName === "Whistle FC") row.classList.add("whistle");
 
         row.innerHTML = `
           <td>${team.position}</td>
-          <td>${team.team}</td>
+          <td>${displayName}</td>
           <td>${team.played}</td>
           <td>${team.wins}</td>
           <td>${team.draws}</td>
@@ -146,14 +159,6 @@
     }
 
     populateTable();
-
-    // Mobile nav toggle
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
   </script>
 
 </body>
