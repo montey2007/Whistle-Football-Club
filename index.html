@@ -178,38 +178,43 @@ async function loadLatestResult() {
 
 /* LIVE MATCH CLOCK */
 function getElapsedTime(match, now) {
-  if(!match.startTime) return "";
-  let elapsed = Math.floor((now - match.startTime) / (1000*60)); // minutes
+  if (!match.startTime) return "";
+  const elapsed = Math.floor((now - match.startTime) / (1000 * 60)); // minutes since kickoff
 
   const firstHalf = 45;
-  const halfTimeBreak = 15;
   const secondHalf = 45;
+  const halfTimeBreak = 15;
   const stoppage1 = match.stoppageFirstHalf || 0;
   const stoppage2 = match.stoppageSecondHalf || 0;
 
-  if(elapsed < 0) return "Upcoming";
+  if (elapsed < 0) return "Upcoming";
 
   // First Half
-  if(elapsed <= firstHalf + stoppage1) return `${elapsed}'`;
+  if (elapsed <= firstHalf + stoppage1) {
+    return `${elapsed}'`;
+  }
 
-  // Halftime is always 15 minutes
-  if(elapsed <= firstHalf + stoppage1 + halfTimeBreak) return `HT · ${firstHalf + stoppage1}'`;
+  // Halftime
+  if (elapsed <= firstHalf + stoppage1 + halfTimeBreak) {
+    return `HT · ${firstHalf + stoppage1}'`;
+  }
 
   // Second Half
   const secondHalfElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak;
-  if(secondHalfElapsed <= secondHalf + stoppage2) {
-    let min = firstHalf + stoppage1 + secondHalfElapsed;
-    return `${min}'`;
+  if (secondHalfElapsed <= secondHalf + stoppage2) {
+    // Clock resets to 45 at start of second half
+    const clockMin = 45 + secondHalfElapsed;
+    return `${clockMin}'`;
   }
 
   // Extra Time
-  if(match.extraTime) {
-    let extraElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak - secondHalf - stoppage2;
+  if (match.extraTime) {
+    const extraElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak - secondHalf - stoppage2;
     return `ET · ${extraElapsed}'`;
   }
 
   // Penalties
-  if(match.penalties) return "Penalties";
+  if (match.penalties) return "Penalties";
 
   return "Full Time";
 }
