@@ -65,6 +65,9 @@
 
         <p class="countdown" id="countdown"></p>
         <p class="live-score" id="live-score"></p>
+        <a id="match-centre-btn" class="btn" href="match-centre.html" style="display:none;">
+  🔴 Go to Match Centre
+</a>
 
         <p class="stadium" id="next-venue"></p>
       </div>
@@ -206,22 +209,37 @@ fetch("fixtures/fixtures.json")
   function update(){
     const now = new Date();
     const diff = matchDate - now;
+    const btn = document.getElementById("match-centre-btn");
 
     countdownEl.className = "countdown upcoming";
 
     /* LIVE */
-    if(next.status === "live"){
-      countdownEl.className = "countdown live";
-      countdownEl.innerText = "🔴 LIVE";
+  /* LIVE */
+if(next.status === "live"){
+  countdownEl.className = "countdown live";
+  countdownEl.innerText = "🔴 LIVE NOW";
 
-      liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
+  liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
 
-      if(next.homeScore !== lastHome || next.awayScore !== lastAway){
-        goalFlash();
-        lastHome = next.homeScore;
-        lastAway = next.awayScore;
-      }
+  btn.style.display = "inline-block";
 
+  if(next.homeScore !== lastHome || next.awayScore !== lastAway){
+    goalFlash();
+    lastHome = next.homeScore;
+    lastAway = next.awayScore;
+  }
+
+  return;
+}
+    if(diff <= 0){
+
+  countdownEl.innerText = "Kick-off!";
+
+  // show button right at kickoff
+  btn.style.display = "inline-block";
+
+  return;
+}
       return;
     }
 
