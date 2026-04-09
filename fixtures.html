@@ -27,9 +27,7 @@
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-container">
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
-        ☰
-      </button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
 
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -50,7 +48,7 @@
       <h2 class="section-title">Upcoming Fixtures</h2>
 
       <div class="table-wrapper">
-        <table>
+        <table class="fixtures-table">
           <thead>
             <tr>
               <th>Date</th>
@@ -58,9 +56,14 @@
               <th>H/A</th>
               <th>Competition</th>
               <th>Kick Off</th>
+              <th>Venue</th>
             </tr>
           </thead>
-          <tbody id="fixtures-table"></tbody>
+          <tbody id="fixtures-table">
+            <tr>
+              <td colspan="6">Loading fixtures...</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </section>
@@ -90,32 +93,64 @@
       });
     });
 
-    // FIXTURES
+    // DATE FORMATTER
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    // LOAD FIXTURES
     fetch("fixtures/fixtures.json")
-      .then(res => res.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Fixtures file not found");
+        }
+        return response.json();
+      })
       .then(data => {
         const table = document.getElementById("fixtures-table");
+        table.innerHTML = "";
+
+        // Sort by date ascending
+        data.sort((a, b) => new Date(a.date) - new Date(b.date));
 
         data.forEach(match => {
-          const row = document.createElement("tr");
-
           const isHome = match.home === "Whistle FC";
           const opponent = isHome ? match.away : match.home;
           const homeAway = isHome ? "H" : "A";
 
+          const row = document.createElement("tr");
           row.innerHTML = `
-            <td>${new Date(match.date).toDateString()}</td>
+            <td>${formatDate(match.date)}</td>
             <td>${opponent}</td>
             <td>${homeAway}</td>
-            <td>${match.competition}</td>
-            <td>${match.time}</td>
+            <td>${match.competition || "TBC"}</td>
+            <td>${match.time || "TBC"}</td>
+            <td>${match.venue || "TBC"}</td>
           `;
 
           table.appendChild(row);
         });
+
+        if (data.length === 0) {
+          table.innerHTML = `
+            <tr>
+              <td colspan="6">No upcoming fixtures available.</td>
+            </tr>
+          `;
+        }
       })
-      .catch(err => {
-        console.error("Error loading fixtures:", err);
+      .catch(error => {
+        console.error("Error loading fixtures:", error);
+        document.getElementById("fixtures-table").innerHTML = `
+          <tr>
+            <td colspan="6">Unable to load fixtures at the moment.</td>
+          </tr>
+        `;
       });
   </script>
 
