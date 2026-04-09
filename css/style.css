@@ -53,8 +53,10 @@ a {
   flex-wrap: wrap;
 }
 
-.logo img {
+/* HEADER LOGO FIX */
+.logo {
   height: clamp(50px, 6vw, 65px);
+  width: auto;
 }
 
 .club-title h1 {
@@ -206,6 +208,22 @@ a {
 .team {
   flex: 1 1 120px;
   text-align: center;
+}
+
+/* TEAM LOGOS (FIX SIZE) */
+.team img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin: 0 auto 6px;
+}
+
+/* Slightly bigger on desktop */
+@media (min-width: 768px) {
+  .team img {
+    width: 70px;
+    height: 70px;
+  }
 }
 
 .score {
