@@ -74,23 +74,29 @@ top:0;
 z-index:1000;
 }
 
-.navbar ul{
+.nav-container{
 max-width:1200px;
 margin:auto;
+padding:0 20px;
+position:relative;
+}
+
+.nav-links{
 display:flex;
 justify-content:center;
 align-items:center;
 flex-wrap:wrap;
 list-style:none;
-padding:14px 16px;
+padding:14px 0;
+margin:0;
 gap:10px 18px;
 }
 
-.navbar li{
+.nav-links li{
 margin:0;
 }
 
-.navbar a{
+.nav-links a{
 color:white;
 text-decoration:none;
 font-weight:600;
@@ -101,9 +107,21 @@ border-radius:6px;
 display:inline-block;
 }
 
-.navbar a:hover{
+.nav-links a:hover,
+.nav-links a.active{
 color:#ff3b3b;
 background:rgba(255,255,255,0.06);
+}
+
+.menu-toggle{
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:30px;
+cursor:pointer;
+padding:12px 0;
+margin-left:auto;
 }
 
 /* HERO */
