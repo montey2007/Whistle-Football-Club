@@ -197,29 +197,36 @@ function updateNextMatch() {
       if(next.status === "live"){
         countdownEl.className = "countdown live";
         const now = new Date();
-        let elapsed = Math.floor((now - matchDate) / (1000 * 60));
+        let elapsedReal = Math.floor((now - matchDate) / (1000 * 60));
 
         let displayTime = "";
-        // First half
-        if(elapsed <= 45){
-          displayTime = `${elapsed}' (1H)`;
-        }
-        // Half-time break
-        else if(elapsed > 45 && elapsed <= 60){
-          displayTime = `HT · 45'`;
-        }
-        // Second half
-        else if(elapsed > 60 && elapsed <= 105){ // 45 + 15 halftime + 45
-          let secondHalf = elapsed - 60; // elapsed in second half
-          displayTime = `${secondHalf + 45}' (2H)`; 
-        }
-        // Extra time (ET)
-        else if(elapsed > 105 && elapsed <= 120){
-          let extra = elapsed - 105; // ET minutes
-          displayTime = `${extra}' (ET)`;
-        }
-        // Penalties
-        else if(elapsed > 120){
+
+        // Phase durations
+        const firstHalf = 45;
+        const halfTimeBreak = 15;
+        const secondHalf = 45;
+        const extraTimeHalf = 15;
+
+        // Compute adjusted match time
+        if(elapsedReal <= firstHalf){ 
+          displayTime = `${elapsedReal}' (1H)`; // First Half
+        } 
+        else if(elapsedReal > firstHalf && elapsedReal <= firstHalf + halfTimeBreak){ 
+          displayTime = "HT · 45'"; // Half-time pause
+        } 
+        else if(elapsedReal > firstHalf + halfTimeBreak && elapsedReal <= firstHalf + halfTimeBreak + secondHalf){ 
+          let secondHalfMinutes = elapsedReal - firstHalf - halfTimeBreak;
+          displayTime = `${secondHalfMinutes + 45}' (2H)`; // Second Half
+        } 
+        else if(elapsedReal > firstHalf + halfTimeBreak + secondHalf && elapsedReal <= firstHalf + halfTimeBreak + secondHalf + extraTimeHalf){ 
+          let et1 = elapsedReal - firstHalf - halfTimeBreak - secondHalf;
+          displayTime = `${et1 + 90}' (ET 1H)`; // Extra Time 1
+        } 
+        else if(elapsedReal > firstHalf + halfTimeBreak + secondHalf + extraTimeHalf && elapsedReal <= firstHalf + halfTimeBreak + secondHalf + 2*extraTimeHalf){ 
+          let et2 = elapsedReal - firstHalf - halfTimeBreak - secondHalf - extraTimeHalf;
+          displayTime = `${et2 + 105}' (ET 2H)`; // Extra Time 2
+        } 
+        else { 
           displayTime = "Penalties";
         }
 
@@ -231,8 +238,7 @@ function updateNextMatch() {
         countdownEl.innerText = "Full Time";
         liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
       }
-      else {
-        // Upcoming match countdown
+      else { // Upcoming
         const diff = matchDate - new Date();
         if(diff <= 0){
           countdownEl.innerText = "Kick-off!";
@@ -246,7 +252,6 @@ function updateNextMatch() {
         liveScoreEl.innerText = "";
       }
     });
-}
 }
 
 // Initial call and repeat every 10 seconds
