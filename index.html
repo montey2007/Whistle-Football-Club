@@ -186,45 +186,44 @@ async function loadLatestResult() {
 
 /* LIVE MATCH CLOCK WITH STOPPAGE TIME */
 function getElapsedTime(match, now) {
-  let elapsed = Math.floor((now - match.startTime) / (1000*60)); // minutes
+  let elapsed = Math.floor((now - match.startTime) / (1000*60)); // minutes since kickoff
 
   const firstHalf = 45;
-  const halfTime = 15;
+  const halfTimeBreak = 15;
   const secondHalf = 45;
-  const extraTime = 15;
 
   const stoppage1 = match.stoppageFirstHalf || 0;
   const stoppage2 = match.stoppageSecondHalf || 0;
-  const stoppageET1 = match.stoppageExtraTime1 || 0;
-  const stoppageET2 = match.stoppageExtraTime2 || 0;
 
   // First Half
-  if(elapsed < firstHalf) return `${elapsed}'`;
+  if(elapsed <= firstHalf + stoppage1) {
+    return `${elapsed}'`;
+  }
 
-  // Half-time
-  if(elapsed < firstHalf + halfTime) return `HT · ${firstHalf}'`;
+  // Half-time break
+  if(elapsed <= firstHalf + stoppage1 + halfTimeBreak) {
+    return `HT · ${firstHalf + stoppage1}'`;
+  }
 
   // Second Half
-  if(elapsed < firstHalf + halfTime + secondHalf + stoppage2) {
-    let min = elapsed - halfTime;
-    if(min > firstHalf + secondHalf + stoppage1 + stoppage2) min = firstHalf + secondHalf + stoppage1 + stoppage2;
+  const secondHalfElapsed = elapsed - firstHalf - stoppage1 - halfTimeBreak;
+  if(secondHalfElapsed <= secondHalf + stoppage2) {
+    let min = firstHalf + stoppage1 + secondHalfElapsed;
     return `${min}'`;
   }
 
-  // Extra Time 1
-  if(elapsed < firstHalf + halfTime + secondHalf + extraTime + stoppageET1) {
-    let min = elapsed - halfTime;
-    return `${min}'`;
-  }
-
-  // Extra Time 2
-  if(elapsed < firstHalf + halfTime + secondHalf + 2*extraTime + stoppageET2) {
-    let min = elapsed - halfTime;
-    return `${min}'`;
+  // Extra Time
+  if(match.extraTime) {
+    return "ET · " + (elapsed - firstHalf - stoppage1 - halfTimeBreak - secondHalf - stoppage2) + "'";
   }
 
   // Penalties
-  return "Penalties";
+  if(match.penalties) {
+    return "Penalties";
+  }
+
+  // Match finished
+  return "Full Time";
 }
 
 async function updateNextMatch() {
