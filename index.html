@@ -57,12 +57,14 @@
         <span id="next-left-name"></span>
       </div>
 
-      <div class="match-info">
-        <p class="competition" id="next-competition"></p>
-        <p class="match-vs">VS</p>
-        <p class="kickoff" id="next-date"></p>
-        <p class="stadium" id="next-venue"></p>
-      </div>
+  <div class="match-info">
+  <p class="competition" id="next-competition"></p>
+  <p class="match-vs">VS</p>
+  <p class="kickoff" id="next-date"></p>
+  <p class="countdown" id="countdown"></p>
+  <p class="live-score" id="live-score"></p>
+  <p class="stadium" id="next-venue"></p>
+</div>
 
       <div class="team">
         <img id="next-right-logo" alt="Opponent logo">
@@ -172,10 +174,6 @@ fetch("fixtures/fixtures.json")
   if(next.home && next.away){
     left = {name: next.home, logo: next.homelogo};
     right = {name: next.away, logo: next.awaylogo};
-  } else {
-    const isHome = next.homeaway === "H";
-    left = isHome ? {name:"Whistle FC", logo:""} : {name:next.opponent, logo:next.logo};
-    right = isHome ? {name:next.opponent, logo:next.logo} : {name:"Whistle FC", logo:""};
   }
 
   document.getElementById("next-left-logo").src = getLogo(left.name, left.logo);
@@ -185,8 +183,55 @@ fetch("fixtures/fixtures.json")
   document.getElementById("next-right-name").innerText = right.name;
 
   document.getElementById("next-competition").innerText = next.competition;
-  document.getElementById("next-date").innerText = new Date(next.date).toDateString() + " · " + next.time;
   document.getElementById("next-venue").innerText = next.venue;
+
+  // Combine date + time properly
+  const matchDate = new Date(next.date + "T" + next.time);
+
+  document.getElementById("next-date").innerText =
+    matchDate.toDateString() + " · " + next.time;
+
+  const countdownEl = document.getElementById("countdown");
+  const liveScoreEl = document.getElementById("live-score");
+
+  function updateCountdown(){
+    const now = new Date();
+    const diff = matchDate - now;
+
+    if(next.status === "live"){
+      countdownEl.innerText = "🔴 LIVE NOW";
+
+      liveScoreEl.innerText =
+        `${next.homeScore} - ${next.awayScore}`;
+
+      return;
+    }
+
+    if(next.status === "finished"){
+      countdownEl.innerText = "Full Time";
+
+      liveScoreEl.innerText =
+        `${next.homeScore} - ${next.awayScore}`;
+
+      return;
+    }
+
+    if(diff <= 0){
+      countdownEl.innerText = "Kick-off!";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const mins = Math.floor((diff / (1000*60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    countdownEl.innerText =
+      `${days}d ${hours}h ${mins}m ${secs}s`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 });
 
 /* RESULTS */
