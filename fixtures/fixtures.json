@@ -8,10 +8,13 @@
     "awaylogo": "stockportlogo.png",
     "competition": "EFL Trophy Final",
     "venue": "Wembley Stadium",
-
     "status": "live",
     "homeScore": 2,
-    "awayScore": 0
+    "awayScore": 0,
+    "stoppageFirstHalf": 2,
+    "stoppageSecondHalf": 4,
+    "extraTime": false,
+    "penalties": false
   },
   {
     "date": "2026-04-15",
@@ -22,10 +25,13 @@
     "awaylogo": "northamptonlogo.png",
     "competition": "League One",
     "venue": "Mornflake Stadium",
-
     "status": "upcoming",
     "homeScore": 0,
-    "awayScore": 0
+    "awayScore": 0,
+    "stoppageFirstHalf": 0,
+    "stoppageSecondHalf": 0,
+    "extraTime": false,
+    "penalties": false
   },
   {
     "date": "2026-04-18",
@@ -36,10 +42,13 @@
     "awaylogo": "logo.png",
     "competition": "League One",
     "venue": "Mill Park",
-
     "status": "upcoming",
     "homeScore": 0,
-    "awayScore": 0
+    "awayScore": 0,
+    "stoppageFirstHalf": 0,
+    "stoppageSecondHalf": 0,
+    "extraTime": false,
+    "penalties": false
   },
   {
     "date": "2026-04-21",
@@ -50,10 +59,13 @@
     "awaylogo": "logo.png",
     "competition": "League One",
     "venue": "New York Stadium",
-
     "status": "upcoming",
     "homeScore": 0,
-    "awayScore": 0
+    "awayScore": 0,
+    "stoppageFirstHalf": 0,
+    "stoppageSecondHalf": 0,
+    "extraTime": false,
+    "penalties": false
   },
   {
     "date": "2026-04-25",
@@ -64,10 +76,13 @@
     "awaylogo": "barnsleylogo.png",
     "competition": "League One",
     "venue": "Mornflake Stadium",
-
     "status": "upcoming",
     "homeScore": 0,
-    "awayScore": 0
+    "awayScore": 0,
+    "stoppageFirstHalf": 0,
+    "stoppageSecondHalf": 0,
+    "extraTime": false,
+    "penalties": false
   },
   {
     "date": "2026-05-02",
@@ -78,9 +93,12 @@
     "awaylogo": "logo.png",
     "competition": "League One",
     "venue": "Toughsheet Community Stadium",
-
     "status": "upcoming",
     "homeScore": 0,
-    "awayScore": 0
+    "awayScore": 0,
+    "stoppageFirstHalf": 0,
+    "stoppageSecondHalf": 0,
+    "extraTime": false,
+    "penalties": false
   }
 ]
