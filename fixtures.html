@@ -1,158 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whistle FC Fixtures</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Whistle FC Fixtures</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <header class="main-header">
-    <div class="header-container">
-      <div class="logo">
-        <img src="images/logo.png" alt="Whistle FC Logo">
-      </div>
+<header class="main-header">
 
-      <div class="club-title">
-        <h1>Whistle Football Club</h1>
-        <p>Fixtures</p>
-      </div>
-    </div>
-  </header>
+<div class="header-container">
 
-  <!-- NAVIGATION -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+<div class="logo">
+<img src="images/logo.png" alt="Whistle FC Logo">
+</div>
 
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="players.html">Players</a></li>
-        <li><a href="staff.html">Staff</a></li>
-        <li><a href="history.html">History</a></li>
-        <li><a class="active" href="fixtures.html">Fixtures</a></li>
-        <li><a href="results.html">Results</a></li>
-        <li><a href="leaguetable.html">League Table</a></li>
-      </ul>
-    </div>
-  </nav>
+<div class="club-title">
+<h1>Whistle Football Club</h1>
+<p>Fixtures</p>
+</div>
 
-  <!-- MAIN CONTENT -->
-  <main class="container">
-    <section class="fixtures-section">
-      <h2 class="section-title">Upcoming Fixtures</h2>
+</div>
 
-      <div class="table-wrapper">
-        <table class="fixtures-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Opponent</th>
-              <th>H/A</th>
-              <th>Competition</th>
-              <th>Kick Off</th>
-              <th>Venue</th>
-            </tr>
-          </thead>
-          <tbody id="fixtures-table">
-            <tr>
-              <td colspan="6">Loading fixtures...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+</header>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 Whistle Football Club</p>
-      <p>Vitality Stadium | Wetshil, England</p>
-      <p>Follow us: Twitter | Instagram | YouTube</p>
-    </div>
-  </footer>
+<nav class="navbar">
 
-  <script>
-    // MOBILE MENU
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
+<ul>
 
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
+<li><a href="index.html">Home</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="players.html">Players</a></li>
+<li><a href="staff.html">Staff</a></li>
+<li><a href="history.html">History</a></li>
+<li><a class="active" href="fixtures.html">Fixtures</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="leaguetable.html">League Table</a></li>
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-      });
-    });
+</ul>
 
-    // DATE FORMATTER
-    function formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric"
-      });
-    }
+</nav>
 
-    // LOAD FIXTURES
-    fetch("fixtures/fixtures.json")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Fixtures file not found");
-        }
-        return response.json();
-      })
-      .then(data => {
-        const table = document.getElementById("fixtures-table");
-        table.innerHTML = "";
+<div class="container">
 
-        // Sort by date ascending
-        data.sort((a, b) => new Date(a.date) - new Date(b.date));
+<section class="fixtures-section">
 
-        data.forEach(match => {
-          const isHome = match.home === "Whistle FC";
-          const opponent = isHome ? match.away : match.home;
-          const homeAway = isHome ? "H" : "A";
+<h2>Upcoming Fixtures</h2>
 
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${formatDate(match.date)}</td>
-            <td>${opponent}</td>
-            <td>${homeAway}</td>
-            <td>${match.competition || "TBC"}</td>
-            <td>${match.time || "TBC"}</td>
-            <td>${match.venue || "TBC"}</td>
-          `;
+<table>
 
-          table.appendChild(row);
-        });
+<thead>
 
-        if (data.length === 0) {
-          table.innerHTML = `
-            <tr>
-              <td colspan="6">No upcoming fixtures available.</td>
-            </tr>
-          `;
-        }
-      })
-      .catch(error => {
-        console.error("Error loading fixtures:", error);
-        document.getElementById("fixtures-table").innerHTML = `
-          <tr>
-            <td colspan="6">Unable to load fixtures at the moment.</td>
-          </tr>
-        `;
-      });
-  </script>
+<tr>
+<th>Date</th>
+<th>Opponent</th>
+<th>H/A</th>
+<th>Competition</th>
+<th>Kick Off</th>
+</tr>
+
+</thead>
+
+<tbody id="fixtures-table"></tbody>
+
+</table>
+
+</section>
+
+</div>
+
+<script>
+
+fetch("fixtures/fixtures.json")
+.then(res => res.json())
+.then(data => {
+
+const table = document.getElementById("fixtures-table");
+
+data.forEach(match => {
+
+const row = document.createElement("tr");
+
+// Work out if Whistle is home or away
+const isHome = match.home === "Whistle FC";
+
+// Set opponent + H/A
+const opponent = isHome ? match.away : match.home;
+const homeAway = isHome ? "H" : "A";
+
+row.innerHTML = `
+<td>${new Date(match.date).toDateString()}</td>
+<td>${opponent}</td>
+<td>${homeAway}</td>
+<td>${match.competition}</td>
+<td>${match.time}</td>
+`;
+
+table.appendChild(row);
+
+});
+
+});
+</script>
 
 </body>
+
 </html>
+
