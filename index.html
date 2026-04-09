@@ -251,6 +251,28 @@ fetch("fixtures/fixtures.json")
   setInterval(update, 1000);
 
 });
+
+  fetch("results/results.json")
+.then(res => res.json())
+.then(data => {
+
+  const last = data[0]; // most recent result
+
+  document.getElementById("result-home-logo").src =
+    getLogo(last.home, last.homelogo);
+
+  document.getElementById("result-away-logo").src =
+    getLogo(last.away, last.awaylogo);
+
+  document.getElementById("result-home-name").innerText = last.home;
+  document.getElementById("result-away-name").innerText = last.away;
+
+  document.getElementById("result-score").innerText = last.score;
+
+  document.getElementById("result-competition").innerText = last.competition;
+  document.getElementById("result-venue").innerText = last.venue;
+
+});
 </script>
 
 </body>
