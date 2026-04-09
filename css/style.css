@@ -1,4 +1,6 @@
-/* GLOBAL */
+/* =========================
+   GLOBAL
+========================= */
 
 *{
 box-sizing:border-box;
@@ -23,7 +25,13 @@ height:auto;
 display:block;
 }
 
-/* MAIN CONTENT WIDTH */
+a{
+transition:0.2s ease;
+}
+
+/* =========================
+   MAIN CONTENT WIDTH
+========================= */
 
 .container{
 max-width:1200px;
@@ -32,7 +40,9 @@ padding:40px 25px;
 width:100%;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .main-header{
 background:#c00000;
@@ -57,6 +67,7 @@ width:auto;
 margin:0;
 font-weight:700;
 font-size:clamp(1.6rem, 2.5vw, 2.3rem);
+line-height:1.15;
 }
 
 .club-title p{
@@ -65,13 +76,16 @@ font-size:14px;
 opacity:0.9;
 }
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
 
 .navbar{
 background:#111;
 position:sticky;
 top:0;
 z-index:1000;
+box-shadow:0 2px 8px rgba(0,0,0,0.15);
 }
 
 .nav-container{
@@ -79,6 +93,10 @@ max-width:1200px;
 margin:auto;
 padding:0 20px;
 position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:58px;
 }
 
 .nav-links{
@@ -101,7 +119,6 @@ color:white;
 text-decoration:none;
 font-weight:600;
 font-size:15px;
-transition:0.2s;
 padding:8px 10px;
 border-radius:6px;
 display:inline-block;
@@ -120,11 +137,14 @@ border:none;
 color:white;
 font-size:30px;
 cursor:pointer;
-padding:12px 0;
+padding:10px 0;
 margin-left:auto;
+line-height:1;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
 background:url("../images/stadium.png") center/cover no-repeat;
@@ -163,9 +183,12 @@ font-size:clamp(1rem, 2.4vw, 1.25rem);
 margin-bottom:20px;
 }
 
-/* BUTTON */
+/* =========================
+   BUTTONS
+========================= */
 
-.btn{
+.btn,
+.back-btn{
 display:inline-block;
 background:#c00000;
 color:white;
@@ -174,16 +197,28 @@ text-decoration:none;
 border-radius:6px;
 font-weight:600;
 margin-top:10px;
-transition:0.2s;
 font-size:15px;
 text-align:center;
+border:none;
+cursor:pointer;
 }
 
-.btn:hover{
+.btn:hover,
+.back-btn:hover{
 background:#a00000;
 }
 
-/* SECTION TITLES */
+.match-report{
+background:#444;
+}
+
+.match-report:hover{
+background:#333;
+}
+
+/* =========================
+   SECTION TITLES
+========================= */
 
 .section-title{
 border-left:6px solid #c00000;
@@ -193,7 +228,9 @@ font-size:clamp(1.5rem, 3vw, 2rem);
 line-height:1.2;
 }
 
-/* SECTION BACKGROUNDS */
+/* =========================
+   SECTION BACKGROUNDS
+========================= */
 
 .club-info{
 background:#f0f0f0;
@@ -205,18 +242,26 @@ background:#ffffff;
 padding:60px 0;
 }
 
-/* NEXT MATCH CARD */
-
 .next-match{
 background:#f5f5f5;
 padding:60px 0;
 text-align:center;
 }
 
-.match-card{
+.latest-result{
+background:white;
+padding:60px 0;
+text-align:center;
+}
+
+/* =========================
+   MATCH / RESULT CARDS
+========================= */
+
+.match-card,
+.result-card{
 max-width:750px;
 margin:40px auto;
-background:#111;
 color:white;
 padding:30px;
 border-radius:10px;
@@ -225,6 +270,14 @@ align-items:center;
 justify-content:space-between;
 gap:20px;
 box-shadow:0 6px 20px rgba(0,0,0,0.25);
+}
+
+.match-card{
+background:#111;
+}
+
+.result-card{
+background:#1b1b1b;
 }
 
 .team{
@@ -243,7 +296,8 @@ font-weight:600;
 display:block;
 }
 
-.match-info{
+.match-info,
+.result-score{
 text-align:center;
 flex:1;
 }
@@ -271,41 +325,6 @@ opacity:0.8;
 margin-top:4px;
 }
 
-.match-links{
-margin-top:14px;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-}
-
-/* LATEST RESULT */
-
-.latest-result{
-background:white;
-padding:60px 0;
-text-align:center;
-}
-
-.result-card{
-max-width:750px;
-margin:40px auto;
-background:#1b1b1b;
-color:white;
-padding:30px;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-box-shadow:0 6px 20px rgba(0,0,0,0.25);
-}
-
-.result-score{
-text-align:center;
-flex:1;
-}
-
 .score{
 font-size:36px;
 font-weight:700;
@@ -313,7 +332,9 @@ display:block;
 margin-bottom:5px;
 }
 
-.result-links{
+.match-links,
+.result-links,
+.fixtures-links{
 margin-top:15px;
 display:flex;
 justify-content:center;
@@ -321,16 +342,22 @@ flex-wrap:wrap;
 gap:10px;
 }
 
-.match-report{
-background:#444;
-margin-left:0;
+/* Optional score colours if used in JS */
+.score.win{
+color:#32cd32;
 }
 
-.match-report:hover{
-background:#333;
+.score.draw{
+color:#f5c542;
 }
 
-/* INFO GRID */
+.score.loss{
+color:#ff4d4d;
+}
+
+/* =========================
+   INFO GRID
+========================= */
 
 .info-grid{
 display:grid;
@@ -357,7 +384,9 @@ transform:translateY(-6px);
 margin-top:0;
 }
 
-/* TABLES */
+/* =========================
+   TABLES
+========================= */
 
 .table-wrapper{
 overflow-x:auto;
@@ -371,6 +400,8 @@ border-collapse:collapse;
 margin-top:20px;
 min-width:600px;
 background:white;
+border-radius:8px;
+overflow:hidden;
 }
 
 td,th{
@@ -384,7 +415,9 @@ background:#c00000;
 color:white;
 }
 
-/* NEWS GRID */
+/* =========================
+   NEWS GRID
+========================= */
 
 .news-grid{
 display:grid;
@@ -431,7 +464,9 @@ text-decoration:none;
 text-decoration:underline;
 }
 
-/* ARTICLE PAGE */
+/* =========================
+   ARTICLE PAGE
+========================= */
 
 .article{
 max-width:850px;
@@ -473,7 +508,9 @@ padding-bottom:8px;
 font-size:1.6rem;
 }
 
-/* ARTICLE PAGE EXTRAS */
+/* =========================
+   ARTICLE EXTRAS
+========================= */
 
 .match-info-box,
 .form-box{
@@ -505,7 +542,9 @@ padding-left:20px;
 margin-bottom:8px;
 }
 
-/* PLAYER QUOTE */
+/* =========================
+   PLAYER QUOTE
+========================= */
 
 .player-quote{
 font-style:italic;
@@ -518,24 +557,9 @@ background:#fff;
 border-radius:8px;
 }
 
-/* BACK BUTTON */
-
-.back-btn{
-display:inline-block;
-margin-top:25px;
-background:#c00000;
-color:white;
-padding:10px 20px;
-border-radius:6px;
-text-decoration:none;
-transition:0.2s;
-}
-
-.back-btn:hover{
-background:#a00000;
-}
-
-/* PLAYERS GRID */
+/* =========================
+   PLAYERS GRID
+========================= */
 
 .players-grid{
 display:grid;
@@ -588,7 +612,9 @@ border-top:1px solid #eee;
 margin:12px 0;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
 background:#111;
@@ -599,7 +625,13 @@ margin-top:50px;
 font-size:14px;
 }
 
-/* TABLET */
+.footer p{
+margin:6px 0;
+}
+
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width:992px){
 
@@ -618,7 +650,9 @@ font-size:17px;
 
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width:768px){
 
@@ -645,16 +679,49 @@ font-size:1.7rem;
 font-size:13px;
 }
 
-.navbar ul{
-justify-content:center;
-padding:12px 12px;
-gap:8px 10px;
+/* MOBILE NAV */
+
+.nav-container{
+padding:0 18px;
+justify-content:flex-end;
 }
 
-.navbar a{
-font-size:14px;
-padding:8px 10px;
+.menu-toggle{
+display:block;
 }
+
+.nav-links{
+display:none;
+flex-direction:column;
+align-items:stretch;
+background:#111;
+padding:12px 0 16px;
+gap:8px;
+width:100%;
+position:absolute;
+top:100%;
+left:0;
+box-shadow:0 8px 18px rgba(0,0,0,0.2);
+}
+
+.nav-links.show{
+display:flex;
+}
+
+.nav-links li{
+width:100%;
+}
+
+.nav-links a{
+display:block;
+width:100%;
+padding:12px 18px;
+font-size:15px;
+text-align:left;
+border-radius:0;
+}
+
+/* HERO */
 
 .hero{
 min-height:320px;
@@ -673,11 +740,15 @@ font-size:2rem;
 font-size:1rem;
 }
 
+/* BUTTONS */
+
 .btn,
 .back-btn{
 width:100%;
 max-width:280px;
 }
+
+/* CARDS */
 
 .match-card,
 .result-card{
@@ -703,12 +774,16 @@ font-size:20px;
 font-size:32px;
 }
 
+/* GRIDS */
+
 .info-grid,
 .news-grid,
 .players-grid{
 grid-template-columns:1fr;
 gap:20px;
 }
+
+/* TYPOGRAPHY */
 
 .section-title{
 font-size:1.6rem;
@@ -740,7 +815,9 @@ border-radius:12px;
 
 }
 
-/* SMALL MOBILE */
+/* =========================
+   SMALL MOBILE
+========================= */
 
 @media (max-width:480px){
 
@@ -777,9 +854,9 @@ font-size:15.5px;
 padding:18px 14px;
 }
 
-.navbar a{
-font-size:13px;
-padding:7px 9px;
+.nav-links a{
+font-size:14px;
+padding:11px 14px;
 }
 
 .club-title h1{
