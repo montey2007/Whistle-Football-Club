@@ -27,9 +27,7 @@
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-container">
-      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation">
-        ☰
-      </button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
 
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -45,93 +43,131 @@
   </nav>
 
   <!-- MAIN CONTENT -->
-  <main class="latest-result">
-    <div class="container">
-      <section class="results-section">
-        <h2 class="section-title">Season Results</h2>
+  <main class="container">
+    <section class="results-section">
+      <h2 class="section-title">Season Results</h2>
 
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Opponent</th>
-                <th>H/A</th>
-                <th>Score</th>
-                <th>Competition</th>
-                <th>Result</th>
-              </tr>
-            </thead>
-            <tbody id="results-table"></tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+      <div class="table-wrapper">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Opponent</th>
+              <th>H/A</th>
+              <th>Score</th>
+              <th>Competition</th>
+              <th>Result</th>
+              <th>Venue</th>
+            </tr>
+          </thead>
+          <tbody id="results-table">
+            <tr>
+              <td colspan="7">Loading results...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>© 2026 Whistle Football Club. All rights reserved.</p>
+    <div class="container">
+      <p>© 2026 Whistle Football Club</p>
+      <p>Vitality Stadium | Wetshil, England</p>
+      <p>Follow us: Twitter | Instagram | YouTube</p>
+    </div>
   </footer>
 
-  <!-- SCRIPT -->
   <script>
-    fetch("results/results.json")
-      .then(response => response.json())
-      .then(data => {
-        const table = document.getElementById("results-table");
-
-        // Sort newest first
-        data.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        data.forEach(match => {
-          const isWhistleHome = match.home === "Whistle FC";
-
-          // Opponent
-          const opponent = isWhistleHome ? match.away : match.home;
-
-          // Home or Away
-          const homeAway = isWhistleHome ? "H" : "A";
-
-          // Date format
-          const formattedDate = new Date(match.date).toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric"
-          });
-
-          // Result class
-          const resultClass = match.result.toLowerCase();
-
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${formattedDate}</td>
-            <td>${opponent}</td>
-            <td>${homeAway}</td>
-            <td><strong>${match.score}</strong></td>
-            <td>${match.competition}</td>
-            <td class="result ${resultClass}">${match.result}</td>
-          `;
-
-          table.appendChild(row);
-        });
-      })
-      .catch(error => {
-        console.error("Error loading results:", error);
-        document.getElementById("results-table").innerHTML = `
-          <tr>
-            <td colspan="6">Unable to load results at the moment.</td>
-          </tr>
-        `;
-      });
-
-    // MOBILE MENU TOGGLE
+    // MOBILE MENU
     const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
 
     menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("show");
     });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+      });
+    });
+
+    // DATE FORMATTER
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    // NORMALISE RESULT CLASS
+    function getResultClass(result) {
+      if (!result) return "";
+      const clean = result.toLowerCase();
+
+      if (clean.includes("awarded")) return "w";
+      if (clean === "w") return "w";
+      if (clean === "d") return "d";
+      if (clean === "l") return "l";
+
+      return "";
+    }
+
+    // LOAD RESULTS
+    fetch("results/results.json")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Results file not found");
+        }
+        return response.json();
+      })
+      .then(data => {
+        const table = document.getElementById("results-table");
+        table.innerHTML = "";
+
+        // Sort newest first
+        data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        data.forEach(match => {
+          const isWhistleHome = match.home === "Whistle FC";
+          const opponent = isWhistleHome ? match.away : match.home;
+          const homeAway = isWhistleHome ? "H" : "A";
+          const resultClass = getResultClass(match.result);
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${formatDate(match.date)}</td>
+            <td>${opponent}</td>
+            <td>${homeAway}</td>
+            <td><strong>${match.score || "-"}</strong></td>
+            <td>${match.competition || "-"}</td>
+            <td class="result ${resultClass}">${match.result || "-"}</td>
+            <td>${match.venue || "-"}</td>
+          `;
+
+          table.appendChild(row);
+        });
+
+        if (data.length === 0) {
+          table.innerHTML = `
+            <tr>
+              <td colspan="7">No results available.</td>
+            </tr>
+          `;
+        }
+      })
+      .catch(error => {
+        console.error("Error loading results:", error);
+        document.getElementById("results-table").innerHTML = `
+          <tr>
+            <td colspan="7">Unable to load results at the moment.</td>
+          </tr>
+        `;
+      });
   </script>
 
 </body>
