@@ -188,34 +188,59 @@ fetch("fixtures/fixtures.json")
   const countdownEl = document.getElementById("countdown");
   const liveScoreEl = document.getElementById("live-score");
 
+  let lastHomeScore = next.homeScore ?? 0;
+  let lastAwayScore = next.awayScore ?? 0;
+
+  function flashGoal(){
+    liveScoreEl.classList.add("goal-flash");
+    setTimeout(() => liveScoreEl.classList.remove("goal-flash"), 800);
+  }
+
   function updateCountdown(){
     const now = new Date();
     const diff = matchDate - now;
 
     countdownEl.className = "countdown";
 
+    // 🔴 LIVE MODE
     if(next.status === "live"){
       countdownEl.classList.add("live");
       countdownEl.innerText = "🔴 LIVE";
 
-      liveScoreEl.innerText =
-        `${next.homeScore} - ${next.awayScore}`;
+      const scoreText = `${next.homeScore} - ${next.awayScore}`;
+      liveScoreEl.innerText = scoreText;
+
+      // ⚽ detect goal change
+      if(next.homeScore !== lastHomeScore || next.awayScore !== lastAwayScore){
+        flashGoal();
+        lastHomeScore = next.homeScore;
+        lastAwayScore = next.awayScore;
+      }
+
       return;
     }
 
+    // ✅ FINISHED
     if(next.status === "finished"){
       countdownEl.classList.add("finished");
       countdownEl.innerText = "Full Time";
-
-      liveScoreEl.innerText =
-        `${next.homeScore} - ${next.awayScore}`;
+      liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
       return;
     }
 
+    // ⏳ UPCOMING
     countdownEl.classList.add("upcoming");
 
+    // ⚡ kickoff soon message
     if(diff <= 0){
       countdownEl.innerText = "Kick-off!";
+      return;
+    }
+
+    const minutes = Math.floor(diff / (1000 * 60));
+
+    if(minutes <= 60){
+      countdownEl.innerText = `Kick-off in ${minutes} mins`;
       return;
     }
 
@@ -230,6 +255,19 @@ fetch("fixtures/fixtures.json")
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // 🔁 AUTO REFRESH DATA EVERY 10 SECONDS
+  setInterval(() => {
+    fetch("fixtures/fixtures.json")
+      .then(res => res.json())
+      .then(updated => {
+        const newNext = updated[0];
+
+        next.homeScore = newNext.homeScore;
+        next.awayScore = newNext.awayScore;
+        next.status = newNext.status;
+      });
+  }, 10000);
 });
 
 /* RESULTS */
