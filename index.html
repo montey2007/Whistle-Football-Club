@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whistle Football Club</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whistle Football Club | Home</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -13,7 +14,7 @@
   <header class="main-header">
     <div class="header-container">
       <div class="logo">
-        <img src="images/logo.png" alt="Whistle Football Club logo">
+        <img src="images/logo.png" alt="Whistle Football Club logo" />
       </div>
       <div class="club-title">
         <h1>Whistle Football Club</h1>
@@ -25,7 +26,9 @@
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-container">
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+      </button>
       <ul class="nav-links" id="nav-links">
         <li><a class="active" href="index.html">Home</a></li>
         <li><a href="news.html">News</a></li>
@@ -55,20 +58,20 @@
 
       <div class="match-card">
         <div class="team">
-          <img id="next-home-logo" src="images/logo.png" alt="Team logo">
-          <span id="next-home-name">TBC</span>
+          <img id="next-home-logo" src="images/logo.png" alt="Home team logo" />
+          <span id="next-home-name">Whistle FC</span>
         </div>
 
         <div class="match-info">
-          <p class="competition" id="next-competition">Loading...</p>
+          <p class="competition" id="next-competition">Loading fixture...</p>
           <p class="match-vs">VS</p>
-          <p class="kickoff" id="next-date"></p>
-          <p class="stadium" id="next-venue"></p>
+          <p class="kickoff" id="next-date">Date TBC</p>
+          <p class="stadium" id="next-venue">Venue TBC</p>
         </div>
 
         <div class="team">
-          <img id="next-away-logo" src="images/logo.png" alt="Team logo">
-          <span id="next-away-name">TBC</span>
+          <img id="next-away-logo" src="images/logo.png" alt="Away team logo" />
+          <span id="next-away-name">Opponent</span>
         </div>
       </div>
 
@@ -85,18 +88,18 @@
 
       <div class="result-card">
         <div class="team">
-          <img id="result-home-logo" src="images/logo.png" alt="Home team logo">
+          <img id="result-home-logo" src="images/logo.png" alt="Home team logo" />
           <span id="result-home-name">Loading...</span>
         </div>
 
         <div class="result-score">
           <span class="score" id="result-score">-</span>
-          <p class="competition" id="result-competition"></p>
-          <p class="stadium" id="result-venue"></p>
+          <p class="competition" id="result-competition">Competition</p>
+          <p class="stadium" id="result-venue">Venue</p>
         </div>
 
         <div class="team">
-          <img id="result-away-logo" src="images/logo.png" alt="Away team logo">
+          <img id="result-away-logo" src="images/logo.png" alt="Away team logo" />
           <span id="result-away-name">Loading...</span>
         </div>
       </div>
@@ -113,11 +116,26 @@
       <h2 class="section-title">Club Information</h2>
 
       <div class="info-grid">
-        <div class="info-card"><h3>Founded</h3><p>1905</p></div>
-        <div class="info-card"><h3>Ground</h3><p>Vitality Stadium</p></div>
-        <div class="info-card"><h3>Capacity</h3><p>11,300</p></div>
-        <div class="info-card"><h3>League</h3><p>EFL League One</p></div>
-        <div class="info-card"><h3>Head Coach</h3><p>Johannes Hoff Thorup</p></div>
+        <div class="info-card">
+          <h3>Founded</h3>
+          <p>1905</p>
+        </div>
+        <div class="info-card">
+          <h3>Ground</h3>
+          <p>Vitality Stadium</p>
+        </div>
+        <div class="info-card">
+          <h3>Capacity</h3>
+          <p>11,300</p>
+        </div>
+        <div class="info-card">
+          <h3>League</h3>
+          <p>EFL League One</p>
+        </div>
+        <div class="info-card">
+          <h3>Head Coach</h3>
+          <p>Johannes Hoff Thorup</p>
+        </div>
       </div>
     </div>
   </section>
@@ -126,7 +144,9 @@
   <section class="news">
     <div class="container">
       <h2 class="section-title">Latest News</h2>
-      <div class="news-grid" id="news-container"></div>
+      <div class="news-grid" id="news-container">
+        <p>Loading latest news...</p>
+      </div>
     </div>
   </section>
 
@@ -140,22 +160,44 @@
   </footer>
 
   <script>
+    // MOBILE MENU
     const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
 
     menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("show");
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", !expanded);
     });
 
     document.querySelectorAll(".nav-links a").forEach(link => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("show");
+        menuToggle.setAttribute("aria-expanded", "false");
       });
     });
 
+    // LOGO HELPER
     function getLogo(teamName, logoFile) {
       if (teamName === "Whistle FC") return "images/logo.png";
-      return logoFile ? "images/logos/" + logoFile : "images/logo.png";
+      return logoFile ? `images/logos/${logoFile}` : "images/logo.png";
+    }
+
+    // DATE FORMATTER
+    function formatDate(dateString, time = "") {
+      if (!dateString) return "Date TBC";
+
+      const date = new Date(dateString);
+      if (isNaN(date)) return "Date TBC";
+
+      const formatted = date.toLocaleDateString("en-GB", {
+        weekday: "short",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+
+      return time ? `${formatted} · ${time}` : formatted;
     }
 
     // NEWS
@@ -168,15 +210,24 @@
         const container = document.getElementById("news-container");
         container.innerHTML = "";
 
+        if (!data.length) {
+          container.innerHTML = "<p>No news articles available.</p>";
+          return;
+        }
+
         data.slice(0, 3).forEach(article => {
           const card = document.createElement("article");
           card.className = "news-card";
 
+          const previewText = article.text
+            ? article.text.substring(0, 140) + (article.text.length > 140 ? "..." : "")
+            : "Read the latest update from Whistle FC.";
+
           card.innerHTML = `
             ${article.image ? `<img src="${article.image}" alt="${article.title}">` : ""}
-            <h3>${article.title}</h3>
-            <p>${article.text}</p>
-            <a href="${article.link}">Read More →</a>
+            <h3>${article.title || "Untitled Article"}</h3>
+            <p>${previewText}</p>
+            <a href="${article.link || '#'}">Read More →</a>
           `;
 
           container.appendChild(card);
@@ -184,7 +235,8 @@
       })
       .catch(err => {
         console.error("Error loading news:", err);
-        document.getElementById("news-container").innerHTML = "<p>Unable to load latest news.</p>";
+        document.getElementById("news-container").innerHTML =
+          "<p>Unable to load latest news.</p>";
       });
 
     // NEXT MATCH
@@ -194,28 +246,44 @@
         return res.json();
       })
       .then(data => {
-        if (!data.length) return;
-        const next = data[0];
+        if (!Array.isArray(data) || !data.length) return;
 
-        const home = next.home || (next.homeaway === "H" ? "Whistle FC" : next.opponent);
-        const away = next.away || (next.homeaway === "A" ? "Whistle FC" : next.opponent);
+        const today = new Date();
+
+        const upcomingFixtures = data
+          .filter(match => new Date(match.date) >= today)
+          .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        if (!upcomingFixtures.length) {
+          document.getElementById("next-competition").innerText = "No upcoming fixtures";
+          document.getElementById("next-date").innerText = "";
+          document.getElementById("next-venue").innerText = "";
+          return;
+        }
+
+        const next = upcomingFixtures[0];
+
+        const home = next.home || (next.homeaway === "H" ? "Whistle FC" : next.opponent || "Opponent");
+        const away = next.away || (next.homeaway === "A" ? "Whistle FC" : next.opponent || "Opponent");
 
         const homeLogo = next.homelogo || (home === "Whistle FC" ? "logo.png" : next.logo);
         const awayLogo = next.awaylogo || (away === "Whistle FC" ? "logo.png" : next.logo);
 
         document.getElementById("next-home-logo").src = getLogo(home, homeLogo);
+        document.getElementById("next-home-logo").alt = `${home} logo`;
         document.getElementById("next-home-name").innerText = home;
 
         document.getElementById("next-away-logo").src = getLogo(away, awayLogo);
+        document.getElementById("next-away-logo").alt = `${away} logo`;
         document.getElementById("next-away-name").innerText = away;
 
-        document.getElementById("next-competition").innerText = next.competition || "TBC";
-        document.getElementById("next-date").innerText =
-          `${new Date(next.date).toDateString()} · ${next.time || "TBC"}`;
+        document.getElementById("next-competition").innerText = next.competition || "Competition TBC";
+        document.getElementById("next-date").innerText = formatDate(next.date, next.time);
         document.getElementById("next-venue").innerText = next.venue || "Venue TBC";
       })
       .catch(err => {
         console.error("Error loading next match:", err);
+        document.getElementById("next-competition").innerText = "Unable to load fixture";
       });
 
     // LATEST RESULT
@@ -225,30 +293,31 @@
         return res.json();
       })
       .then(data => {
-        if (!data.length) return;
+        if (!Array.isArray(data) || !data.length) return;
 
-        data.sort((a, b) => new Date(b.date) - new Date(a.date));
-        const match = data[0];
+        const sortedResults = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        const match = sortedResults[0];
 
         document.getElementById("result-home-logo").src = getLogo(match.home, match.homelogo);
-        document.getElementById("result-home-logo").alt = match.home + " logo";
-        document.getElementById("result-home-name").innerText = match.home;
+        document.getElementById("result-home-logo").alt = `${match.home} logo`;
+        document.getElementById("result-home-name").innerText = match.home || "Home";
 
         document.getElementById("result-away-logo").src = getLogo(match.away, match.awaylogo);
-        document.getElementById("result-away-logo").alt = match.away + " logo";
-        document.getElementById("result-away-name").innerText = match.away;
+        document.getElementById("result-away-logo").alt = `${match.away} logo`;
+        document.getElementById("result-away-name").innerText = match.away || "Away";
 
         document.getElementById("result-score").innerText = match.score || "-";
-        document.getElementById("result-competition").innerText = match.competition || "";
-        document.getElementById("result-venue").innerText = match.venue || "";
+        document.getElementById("result-competition").innerText = match.competition || "Competition";
+        document.getElementById("result-venue").innerText = match.venue || "Venue";
 
         const scoreEl = document.getElementById("result-score");
         if (match.result) {
-          scoreEl.className = "score " + match.result.toLowerCase();
+          scoreEl.className = `score ${match.result.toLowerCase()}`;
         }
       })
       .catch(err => {
         console.error("Error loading results:", err);
+        document.getElementById("result-home-name").innerText = "Unable to load result";
       });
   </script>
 
