@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whistle FC Stadium Redevelopment Update</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo"><img src="../images/logo.png" alt="Whistle FC Logo"></div>
+    <div class="club-title"><h1>Whistle Football Club</h1><p>News</p></div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a class="active" href="../news.html">News</a></li>
+    <li><a href="../players.html">Players</a></li>
+    <li><a href="../staff.html">Staff</a></li>
+    <li><a href="../history.html">History</a></li>
+    <li><a href="../fixtures.html">Fixtures</a></li>
+    <li><a href="../results.html">Results</a></li>
+    <li><a href="../leaguetable.html">League Table</a></li>
+  </ul>
+</nav>
+
+<div class="container article">
+
+  <h1 class="article-title">Whistle FC Confirm Vitality Stadium Redevelopment Plans for 2026 Off-Season</h1>
+
+  <p class="article-meta">
+    📅 9 April 2026 | Stadium Updates
+  </p>
+
+  <img src="../images/newstadium1.png" alt="Vitality Stadium Redevelopment Concept 1" class="article-image">
+
+  <div class="match-info-box">
+    <h3>Project Overview</h3>
+    <p><strong>Location:</strong> Vitality Stadium, Wetshil</p>
+    <p><strong>Capacity:</strong> Current 11,300 → Planned 20,200</p>
+    <p><strong>Owner:</strong> Oliver Wilkinson</p>
+    <p><strong>CEO:</strong> Martin Thrush</p>
+    <p><strong>Head Coach:</strong> Johannes Hoff Thorup</p>
+  </div>
+
+  <div class="article-body">
+
+    <p>
+      Whistle Football Club can confirm major redevelopment plans for our stadium. We are delighted to announce we have agreed a new sponsorship deal with <strong>Vitality<strong> which will see the ground renamed the <strong>Vitality Stadium</strong>. We want to place on record our appreciation for the support <strong>Mornflake<strong> have provided us over the last few seasons as we have climbed up the leagues.
+      
+      As part of the new sponsorship agreement, the club are pleased to reveal further plans for the redevelopment of our home, with major work set to take place over the upcoming 2026 off-season. The programme aims to expand capacity, modernise facilities, and enhance the matchday experience for supporters.
+    </p>
+
+    <img src="../images/newstadium2.png" alt="Vitality Stadium Redevelopment Concept 2" class="article-image">
+
+    <h2>The Vision and the Plan</h2>
+
+    <p>
+      The redevelopment includes demolition of the existing South Stand to make way for a new 7,000-seat grandstand, corner infills to increase general admission capacity by approximately 1,440 seats, vertical and horizontal expansion of the North and East Stands, and the creation of a new fan zone.
+    </p>
+
+    <ul>
+      <li>New stadium perimeter fence line with relocated turnstiles</li>
+      <li>Relocated ticket office at the new perimeter</li>
+      <li>Partial rerouting of pedestrian and cycle routes</li>
+      <li>Optimised car and cycle parking layout</li>
+      <li>New outside broadcasting (OB) area</li>
+      <li>Relocated floodlights and enhanced media facilities</li>
+    </ul>
+
+    <p>
+      Internal refurbishments of the East and West Stands will introduce three new hospitality spaces, while the South Stand upper tier will continue construction into the 2026/27 season. Full redevelopment is expected to increase overall stadium capacity to approximately 20,200 by 2027.
+    </p>
+
+    <img src="../images/newstadium3.png" alt="Vitality Stadium Redevelopment Concept 3" class="article-image">
+
+    <h2>Official Statements</h2>
+
+    <p>
+      The Wetshil Council has expressed its support for the club’s plans. Council Cabinet Member for Destination, Leisure and Commercial Operations, <strong>Cllr Rich Herrett</strong>, said:
+    </p>
+
+    <blockquote class="player-quote">
+      “The Council recognises how valuable Whistle FC is to Wetshil and the surrounding communities. We look forward to working with the club to improve the matchday experience for fans at Vitality Stadium via the appropriate planning and democratic processes.”
+    </blockquote>
+
+    <p>
+      Club owner <strong>Oliver Wilkinson</strong> added:
+    </p>
+
+    <blockquote class="player-quote">
+      “This redevelopment represents a huge step forward for Whistle FC. We want our supporters to enjoy modern facilities while we continue to build towards a sustainable future for the club.”
+    </blockquote>
+
+    <p>
+      CEO <strong>Martin Thrush</strong> highlighted the importance of careful planning:
+    </p>
+
+    <blockquote class="player-quote">
+      “Every phase of this project has been carefully designed to minimise disruption while maximising benefits. Fans will see real improvements on and off the pitch.”
+    </blockquote>
+
+    <p>
+      Head Coach <strong>Johannes Hoff Thorup</strong> also welcomed the plans, emphasising the impact on the team and community:
+    </p>
+
+    <blockquote class="player-quote">
+      “A modern stadium inspires both players and supporters. Vitality Stadium will continue to be a fortress for The Whistlers while accommodating our growing fanbase.”
+    </blockquote>
+
+    <h2>Construction Timeline</h2>
+
+    <p>
+      The redevelopment will proceed in phases, subject to planning approval:
+    </p>
+
+    <ul>
+      <li>Close of 2025/26 season: Demolition of the South Stand</li>
+      <li>Construction of new 3,000-seat lower tier South Stand</li>
+      <li>Infilling South-East and North-West corners</li>
+      <li>Internal refurbishment of East and West Stands, including hospitality spaces</li>
+      <li>Construction of South Stand upper tier to continue into 2026/27</li>
+      <li>North and East Stand extensions and remaining corner infills in 2027</li>
+    </ul>
+
+    <p>
+      Supporters are encouraged to follow updates via the club website and official channels throughout the redevelopment process.
+    </p>
+
+    <p>
+      <strong>Whistle FC is committed to ensuring that the Vitality Stadium remains a community hub and a home for exciting football for decades to come.</strong>
+    </p>
+
+  </div>
+
+  <a class="back-btn" href="../news.html">← Back to News</a>
+
+</div>
+
+<footer class="footer">
+© 2026 Whistle Football Club
+</footer>
+
+</body>
+</html>
