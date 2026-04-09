@@ -53,21 +53,21 @@
 
     <div class="match-card">
       <div class="team">
-        <img id="next-left-logo" alt="Opponent logo">
+        <img id="next-left-logo" alt="">
         <span id="next-left-name"></span>
       </div>
 
-  <div class="match-info">
-  <p class="competition" id="next-competition"></p>
-  <p class="match-vs">VS</p>
-  <p class="kickoff" id="next-date"></p>
-  <p class="countdown" id="countdown"></p>
-  <p class="live-score" id="live-score"></p>
-  <p class="stadium" id="next-venue"></p>
-</div>
+      <div class="match-info">
+        <p class="competition" id="next-competition"></p>
+        <p class="match-vs">VS</p>
+        <p class="kickoff" id="next-date"></p>
+        <p class="countdown" id="countdown"></p>
+        <p class="live-score" id="live-score"></p>
+        <p class="stadium" id="next-venue"></p>
+      </div>
 
       <div class="team">
-        <img id="next-right-logo" alt="Opponent logo">
+        <img id="next-right-logo" alt="">
         <span id="next-right-name"></span>
       </div>
     </div>
@@ -130,7 +130,6 @@
   <div class="container">
     <p>© 2026 Whistle Football Club</p>
     <p>Vitality Stadium | Wetshil, England</p>
-    <p>Follow us: Twitter | Instagram | YouTube</p>
   </div>
 </footer>
 
@@ -148,7 +147,7 @@ fetch("news/news.json")
     card.className = "news-card";
 
     card.innerHTML = `
-      <img src="${article.image}" alt="">
+      <img src="${article.image}">
       <h3>${article.title}</h3>
       <p>${article.text}</p>
       <a href="${article.link}">Read More →</a>
@@ -169,12 +168,8 @@ fetch("fixtures/fixtures.json")
 .then(data => {
   const next = data[0];
 
-  let left = {}, right = {};
-
-  if(next.home && next.away){
-    left = {name: next.home, logo: next.homelogo};
-    right = {name: next.away, logo: next.awaylogo};
-  }
+  const left = {name: next.home, logo: next.homelogo};
+  const right = {name: next.away, logo: next.awaylogo};
 
   document.getElementById("next-left-logo").src = getLogo(left.name, left.logo);
   document.getElementById("next-left-name").innerText = left.name;
@@ -185,7 +180,6 @@ fetch("fixtures/fixtures.json")
   document.getElementById("next-competition").innerText = next.competition;
   document.getElementById("next-venue").innerText = next.venue;
 
-  // Combine date + time properly
   const matchDate = new Date(next.date + "T" + next.time);
 
   document.getElementById("next-date").innerText =
@@ -198,23 +192,27 @@ fetch("fixtures/fixtures.json")
     const now = new Date();
     const diff = matchDate - now;
 
+    countdownEl.className = "countdown";
+
     if(next.status === "live"){
-      countdownEl.innerText = "🔴 LIVE NOW";
+      countdownEl.classList.add("live");
+      countdownEl.innerText = "🔴 LIVE";
 
       liveScoreEl.innerText =
         `${next.homeScore} - ${next.awayScore}`;
-
       return;
     }
 
     if(next.status === "finished"){
+      countdownEl.classList.add("finished");
       countdownEl.innerText = "Full Time";
 
       liveScoreEl.innerText =
         `${next.homeScore} - ${next.awayScore}`;
-
       return;
     }
+
+    countdownEl.classList.add("upcoming");
 
     if(diff <= 0){
       countdownEl.innerText = "Kick-off!";
