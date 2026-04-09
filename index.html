@@ -165,7 +165,7 @@ function getLogo(name, file){
   return name === "Whistle FC" ? clubLogo : "images/logos/" + file;
 }
 
-/* NEXT MATCH (polling every 10 seconds) */
+/* NEXT MATCH WITH LIVE TIMER */
 function updateNextMatch() {
   fetch("fixtures/fixtures.json?t=" + new Date().getTime())
   .then(res => res.json())
@@ -196,7 +196,14 @@ function updateNextMatch() {
     // LIVE
     if(next.status === "live"){
       countdownEl.className = "countdown live";
-      countdownEl.innerText = "🔴 LIVE";
+
+      // Calculate minutes elapsed
+      const now = new Date();
+      let elapsed = Math.floor((now - matchDate) / (1000 * 60));
+      if(elapsed < 0) elapsed = 0;
+      if(elapsed > 90) elapsed = 90; // cap at 90 mins
+      countdownEl.innerText = `🔴 LIVE · ${elapsed}'`;
+
       liveScoreEl.innerText = `${next.homeScore} - ${next.awayScore}`;
     }
     // FINISHED
