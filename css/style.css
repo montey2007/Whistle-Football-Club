@@ -13,7 +13,6 @@ body {
   max-width: 1200px;
   margin: auto;
   padding: 40px 25px;
-  box-sizing: border-box;
 }
 
 /* =========================
@@ -31,7 +30,6 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
 .logo img {
@@ -66,11 +64,10 @@ body {
   justify-content: center;
   list-style: none;
   padding: 14px 0;
-  flex-wrap: wrap;
 }
 
 .navbar li {
-  margin: 0 12px;
+  margin: 0 18px;
 }
 
 .navbar a {
@@ -171,11 +168,25 @@ body {
   font-size: 26px;
 }
 
-.club-info, .news, .next-match, .latest-result {
+.club-info {
+  background: #f0f0f0;
   padding: 60px 0;
 }
 
-.next-match, .latest-result {
+.news {
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.next-match {
+  background: #f5f5f5;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.latest-result {
+  background: white;
+  padding: 60px 0;
   text-align: center;
 }
 
@@ -194,7 +205,6 @@ body {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  flex-wrap: wrap;
 }
 
 .team {
@@ -225,7 +235,7 @@ body {
   font-weight: 700;
 }
 
-.competition, .stadium {
+.competition {
   font-size: 14px;
   opacity: 0.8;
 }
@@ -233,6 +243,12 @@ body {
 .kickoff {
   font-size: 16px;
   font-weight: 600;
+}
+
+.stadium {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 4px;
 }
 
 /* =========================
@@ -249,9 +265,18 @@ body {
   background: #e53935;
 }
 
-.countdown.upcoming { background: #e53935; }
-.countdown.live { background: #b71c1c; animation: pulse 1s infinite; }
-.countdown.finished { background: #555; }
+.countdown.upcoming {
+  background: #e53935;
+}
+
+.countdown.live {
+  background: #b71c1c;
+  animation: pulse 1s infinite;
+}
+
+.countdown.finished {
+  background: #555;
+}
 
 @keyframes pulse {
   0% { opacity: 1; }
@@ -310,8 +335,6 @@ body {
   width: 100%;
   border-radius: 8px;
   margin-bottom: 15px;
-  object-fit: cover;
-  max-height: 220px;
 }
 
 .news-card a {
@@ -352,14 +375,11 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  overflow-x: auto;
-  display: block;
 }
 
 td, th {
   padding: 12px;
   border-bottom: 1px solid #ddd;
-  word-break: break-word;
 }
 
 th {
@@ -373,7 +393,6 @@ th {
 .article {
   max-width: 850px;
   margin: auto;
-  padding: 0 15px;
 }
 
 .article-title {
@@ -392,14 +411,6 @@ th {
 .article-body p {
   font-size: 18px;
   margin-bottom: 18px;
-}
-
-.article-body img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  display: block;
 }
 
 /* =========================
@@ -447,14 +458,15 @@ th {
   .navbar ul {
     overflow-x: auto;
     justify-content: flex-start;
-    flex-wrap: nowrap;
   }
 
   .hero {
     height: 300px;
   }
 
-  .hero h2 { font-size: 26px; }
+  .hero h2 {
+    font-size: 26px;
+  }
 
   .match-card,
   .result-card {
@@ -463,37 +475,55 @@ th {
     gap: 18px;
   }
 
-  .team span { font-size: 16px; }
+  .team span {
+    font-size: 16px;
+  }
 
-  .live-score { font-size: 2rem; }
+  .live-score {
+    font-size: 2rem;
+  }
 
   .info-grid,
   .news-grid {
     grid-template-columns: 1fr;
   }
+}
 
-  table, th, td {
-    font-size: 14px;
-    padding: 8px;
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 22px;
+  }
+
+  .countdown {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .team img {
+    max-width: 60px;
+  }
+
+  .live-score {
+    font-size: 1.6rem;
+  }
+   /* =========================
+   ARTICLE IMAGES RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .article-body img {
+    max-width: 90%; /* Shrinks images slightly on tablets */
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 @media (max-width: 480px) {
-  .hero h2 { font-size: 22px; }
-
-  .countdown { font-size: 0.85rem; padding: 6px 10px; }
-
-  .team img { max-width: 60px; }
-
-  .live-score { font-size: 1.6rem; }
-
-  .article-body p { font-size: 16px; }
-
-  .news-card img { max-height: 180px; }
-
-  table {
-    font-size: 12px;
-    display: block;
-    overflow-x: auto;
+  .article-body img {
+    max-width: 100%; /* Ensures full width but can shrink further if needed */
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
   }
+}
 }
