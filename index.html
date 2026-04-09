@@ -14,9 +14,7 @@
 <!-- HEADER -->
 <header class="main-header">
   <div class="container header-container">
-    <div class="logo">
-      <img src="images/logo.png" alt="Whistle FC logo">
-    </div>
+    <img src="images/logo.png" alt="Whistle FC logo" class="logo">
 
     <div class="club-title">
       <h1>Whistle Football Club</h1>
@@ -29,11 +27,11 @@
 <nav class="navbar">
   <div class="container nav-container">
 
-    <button class="menu-toggle" id="menu-toggle" aria-expanded="false">
+    <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">
       ☰
     </button>
 
-    <ul class="nav-links" id="nav-links">
+    <ul id="nav-links" class="nav-links">
       <li><a class="active" href="index.html">Home</a></li>
       <li><a href="news.html">News</a></li>
       <li><a href="players.html">Players</a></li>
@@ -58,7 +56,7 @@
 
 <main>
 
-<!-- MATCH + RESULT (SIDE BY SIDE ON DESKTOP) -->
+<!-- MATCH + RESULT -->
 <section class="container">
   <div class="grid grid-2">
 
@@ -70,7 +68,7 @@
         <div class="match-row">
 
           <div class="team">
-            <img id="next-home-logo" src="images/logo.png">
+            <img id="next-home-logo" src="images/logo.png" alt="Home team logo">
             <span id="next-home-name">Whistle FC</span>
           </div>
 
@@ -82,17 +80,19 @@
           </div>
 
           <div class="team">
-            <img id="next-away-logo" src="images/logo.png">
+            <img id="next-away-logo" src="images/logo.png" alt="Away team logo">
             <span id="next-away-name">Opponent</span>
           </div>
 
         </div>
       </div>
 
-      <a href="fixtures.html" class="btn">All Fixtures</a>
+      <div class="btn-wrapper">
+        <a href="fixtures.html" class="btn">All Fixtures</a>
+      </div>
     </div>
 
-    <!-- LATEST RESULT -->
+    <!-- RESULT -->
     <div>
       <h2 class="section-title">Latest Result</h2>
 
@@ -100,7 +100,7 @@
         <div class="match-row">
 
           <div class="team">
-            <img id="result-home-logo" src="images/logo.png">
+            <img id="result-home-logo" src="images/logo.png" alt="Home team logo">
             <span id="result-home-name">Loading...</span>
           </div>
 
@@ -111,14 +111,16 @@
           </div>
 
           <div class="team">
-            <img id="result-away-logo" src="images/logo.png">
+            <img id="result-away-logo" src="images/logo.png" alt="Away team logo">
             <span id="result-away-name">Loading...</span>
           </div>
 
         </div>
       </div>
 
-      <a href="results.html" class="btn">All Results</a>
+      <div class="btn-wrapper">
+        <a href="results.html" class="btn">All Results</a>
+      </div>
     </div>
 
   </div>
@@ -157,134 +159,106 @@
   </div>
 </footer>
 
-<!-- JS -->
+<!-- SCRIPT -->
 <script>
+
+/* MOBILE MENU */
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
 menuToggle.addEventListener("click", () => {
   navLinks.classList.toggle("show");
 });
-    // NEWS
-    fetch("news/news.json")
-      .then(res => {
-        if (!res.ok) throw new Error("News file not found");
-        return res.json();
-      })
-      .then(data => {
-        const container = document.getElementById("news-container");
-        container.innerHTML = "";
 
-        if (!data.length) {
-          container.innerHTML = "<p>No news articles available.</p>";
-          return;
-        }
+/* HELPERS */
+function getLogo(teamName, logoFile) {
+  if (teamName === "Whistle FC") return "images/logo.png";
+  return logoFile ? `images/logos/${logoFile}` : "images/logo.png";
+}
 
-        data.slice(0, 3).forEach(article => {
-          const card = document.createElement("article");
-          card.className = "news-card";
+function formatDate(dateString, time = "") {
+  if (!dateString) return "Date TBC";
 
-          const previewText = article.text
-            ? article.text.substring(0, 140) + (article.text.length > 140 ? "..." : "")
-            : "Read the latest update from Whistle FC.";
+  const date = new Date(dateString);
+  if (isNaN(date)) return "Date TBC";
 
-          card.innerHTML = `
-            ${article.image ? `<img src="${article.image}" alt="${article.title}">` : ""}
-            <h3>${article.title || "Untitled Article"}</h3>
-            <p>${previewText}</p>
-            <a href="${article.link || '#'}">Read More →</a>
-          `;
+  const formatted = date.toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
 
-          container.appendChild(card);
-        });
-      })
-      .catch(err => {
-        console.error("Error loading news:", err);
-        document.getElementById("news-container").innerHTML =
-          "<p>Unable to load latest news.</p>";
-      });
+  return time ? `${formatted} · ${time}` : formatted;
+}
 
-    // NEXT MATCH
-    fetch("fixtures/fixtures.json")
-      .then(res => {
-        if (!res.ok) throw new Error("Fixtures file not found");
-        return res.json();
-      })
-      .then(data => {
-        if (!Array.isArray(data) || !data.length) return;
+/* NEWS */
+fetch("news/news.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("news-container");
+    container.innerHTML = "";
 
-        const today = new Date();
+    if (!data.length) {
+      container.innerHTML = "<p>No news available.</p>";
+      return;
+    }
 
-        const upcomingFixtures = data
-          .filter(match => new Date(match.date) >= today)
-          .sort((a, b) => new Date(a.date) - new Date(b.date));
+    data.slice(0, 3).forEach(article => {
+      const card = document.createElement("article");
+      card.className = "card";
 
-        if (!upcomingFixtures.length) {
-          document.getElementById("next-competition").innerText = "No upcoming fixtures";
-          document.getElementById("next-date").innerText = "";
-          document.getElementById("next-venue").innerText = "";
-          return;
-        }
+      card.innerHTML = `
+        ${article.image ? `<img src="${article.image}" alt="${article.title}">` : ""}
+        <h3>${article.title}</h3>
+        <p>${article.text?.slice(0, 120) || ""}...</p>
+        <a href="${article.link || "#"}">Read More →</a>
+      `;
 
-        const next = upcomingFixtures[0];
+      container.appendChild(card);
+    });
+  });
 
-        const home = next.home || (next.homeaway === "H" ? "Whistle FC" : next.opponent || "Opponent");
-        const away = next.away || (next.homeaway === "A" ? "Whistle FC" : next.opponent || "Opponent");
+/* NEXT MATCH */
+fetch("fixtures/fixtures.json")
+  .then(res => res.json())
+  .then(data => {
+    const upcoming = data
+      .filter(m => new Date(m.date) >= new Date())
+      .sort((a,b) => new Date(a.date) - new Date(b.date))[0];
 
-        const homeLogo = next.homelogo || (home === "Whistle FC" ? "logo.png" : next.logo);
-        const awayLogo = next.awaylogo || (away === "Whistle FC" ? "logo.png" : next.logo);
+    if (!upcoming) return;
 
-        document.getElementById("next-home-logo").src = getLogo(home, homeLogo);
-        document.getElementById("next-home-logo").alt = `${home} logo`;
-        document.getElementById("next-home-name").innerText = home;
+    document.getElementById("next-home-name").textContent = upcoming.home;
+    document.getElementById("next-away-name").textContent = upcoming.away;
 
-        document.getElementById("next-away-logo").src = getLogo(away, awayLogo);
-        document.getElementById("next-away-logo").alt = `${away} logo`;
-        document.getElementById("next-away-name").innerText = away;
+    document.getElementById("next-home-logo").src = getLogo(upcoming.home, upcoming.homelogo);
+    document.getElementById("next-away-logo").src = getLogo(upcoming.away, upcoming.awaylogo);
 
-        document.getElementById("next-competition").innerText = next.competition || "Competition TBC";
-        document.getElementById("next-date").innerText = formatDate(next.date, next.time);
-        document.getElementById("next-venue").innerText = next.venue || "Venue TBC";
-      })
-      .catch(err => {
-        console.error("Error loading next match:", err);
-        document.getElementById("next-competition").innerText = "Unable to load fixture";
-      });
+    document.getElementById("next-competition").textContent = upcoming.competition;
+    document.getElementById("next-date").textContent = formatDate(upcoming.date, upcoming.time);
+    document.getElementById("next-venue").textContent = upcoming.venue;
+  });
 
-    // LATEST RESULT
-    fetch("results/results.json")
-      .then(res => {
-        if (!res.ok) throw new Error("Results file not found");
-        return res.json();
-      })
-      .then(data => {
-        if (!Array.isArray(data) || !data.length) return;
+/* RESULT */
+fetch("results/results.json")
+  .then(res => res.json())
+  .then(data => {
+    const match = data.sort((a,b)=> new Date(b.date)-new Date(a.date))[0];
+    if (!match) return;
 
-        const sortedResults = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-        const match = sortedResults[0];
+    document.getElementById("result-home-name").textContent = match.home;
+    document.getElementById("result-away-name").textContent = match.away;
 
-        document.getElementById("result-home-logo").src = getLogo(match.home, match.homelogo);
-        document.getElementById("result-home-logo").alt = `${match.home} logo`;
-        document.getElementById("result-home-name").innerText = match.home || "Home";
+    document.getElementById("result-home-logo").src = getLogo(match.home, match.homelogo);
+    document.getElementById("result-away-logo").src = getLogo(match.away, match.awaylogo);
 
-        document.getElementById("result-away-logo").src = getLogo(match.away, match.awaylogo);
-        document.getElementById("result-away-logo").alt = `${match.away} logo`;
-        document.getElementById("result-away-name").innerText = match.away || "Away";
+    document.getElementById("result-score").textContent = match.score;
+    document.getElementById("result-competition").textContent = match.competition;
+    document.getElementById("result-venue").textContent = match.venue;
+  });
 
-        document.getElementById("result-score").innerText = match.score || "-";
-        document.getElementById("result-competition").innerText = match.competition || "Competition";
-        document.getElementById("result-venue").innerText = match.venue || "Venue";
-
-        const scoreEl = document.getElementById("result-score");
-        if (match.result) {
-          scoreEl.className = `score ${match.result.toLowerCase()}`;
-        }
-      })
-      .catch(err => {
-        console.error("Error loading results:", err);
-        document.getElementById("result-home-name").innerText = "Unable to load result";
-      });
-  </script>
+</script>
 
 </body>
 </html>
