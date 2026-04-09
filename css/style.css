@@ -506,24 +506,4 @@ th {
   .live-score {
     font-size: 1.6rem;
   }
-   /* =========================
-   ARTICLE IMAGES RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  .article-body img {
-    max-width: 90%; /* Shrinks images slightly on tablets */
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .article-body img {
-    max-width: 100%; /* Ensures full width but can shrink further if needed */
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 6px;
-  }
-}
 }
