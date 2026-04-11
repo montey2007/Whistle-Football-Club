@@ -741,3 +741,23 @@ th {
     max-width: 85%;
   }
 }
+/* =========================
+   LEAGUE TABLE OVERRIDES
+========================= */
+
+/* Stronger Whistle highlight */
+.league-table tr.whistle {
+  background: #ffd6d6 !important;   /* deeper red tint */
+  border-left: 6px solid #ff0000;
+  font-weight: 700;
+}
+
+/* Ensure it overrides relegation */
+.league-table tr.relegation.whistle {
+  background: #ffc2c2 !important;
+}
+
+/* Optional: make text slightly darker red */
+.league-table tr.whistle td {
+  color: #990000;
+}
