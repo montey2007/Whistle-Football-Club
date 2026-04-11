@@ -9,54 +9,51 @@
 
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="main-header">
-<div class="header-container">
-
-<div class="logo">
-<img src="images/logo.png" alt="Whistle FC Logo">
-</div>
-
-<div class="club-title">
-<h1>Whistle Football Club</h1>
-<p>Results</p>
-</div>
-
-</div>
+  <div class="header-container">
+    <div class="logo">
+      <img src="images/logo.png" alt="Whistle FC Logo">
+    </div>
+    <div class="club-title">
+      <h1>Whistle Football Club</h1>
+      <p>Results</p>
+    </div>
+  </div>
 </header>
 
+<!-- NAV -->
 <nav class="navbar">
-<ul>
-
-<li><a href="index.html">Home</a></li>
-<li><a href="news.html">News</a></li>
-<li><a href="players.html">Players</a></li>
-<li><a href="staff.html">Staff</a></li>
-<li><a href="history.html">History</a></li>
-<li><a href="fixtures.html">Fixtures</a></li>
-<li><a class="active" href="results.html">Results</a></li>
-<li><a href="leaguetable.html">League Table</a></li>
-
-</ul>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="players.html">Players</a></li>
+    <li><a href="staff.html">Staff</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="fixtures.html">Fixtures</a></li>
+    <li><a class="active" href="results.html">Results</a></li>
+    <li><a href="leaguetable.html">League Table</a></li>
+  </ul>
 </nav>
 
 <div class="container">
 
 <section class="results-section">
 
-<h2>Season Results</h2>
+<h2 class="section-title">Season Results</h2>
 
+<div class="table-wrapper">
 <table>
 
 <thead>
 <tr>
 <th>Date</th>
 <th>Opponent</th>
-<th>H/A</th>
+<th>Venue</th>
 <th>Score</th>
 <th>Competition</th>
 <th>Result</th>
@@ -66,11 +63,18 @@
 <tbody id="results-table"></tbody>
 
 </table>
-
-</section>
-
 </div>
+</section>
+  
+<footer>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Whistle Football Club</p>
+    <p>Vitality Stadium | Wetshil, England</p>
+  </div>
+</footer>
 
+<!-- SCRIPT -->
 <script>
 fetch("results/results.json")
 .then(res => res.json())
@@ -78,49 +82,47 @@ fetch("results/results.json")
 
 const table = document.getElementById("results-table");
 
-// Sort by newest date first
+// Sort newest first
 data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 data.forEach(match => {
 
-const isWhistleHome = match.home === "Whistle FC";
+const isHome = match.home === "Whistle FC";
+const opponent = isHome ? match.away : match.home;
+const venue = isHome ? "Home" : "Away";
 
-// Opponent + logo
-const opponent = isWhistleHome ? match.away : match.home;
-const opponentLogo = isWhistleHome ? match.awaylogo : match.homelogo;
+// Format date nicely
+const dateObj = new Date(match.date);
+const formattedDate = dateObj.toLocaleDateString("en-GB", {
+  weekday: "short",
+  day: "numeric",
+  month: "short"
+});
 
-// H or A
-const homeAway = isWhistleHome ? "H" : "A";
-
-// Format date
-const formattedDate = new Date(match.date).toLocaleDateString("en-GB");
+// Work out result class
+let resultClass = "";
+if (match.result === "W") resultClass = "win";
+if (match.result === "D") resultClass = "draw";
+if (match.result === "L") resultClass = "loss";
 
 // Create row
 const row = document.createElement("tr");
 
 row.innerHTML = `
-<td>${formattedDate}</td>
-
-<td class="opponent-cell">
-  ${opponent}
-</td>
-
-<td>${homeAway}</td>
-
-<td>${match.score}</td>
-
-<td>${match.competition}</td>
-
-<td class="result ${match.result.toLowerCase()}">${match.result}</td>
+<td data-label="Date">${formattedDate}</td>
+<td data-label="Opponent">${opponent}</td>
+<td data-label="Venue">${venue}</td>
+<td data-label="Score">${match.score}</td>
+<td data-label="Competition">${match.competition}</td>
+<td data-label="Result" class="result ${resultClass}">${match.result}</td>
 `;
+
 table.appendChild(row);
 
 });
 
 })
-.catch(err => {
-console.error("Error loading results:", err);
-});
+.catch(err => console.error("Error loading results:", err));
 </script>
 
 </body>
