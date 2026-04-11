@@ -741,3 +741,58 @@ th {
     max-width: 85%;
   }
 }
+/* =========================
+   RESPONSIVE TABLE FIX
+========================= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  min-width: 600px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+tbody tr:hover {
+  background: #f9f9f9;
+}
+
+/* MOBILE TABLE TRANSFORM */
+@media (max-width: 600px) {
+
+  table thead {
+    display: none;
+  }
+
+  table, tbody, tr, td {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+
+  td {
+    padding: 8px 10px;
+    border: none;
+    font-size: 14px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    display: block;
+    color: #c00000;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+}
