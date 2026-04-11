@@ -223,11 +223,6 @@ td, th {
   overflow: hidden;
 }
 
-/* Zones */
-.league-table tr.promotion { background: #e8f5e9; }
-.league-table tr.playoff { background: #fff8e1; }
-.league-table tr.relegation { background: #ffebee; }
-
 /* Whistle highlight (clean + no !important needed) */
 .league-table tr.whistle {
   background: #ffd6d6;
@@ -246,6 +241,25 @@ td, th {
 /* Hover */
 .league-table tbody tr:hover {
   background: #f9f9f9;
+}
+
+/* =========================
+   LEAGUE TABLE ZONE BARS
+========================= */
+
+/* Promotion (green) */
+.league-table tr.promotion {
+  border-left: 5px solid #2e7d32;
+}
+
+/* Playoffs (orange/yellow) */
+.league-table tr.playoff {
+  border-left: 5px solid #f9a825;
+}
+
+/* Relegation (red) */
+.league-table tr.relegation {
+  border-left: 5px solid #c62828;
 }
 
 /* =========================
