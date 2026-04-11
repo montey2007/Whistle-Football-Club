@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-   <Style>
+<style>
+
 /* =========================
    LEAGUE TABLE BASE
 ========================= */
@@ -43,7 +44,7 @@
 }
 
 /* =========================
-   ZONE BARS (LEFT INDICATOR ONLY)
+   ZONE INDICATORS (LEFT BAR ONLY)
 ========================= */
 
 .league-table tr.promotion {
@@ -59,7 +60,7 @@
 }
 
 /* =========================
-   WHISTLE (FULL HIGHLIGHT)
+   WHISTLE (FULL ROW HIGHLIGHT - OVERRIDES EVERYTHING)
 ========================= */
 
 .league-table tr.whistle {
@@ -72,7 +73,7 @@
   color: #990000;
 }
 
-/* If Whistle is also in a zone, it still overrides */
+/* If Whistle is also in a zone, still override border */
 .league-table tr.whistle.promotion,
 .league-table tr.whistle.playoff,
 .league-table tr.whistle.relegation {
@@ -106,6 +107,7 @@
     min-width: 120px;
   }
 }
+
 </style>
 
 </head>
@@ -219,12 +221,10 @@ leagueData.forEach(team => {
   let name = team.team;
   if (name === "Luton Town") name = "Whistle FC";
 
-  // Zones
   if (team.position <= 2) row.classList.add("promotion");
   else if (team.position <= 6) row.classList.add("playoff");
   else if (team.position >= 21) row.classList.add("relegation");
 
-  // Highlight Whistle
   if (name === "Whistle FC") row.classList.add("whistle");
 
   row.innerHTML = `
