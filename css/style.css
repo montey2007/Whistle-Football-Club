@@ -796,3 +796,15 @@ tbody tr:hover {
     font-size: 13px;
   }
 }
+
+td[data-label="Venue"] {
+  font-weight: 600;
+}
+
+td[data-label="Venue"]:contains("Home") {
+  color: #2e7d32;
+}
+
+td[data-label="Venue"]:contains("Away") {
+  color: #c00000;
+}
