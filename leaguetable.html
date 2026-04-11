@@ -10,8 +10,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
-
+   <Style>
 /* =========================
    LEAGUE TABLE BASE
 ========================= */
@@ -20,7 +19,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  background: white;
+  background: #fff;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -34,7 +33,7 @@
 
 .league-table th {
   background: #111;
-  color: white;
+  color: #fff;
   font-size: 14px;
 }
 
@@ -44,39 +43,55 @@
 }
 
 /* =========================
-   ROW HIGHLIGHTS
+   ZONE BARS (LEFT INDICATOR ONLY)
 ========================= */
 
 .league-table tr.promotion {
-  background: #e8f5e9;
+  border-left: 5px solid #2e7d32;
 }
 
 .league-table tr.playoff {
-  background: #fff8e1;
+  border-left: 5px solid #f9a825;
 }
 
 .league-table tr.relegation {
-  background: #ffebee;
+  border-left: 5px solid #c62828;
 }
+
+/* =========================
+   WHISTLE (FULL HIGHLIGHT)
+========================= */
 
 .league-table tr.whistle {
-  border-left: 4px solid #c00000;
+  background: #ffd6d6;
+  border-left: 6px solid #ff0000 !important;
   font-weight: 700;
-  background: #fff5f5;
 }
 
-/* Hover */
+.league-table tr.whistle td {
+  color: #990000;
+}
+
+/* If Whistle is also in a zone, it still overrides */
+.league-table tr.whistle.promotion,
+.league-table tr.whistle.playoff,
+.league-table tr.whistle.relegation {
+  border-left: 6px solid #ff0000 !important;
+}
+
+/* =========================
+   HOVER
+========================= */
+
 .league-table tbody tr:hover {
   background: #f9f9f9;
 }
 
 /* =========================
-   MOBILE SIMPLIFICATION
+   MOBILE
 ========================= */
 
 @media (max-width: 600px) {
-
-  /* Hide W D L */
   .col-extra {
     display: none;
   }
@@ -90,9 +105,7 @@
   .league-table td:nth-child(2) {
     min-width: 120px;
   }
-
 }
-
 </style>
 
 </head>
