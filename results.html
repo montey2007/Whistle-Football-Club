@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@
 
 <body>
 
-<!-- HEADER -->
 <header class="main-header">
   <div class="header-container">
     <div class="logo">
@@ -26,7 +24,6 @@
   </div>
 </header>
 
-<!-- NAV -->
 <nav class="navbar">
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -43,12 +40,9 @@
 <div class="container">
 
 <section class="results-section">
-
 <h2 class="section-title">Season Results</h2>
 
-<div class="table-wrapper">
-<table>
-
+<table class="desktop-table">
 <thead>
 <tr>
 <th>Date</th>
@@ -59,14 +53,15 @@
 <th>Result</th>
 </tr>
 </thead>
-
 <tbody id="results-table"></tbody>
-
 </table>
-</div>
+
+<div id="results-cards" class="mobile-cards"></div>
+
 </section>
-  
-<footer>
+
+</div>
+
 <footer class="footer">
   <div class="container">
     <p>© 2026 Whistle Football Club</p>
@@ -74,15 +69,14 @@
   </div>
 </footer>
 
-<!-- SCRIPT -->
 <script>
 fetch("results/results.json")
 .then(res => res.json())
 .then(data => {
 
 const table = document.getElementById("results-table");
+const cards = document.getElementById("results-cards");
 
-// Sort newest first
 data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 data.forEach(match => {
@@ -91,7 +85,6 @@ const isHome = match.home === "Whistle FC";
 const opponent = isHome ? match.away : match.home;
 const venue = isHome ? "Home" : "Away";
 
-// Format date nicely
 const dateObj = new Date(match.date);
 const formattedDate = dateObj.toLocaleDateString("en-GB", {
   weekday: "short",
@@ -99,30 +92,45 @@ const formattedDate = dateObj.toLocaleDateString("en-GB", {
   month: "short"
 });
 
-// Work out result class
 let resultClass = "";
 if (match.result === "W") resultClass = "win";
 if (match.result === "D") resultClass = "draw";
 if (match.result === "L") resultClass = "loss";
 
-// Create row
+/* TABLE */
 const row = document.createElement("tr");
-
 row.innerHTML = `
-<td data-label="Date">${formattedDate}</td>
-<td data-label="Opponent">${opponent}</td>
-<td data-label="Venue">${venue}</td>
-<td data-label="Score">${match.score}</td>
-<td data-label="Competition">${match.competition}</td>
-<td data-label="Result" class="result ${resultClass}">${match.result}</td>
+<td>${formattedDate}</td>
+<td>${opponent}</td>
+<td>${venue}</td>
+<td>${match.score}</td>
+<td>${match.competition}</td>
+<td class="result ${resultClass}">${match.result}</td>
+`;
+table.appendChild(row);
+
+/* CARD */
+const card = document.createElement("div");
+card.classList.add("fixture-card");
+
+card.innerHTML = `
+<div class="card-header">
+  <span>${formattedDate}</span>
+  <span class="result ${resultClass}">${match.result}</span>
+</div>
+
+<div class="card-body">
+  <h3>Whistle FC ${match.score} ${opponent}</h3>
+  <p>${match.competition}</p>
+  <p>${venue}</p>
+</div>
 `;
 
-table.appendChild(row);
+cards.appendChild(card);
 
 });
 
-})
-.catch(err => console.error("Error loading results:", err));
+});
 </script>
 
 </body>
