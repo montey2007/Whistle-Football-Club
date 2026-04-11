@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@
 
 <body>
 
-<!-- HEADER -->
 <header class="main-header">
   <div class="header-container">
     <div class="logo">
@@ -26,7 +24,6 @@
   </div>
 </header>
 
-<!-- NAV -->
 <nav class="navbar">
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -45,25 +42,27 @@
 <section class="fixtures-section">
 <h2 class="section-title">Upcoming Fixtures</h2>
 
-<div class="table-wrapper">
-<table>
+<!-- TABLE (DESKTOP) -->
+<table class="desktop-table">
 <thead>
 <tr>
 <th>Date</th>
 <th>Opponent</th>
-<th>H/A</th>
+<th>Venue</th>
 <th>Competition</th>
 <th>Kick Off</th>
 </tr>
 </thead>
-
 <tbody id="fixtures-table"></tbody>
 </table>
-</div>
+
+<!-- MOBILE CARDS -->
+<div id="fixtures-cards" class="mobile-cards"></div>
 
 </section>
 
-  <section>
+</div>
+
 <footer class="footer">
   <div class="container">
     <p>© 2026 Whistle Football Club</p>
@@ -71,27 +70,20 @@
   </div>
 </footer>
 
-  </section>
-
-
-<!-- SCRIPT -->
 <script>
 fetch("fixtures/fixtures.json")
 .then(res => res.json())
 .then(data => {
 
 const table = document.getElementById("fixtures-table");
+const cards = document.getElementById("fixtures-cards");
 
 data.forEach(match => {
 
-const row = document.createElement("tr");
-
-// Determine home/away
 const isHome = match.home === "Whistle FC";
 const opponent = isHome ? match.away : match.home;
-const homeAway = isHome ? "Home" : "Away";
+const venue = isHome ? "Home" : "Away";
 
-// Format date nicely
 const dateObj = new Date(match.date);
 const formattedDate = dateObj.toLocaleDateString("en-GB", {
   weekday: "short",
@@ -99,16 +91,35 @@ const formattedDate = dateObj.toLocaleDateString("en-GB", {
   month: "short"
 });
 
-// Build row with mobile labels
+/* DESKTOP TABLE */
+const row = document.createElement("tr");
 row.innerHTML = `
-<td data-label="Date">${formattedDate}</td>
-<td data-label="Opponent">${opponent}</td>
-<td data-label="Venue">${homeAway}</td>
-<td data-label="Competition">${match.competition}</td>
-<td data-label="Kick Off">${match.time}</td>
+<td>${formattedDate}</td>
+<td>${opponent}</td>
+<td>${venue}</td>
+<td>${match.competition}</td>
+<td>${match.time}</td>
+`;
+table.appendChild(row);
+
+/* MOBILE CARD */
+const card = document.createElement("div");
+card.classList.add("fixture-card");
+
+card.innerHTML = `
+<div class="card-header">
+  <span>${formattedDate}</span>
+  <span class="venue ${venue.toLowerCase()}">${venue}</span>
+</div>
+
+<div class="card-body">
+  <h3>Whistle FC vs ${opponent}</h3>
+  <p>${match.competition}</p>
+  <p><strong>Kick Off:</strong> ${match.time}</p>
+</div>
 `;
 
-table.appendChild(row);
+cards.appendChild(card);
 
 });
 
