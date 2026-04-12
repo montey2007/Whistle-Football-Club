@@ -1,22 +1,5 @@
 [
   {
-    "date": "2026-04-12",
-    "time": "15:00",
-    "home": "Whistle FC",
-    "homelogo": "logo.png",
-    "away": "Stockport County",
-    "awaylogo": "stockportlogo.png",
-    "competition": "EFL Trophy Final",
-    "venue": "Wembley Stadium",
-    "status": "upcoming",
-    "homeScore": 0,
-    "awayScore": 0,
-    "stoppageFirstHalf": 0,
-    "stoppageSecondHalf": 0,
-    "extraTime": false,
-    "penalties": false
-  },
-  {
     "date": "2026-04-15",
     "time": "19:45",
     "home": "Whistle FC",
