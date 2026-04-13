@@ -92,26 +92,11 @@ section {
   flex-wrap: wrap;
 }
 
-.navbar a {
-  display: inline-block; /* 🔥 FIX */
-  position: relative;
+.navbar a.active {
+  background: rgba(255, 45, 45, 0.15);
+  padding: 6px 10px;
+  border-radius: 6px;
 }
-
-.navbar a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  height: 2px;
-  width: 0;
-  background: var(--accent);
-  transition: 0.3s;
-}
-
-.navbar a:hover::after,
-.navbar a.active::after {
-  width: 100%;
-}
-
 /* =========================
    HERO
 ========================= */
