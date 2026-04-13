@@ -194,6 +194,10 @@ section {
   color: var(--accent);
   font-weight: 700;
 }
+.next-match .container,
+.latest-result .container {
+  max-width: 900px;
+}
 
 /* =========================
    NEWS GRID
