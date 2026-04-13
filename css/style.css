@@ -344,3 +344,87 @@ section {
     font-size: 32px;
   }
 }
+/* =========================
+   RESULTS TABLE (DESKTOP)
+========================= */
+.results-section table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.results-section th {
+  background: var(--primary);
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.results-section td {
+  padding: 12px;
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 14px;
+}
+
+.results-section tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* RESULT COLOURS */
+.result.win { color: #4caf50; font-weight: 600; }
+.result.draw { color: #ffc107; font-weight: 600; }
+.result.loss { color: #f44336; font-weight: 600; }
+
+/* =========================
+   MOBILE TRANSFORM (CARDS)
+========================= */
+@media (max-width: 768px) {
+
+  .results-section table,
+  .results-section thead {
+    display: none; /* hide full table */
+  }
+
+  .results-section tbody {
+    display: block;
+  }
+
+  .results-section tr {
+    display: block;
+    background: var(--surface);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .results-section td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border: none;
+    font-size: 14px;
+  }
+
+  /* labels (left side) */
+  .results-section td::before {
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* label mapping */
+  .results-section td:nth-child(1)::before { content: "Date"; }
+  .results-section td:nth-child(2)::before { content: "Opponent"; }
+  .results-section td:nth-child(3)::before { content: "H/A"; }
+  .results-section td:nth-child(4)::before { content: "Score"; }
+  .results-section td:nth-child(5)::before { content: "Competition"; }
+  .results-section td:nth-child(6)::before { content: "Result"; }
+
+  /* make score stand out */
+  .results-section td:nth-child(4) {
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
