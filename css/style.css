@@ -304,14 +304,32 @@ section {
 .result.loss { color: #f44336; }
 
 /* league */
-.league-table td:nth-child(2) {
-  text-align: left;
-  font-weight: 600;
+.league-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.08); /* subtle dark glow */
+  transform: scale(1.01);
+  transition: 0.2s;
 }
 
+/* WHISTLE ROW (ENHANCED) */
 .league-table tr.whistle {
-  background: rgba(192,0,0,0.2);
-  border-left: 5px solid var(--primary);
+  background: linear-gradient(90deg, #c00000, #7a0000);
+  border-left: 6px solid #ff2d2d !important;
+  box-shadow: 0 0 15px rgba(255, 45, 45, 0.7);
+  transform: scale(1.02);
+  position: relative;
+  z-index: 2;
+}
+
+/* TEXT */
+.league-table tr.whistle td {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* KEEP RED ON HOVER */
+.league-table tr.whistle:hover {
+  background: linear-gradient(90deg, #c00000, #7a0000);
+  transform: scale(1.03);
 }
 
 /* =========================
