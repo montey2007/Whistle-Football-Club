@@ -198,6 +198,16 @@ section {
 .latest-result .container {
   max-width: 900px;
 }
+.match-info,
+.result-score {
+  text-align: center;
+}
+.next-match .btn,
+.latest-result .btn {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0;
+}
 
 /* =========================
    NEWS GRID
