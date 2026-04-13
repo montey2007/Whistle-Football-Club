@@ -91,6 +91,12 @@ section {
   list-style: none;
   flex-wrap: wrap;
 }
+.navbar a,
+.navbar a:visited,
+.navbar a:hover,
+.navbar a:active {
+  color: var(--text);
+}
 
 .navbar a.active {
   background: rgba(255, 45, 45, 0.15);
