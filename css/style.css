@@ -338,3 +338,109 @@ section {
     font-weight: 600;
   }
 }
+/* =========================
+   ARTICLE PAGE STYLING
+========================= */
+
+.article {
+  max-width: 850px;
+}
+
+/* TITLE */
+.article-title {
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+/* META (date/type) */
+.article-meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* HERO IMAGE */
+.article-image {
+  width: 100%;
+  border-radius: var(--radius);
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+}
+
+/* BODY TEXT */
+.article-body {
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.article-body p {
+  margin-bottom: 18px;
+  color: #e5e5e5;
+}
+
+/* SUBHEADINGS */
+.article-body h2 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-size: 22px;
+  border-left: 4px solid var(--primary);
+  padding-left: 10px;
+}
+
+/* MATCH INFO BOX */
+.match-info-box {
+  background: var(--surface-light);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin-bottom: 30px;
+  border-left: 4px solid var(--primary);
+}
+
+.match-info-box h3 {
+  margin-top: 0;
+}
+
+/* FORM BOX (RESULT LISTS) */
+.form-box {
+  background: var(--surface);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin: 25px 0;
+  border-left: 4px solid var(--accent);
+}
+
+.form-box ul {
+  padding-left: 18px;
+}
+
+.form-box li {
+  margin-bottom: 8px;
+}
+
+/* QUOTES */
+.player-quote {
+  margin: 25px 0;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-left: 4px solid var(--accent);
+  font-style: italic;
+  color: #ddd;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  background: var(--primary);
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: var(--accent);
+}
