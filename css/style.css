@@ -1,3 +1,6 @@
+/* =========================
+   VARIABLES
+========================= */
 :root {
   --primary: #c00000;
   --primary-dark: #7a0000;
@@ -40,11 +43,10 @@ section {
 }
 
 /* =========================
-   HEADER (CLUB STYLE)
+   HEADER
 ========================= */
 .main-header {
   background: linear-gradient(135deg, var(--primary-dark), #000);
-  padding: 10px 0;
 }
 
 .header-container {
@@ -56,14 +58,11 @@ section {
   padding: 20px;
 }
 
-.logo img {
-  height: 70px;
-}
+.logo img { height: 70px; }
 
 .club-title h1 {
   margin: 0;
   font-size: 26px;
-  letter-spacing: 1px;
 }
 
 .club-title p {
@@ -73,7 +72,7 @@ section {
 }
 
 /* =========================
-   NAVBAR (PREMIUM BAR)
+   NAVBAR
 ========================= */
 .navbar {
   background: #0a0a0a;
@@ -84,28 +83,26 @@ section {
 }
 
 .navbar ul {
-  list-style: none;
   display: flex;
   justify-content: center;
   gap: 25px;
   padding: 14px;
   margin: 0;
+  list-style: none;
   flex-wrap: wrap;
 }
 
 .navbar a {
-  color: white;
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
   position: relative;
-  padding: 6px 0;
 }
 
 .navbar a::after {
   content: "";
   position: absolute;
-  left: 0;
   bottom: -2px;
   height: 2px;
   width: 0;
@@ -119,43 +116,31 @@ section {
 }
 
 /* =========================
-   HERO (STADIUM FEEL)
+   HERO
 ========================= */
 .hero {
   height: 520px;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3)),
-    url("../images/stadium.png") center/cover no-repeat;
-
   display: flex;
   align-items: center;
   padding: 0 40px;
+
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3)),
+    url("../images/stadium.png") center/cover no-repeat;
 }
 
-.hero-text {
-  max-width: 600px;
-}
-
-.hero h2 {
-  font-size: 54px;
-  margin: 0;
-}
-
-.hero p {
-  font-size: 18px;
-  color: var(--muted);
-}
+.hero h2 { font-size: 54px; margin: 0; }
+.hero p { color: var(--muted); }
 
 /* =========================
-   BUTTONS (CLUB STYLE)
+   BUTTONS
 ========================= */
 .btn {
   display: inline-block;
-  margin-top: 15px;
   padding: 12px 26px;
   border-radius: 50px;
   background: var(--primary);
-  color: white;
+  color: #fff;
   font-weight: 600;
   text-decoration: none;
   transition: 0.25s;
@@ -167,16 +152,8 @@ section {
   background: var(--accent);
 }
 
-/* center buttons */
-.next-match .btn,
-.latest-result .btn {
-  display: block;
-  width: fit-content;
-  margin: 25px auto 0;
-}
-
 /* =========================
-   SECTION TITLES
+   SECTION TITLE
 ========================= */
 .section-title {
   font-size: 26px;
@@ -186,7 +163,7 @@ section {
 }
 
 /* =========================
-   MATCH / RESULT CARDS (PRO)
+   MATCH CARDS
 ========================= */
 .match-card,
 .result-card {
@@ -216,23 +193,8 @@ section {
 }
 
 .team span {
-  margin-top: 8px;
   font-size: 14px;
   color: var(--muted);
-}
-
-/* middle */
-.match-info,
-.result-score {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.match-vs {
-  font-weight: 700;
-  color: var(--accent);
 }
 
 .score {
@@ -240,32 +202,14 @@ section {
   font-weight: 700;
 }
 
-/* =========================
-   LIVE / COUNTDOWN
-========================= */
-.countdown {
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.countdown.live {
+.match-vs {
   color: var(--accent);
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
+  font-weight: 700;
 }
 
 /* =========================
-   NEWS (CLUB GRID)
+   NEWS GRID
 ========================= */
-.news {
-  background: #0c0c0c;
-}
-
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -283,28 +227,58 @@ section {
   transform: translateY(-6px);
 }
 
-.news-card img {
-  height: 180px;
+/* =========================
+   TABLE BASE (REUSABLE)
+========================= */
+.table {
   width: 100%;
-  object-fit: cover;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
-.news-card h3 {
-  margin: 12px;
+.table th {
+  background: var(--primary);
+  padding: 12px;
+  font-size: 13px;
+  text-align: left;
+  text-transform: uppercase;
 }
 
-.news-card p {
-  margin: 0 12px 10px;
-  color: var(--muted);
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #2a2a2a;
   font-size: 14px;
 }
 
-.news-card a {
-  display: block;
-  padding: 12px;
-  color: var(--primary);
+.table tbody tr:nth-child(even) {
+  background: var(--surface-light);
+}
+
+.table tbody tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* =========================
+   SPECIAL TABLE STYLES
+========================= */
+
+/* results */
+.result.win { color: #4caf50; }
+.result.draw { color: #ffc107; }
+.result.loss { color: #f44336; }
+
+/* league */
+.league-table td:nth-child(2) {
+  text-align: left;
   font-weight: 600;
-  text-decoration: none;
+}
+
+.league-table tr.whistle {
+  background: rgba(192,0,0,0.2);
+  border-left: 5px solid var(--primary);
 }
 
 /* =========================
@@ -319,80 +293,37 @@ section {
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 @media (max-width: 768px) {
 
   .hero {
     height: 360px;
-    padding: 20px;
     text-align: center;
   }
 
-  .hero h2 {
-    font-size: 32px;
-  }
+  .hero h2 { font-size: 32px; }
 
   .match-card,
   .result-card {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 20px;
   }
 
-  .score {
-    font-size: 32px;
-  }
-}
-/* =========================
-   RESULTS TABLE (DESKTOP)
-========================= */
-.results-section table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--surface);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
+  .score { font-size: 32px; }
 
-.results-section th {
-  background: var(--primary);
-  padding: 12px;
-  font-size: 14px;
-  text-align: left;
-}
-
-.results-section td {
-  padding: 12px;
-  border-bottom: 1px solid #2a2a2a;
-  font-size: 14px;
-}
-
-.results-section tr:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-/* RESULT COLOURS */
-.result.win { color: #4caf50; font-weight: 600; }
-.result.draw { color: #ffc107; font-weight: 600; }
-.result.loss { color: #f44336; font-weight: 600; }
-
-/* =========================
-   MOBILE TRANSFORM (CARDS)
-========================= */
-@media (max-width: 768px) {
-
-  .results-section table,
-  .results-section thead {
-    display: none; /* hide full table */
+  /* TABLE → CARD TRANSFORM */
+  .table thead {
+    display: none;
   }
 
-  .results-section tbody {
+  .table,
+  .table tbody,
+  .table tr {
     display: block;
   }
 
-  .results-section tr {
-    display: block;
+  .table tr {
     background: var(--surface);
     margin-bottom: 15px;
     padding: 15px;
@@ -400,330 +331,15 @@ section {
     box-shadow: var(--shadow);
   }
 
-  .results-section td {
+  .table td {
     display: flex;
     justify-content: space-between;
-    padding: 6px 0;
     border: none;
-    font-size: 14px;
-  }
-
-  /* labels (left side) */
-  .results-section td::before {
-    font-weight: 600;
-    color: var(--muted);
-  }
-
-  /* label mapping */
-  .results-section td:nth-child(1)::before { content: "Date"; }
-  .results-section td:nth-child(2)::before { content: "Opponent"; }
-  .results-section td:nth-child(3)::before { content: "H/A"; }
-  .results-section td:nth-child(4)::before { content: "Score"; }
-  .results-section td:nth-child(5)::before { content: "Competition"; }
-  .results-section td:nth-child(6)::before { content: "Result"; }
-
-  /* make score stand out */
-  .results-section td:nth-child(4) {
-    font-size: 18px;
-    font-weight: 700;
-  }
-}
-/* =========================
-   FIXTURES TABLE (DESKTOP)
-========================= */
-.fixtures-section table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--surface);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.fixtures-section th {
-  background: var(--primary);
-  padding: 12px;
-  font-size: 14px;
-  text-align: left;
-}
-
-.fixtures-section td {
-  padding: 12px;
-  border-bottom: 1px solid #2a2a2a;
-  font-size: 14px;
-}
-
-.fixtures-section tr:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-/* =========================
-   MOBILE (CARDS)
-========================= */
-@media (max-width: 768px) {
-
-  .fixtures-section table,
-  .fixtures-section thead {
-    display: none;
-  }
-
-  .fixtures-section tbody {
-    display: block;
-  }
-
-  .fixtures-section tr {
-    display: block;
-    background: var(--surface);
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-  }
-
-  .fixtures-section td {
-    display: flex;
-    justify-content: space-between;
     padding: 6px 0;
-    border: none;
-    font-size: 14px;
   }
 
-  .fixtures-section td::before {
-    font-weight: 600;
+  .table td::before {
     color: var(--muted);
-  }
-
-  /* adjust labels to match your columns */
-  .fixtures-section td:nth-child(1)::before { content: "Date"; }
-  .fixtures-section td:nth-child(2)::before { content: "Opponent"; }
-  .fixtures-section td:nth-child(3)::before { content: "H/A"; }
-  .fixtures-section td:nth-child(4)::before { content: "Kick Off"; }
-  .fixtures-section td:nth-child(5)::before { content: "Competition"; }
-
-  /* highlight time */
-  .fixtures-section td:nth-child(4) {
-    font-size: 16px;
-    font-weight: 700;
-  }
-}
-/* =========================
-   LEAGUE TABLE (FIXED)
-========================= */
-
-.league-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-
-  background: var(--surface); /* match your dark theme */
-  border-radius: var(--radius);
-  overflow: hidden;
-
-  color: #fff; /* force readable text */
-}
-
-/* HEADERS */
-.league-table th {
-  background: #000;
-  color: #fff;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* CELLS */
-.league-table th,
-.league-table td {
-  padding: 12px 10px;
-  border-bottom: 1px solid #2a2a2a;
-  text-align: center;
-}
-
-/* TEAM NAME */
-.league-table td:nth-child(2) {
-  text-align: left;
-  font-weight: 600;
-  color: #fff;
-}
-
-/* ROW STRIPING (improves readability massively) */
-.league-table tbody tr:nth-child(even) {
-  background: var(--surface-light);
-}
-
-/* HOVER */
-.league-table tbody tr:hover {
-  background: rgba(255,255,255,0.08);
-}
-
-/* =========================
-   ZONES
-========================= */
-.league-table tr.promotion {
-  border-left: 4px solid #2e7d32;
-}
-
-.league-table tr.playoff {
-  border-left: 4px solid #f9a825;
-}
-
-.league-table tr.relegation {
-  border-left: 4px solid #c62828;
-}
-
-/* =========================
-   WHISTLE ROW (FIXED PROPERLY)
-========================= */
-.league-table tr.whistle {
-  background: rgba(192,0,0,0.2);
-  border-left: 5px solid var(--primary) !important;
-}
-
-.league-table tr.whistle td {
-  color: #fff; /* 🔥 FIX: no more unreadable red text */
-  font-weight: 700;
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 600px) {
-
-  .col-extra {
-    display: none;
-  }
-
-  .league-table th,
-  .league-table td {
-    padding: 8px 6px;
-    font-size: 12px;
-  }
-
-  .league-table td:nth-child(2) {
-    min-width: 120px;
-  }
-}
-
-/* =========================
-   GENERIC RESPONSIVE TABLE (HISTORY)
-========================= */
-
-.responsive-table table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--surface);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-/* HEADERS */
-.responsive-table th {
-  background: var(--primary);
-  padding: 14px;
-  font-size: 13px;
-  text-align: left;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* CELLS */
-.responsive-table td {
-  padding: 12px 14px;
-  border-bottom: 1px solid #2a2a2a;
-  font-size: 14px;
-}
-
-/* STRIPES */
-.responsive-table tbody tr:nth-child(even) {
-  background: var(--surface-light);
-}
-
-/* HOVER */
-.responsive-table tbody tr:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-/* =========================
-   MANAGERS TABLE TWEAKS
-========================= */
-
-/* make key columns stand out */
-#managers td:nth-child(1) {
-  font-weight: 600;
-}
-
-#managers td:nth-child(9) {
-  font-weight: 700;
-  color: var(--accent);
-}
-
-/* =========================
-   MOBILE: CARD LAYOUT
-========================= */
-
-@media (max-width: 768px) {
-
-  .responsive-table table,
-  .responsive-table thead {
-    display: none;
-  }
-
-  .responsive-table tbody {
-    display: block;
-  }
-
-  .responsive-table tr {
-    display: block;
-    background: var(--surface);
-    margin-bottom: 15px;
-    padding: 16px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-  }
-
-  .responsive-table td {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 0;
-    border: none;
-    font-size: 14px;
-  }
-
-  .responsive-table td::before {
     font-weight: 600;
-    color: var(--muted);
-  }
-
-  /* PLAYERS TABLE LABELS */
-  #players-of-the-season td:nth-child(1)::before { content: "Season"; }
-  #players-of-the-season td:nth-child(2)::before { content: "Winner"; }
-
-  /* MANAGERS TABLE LABELS */
-  #managers td:nth-child(1)::before { content: "Name"; }
-  #managers td:nth-child(2)::before { content: "Nation"; }
-  #managers td:nth-child(3)::before { content: "From"; }
-  #managers td:nth-child(4)::before { content: "To"; }
-  #managers td:nth-child(5)::before { content: "Matches"; }
-  #managers td:nth-child(6)::before { content: "Won"; }
-  #managers td:nth-child(7)::before { content: "Drawn"; }
-  #managers td:nth-child(8)::before { content: "Lost"; }
-  #managers td:nth-child(9)::before { content: "Win %"; }
-  #managers td:nth-child(10)::before { content: "Honours"; }
-
-  /* highlight key info */
-  #managers td:nth-child(1) {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  #managers td:nth-child(9) {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  /* HIDE LESS IMPORTANT DATA */
-  .col-hide {
-    display: none !important;
   }
 }
