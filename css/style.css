@@ -428,3 +428,80 @@ section {
     font-weight: 700;
   }
 }
+/* =========================
+   FIXTURES TABLE (DESKTOP)
+========================= */
+.fixtures-section table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.fixtures-section th {
+  background: var(--primary);
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.fixtures-section td {
+  padding: 12px;
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 14px;
+}
+
+.fixtures-section tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* =========================
+   MOBILE (CARDS)
+========================= */
+@media (max-width: 768px) {
+
+  .fixtures-section table,
+  .fixtures-section thead {
+    display: none;
+  }
+
+  .fixtures-section tbody {
+    display: block;
+  }
+
+  .fixtures-section tr {
+    display: block;
+    background: var(--surface);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .fixtures-section td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border: none;
+    font-size: 14px;
+  }
+
+  .fixtures-section td::before {
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* adjust labels to match your columns */
+  .fixtures-section td:nth-child(1)::before { content: "Date"; }
+  .fixtures-section td:nth-child(2)::before { content: "Opponent"; }
+  .fixtures-section td:nth-child(3)::before { content: "H/A"; }
+  .fixtures-section td:nth-child(4)::before { content: "Kick Off"; }
+  .fixtures-section td:nth-child(5)::before { content: "Competition"; }
+
+  /* highlight time */
+  .fixtures-section td:nth-child(4) {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
