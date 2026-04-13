@@ -201,6 +201,9 @@ section {
 /* =========================
    MATCH / RESULT CARDS
 ========================= */
+/* =========================
+   MATCH / RESULT CARDS (FIXED)
+========================= */
 .match-card,
 .result-card {
   max-width: 750px;
@@ -211,6 +214,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
+  gap: 20px;
 
   background: linear-gradient(145deg, #111, #1c1c1c);
   color: #fff;
@@ -218,8 +222,75 @@ section {
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
+/* TEAM BLOCK (fix alignment + logo consistency) */
 .team {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.team img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.team span {
+  display: block;
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* MIDDLE SCORE AREA */
+.match-info,
+.result-score {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.score {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.live-score {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* =========================
+   RESPONSIVE FIX (CLEAN)
+========================= */
+@media (max-width: 768px) {
+
+  .match-card,
+  .result-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 15px;
+    padding: 25px 15px;
+  }
+
+  .team img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .score {
+    font-size: 28px;
+  }
+
+  .live-score {
+    font-size: 22px;
+  }
 }
 
 .team img {
