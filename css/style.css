@@ -111,8 +111,30 @@ img {
   padding: 40px;
 }
 
-.hero h2 { font-size: 48px; margin-bottom: 10px; }
-.hero p { font-size: 20px; }
+.hero h2 {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 22px;
+  opacity: 0.9;
+}
+.hero-text {
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* =========================
    BUTTONS
@@ -172,6 +194,22 @@ img {
    MATCH CARDS
 ========================= */
 .match-card,
+.match-card,
+.result-card {
+  border-radius: 14px;
+  background: linear-gradient(145deg, #111, #1c1c1c);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  padding: 35px;
+}
+.team img {
+  width: 70px;
+  margin-bottom: 8px;
+}
+
+.team span {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
 .result-card {
   max-width: 750px;
   margin: 40px auto;
@@ -194,6 +232,80 @@ img {
 .match-vs {
   color: var(--accent);
   font-weight: 700;
+}
+.countdown {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.countdown.live {
+  color: #ff3b3b;
+}
+
+.countdown.upcoming {
+  color: #ddd;
+}
+
+.countdown.finished {
+  color: #aaa;
+}
+.news-card {
+  overflow: hidden;
+  position: relative;
+}
+
+.news-card img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.news-card:hover img {
+  transform: scale(1.05);
+}
+.news-card h3 {
+  font-size: 18px;
+  margin: 12px;
+}
+
+.news-card p {
+  font-size: 14px;
+  padding: 0 12px 12px;
+  color: #555;
+}
+.club-info { background: #f0f0f0; }
+.next-match { background: #ffffff; }
+.latest-result { background: #f7f7f7; }
+.news { background: #ffffff; }
+.btn {
+  background: linear-gradient(135deg, #c00000, #ff3b3b);
+  box-shadow: 0 4px 15px rgba(192,0,0,0.4);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192,0,0,0.6);
+}
+.club-bar {
+  background: #1a1a1a;
+  color: #ccc;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}.info-card,
+.news-card,
+.player-card {
+  transition: all 0.3s ease;
+}
+
+.info-card:hover,
+.news-card:hover,
+.player-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 /* =========================
