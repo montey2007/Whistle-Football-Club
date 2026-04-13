@@ -482,3 +482,13 @@ section {
 .back-btn:hover {
   background: var(--accent);
 }
+/* REMOVE ALL HOVER EFFECTS FROM LEAGUE TABLE */
+.league-table tr:hover {
+  background: inherit !important;
+  transform: none !important;
+}
+
+.league-table tr.whistle:hover {
+  background: linear-gradient(90deg, #c00000, #7a0000) !important;
+  transform: none !important;
+}
