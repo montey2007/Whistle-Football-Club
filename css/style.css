@@ -93,10 +93,7 @@ section {
 }
 
 .navbar a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
+  display: inline-block; /* 🔥 FIX */
   position: relative;
 }
 
