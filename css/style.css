@@ -207,29 +207,30 @@ section {
   margin: 40px auto;
   padding: 30px;
   border-radius: var(--radius);
-  display: flex;
-  justify-content: space-between;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
-  gap: 20px;
 
   background: linear-gradient(145deg, #111, #1c1c1c);
   color: #fff;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  backdrop-filter: blur(6px);
 }
 
 .team {
   text-align: center;
-  width: 130px;
 }
 
 .team img {
   width: 65px;
-  margin-bottom: 8px;
+  height: 65px;
+  object-fit: contain; /* keeps proportions */
+  margin: 0 auto 8px;
 }
 
 .team span {
+  display: block;
   font-size: 14px;
   color: #ddd;
 }
@@ -311,9 +312,11 @@ section {
    NEWS
 ========================= */
 .news-card img {
+  width: 100%;
   height: 180px;
   object-fit: cover;
-  transition: 0.3s;
+  object-position: center; /* THIS fixes centering */
+  display: block;
 }
 
 .news-card:hover img {
@@ -437,5 +440,19 @@ td, th {
 
   .hero h2 {
     font-size: 24px;
+  }
+}
+@media (max-width: 768px) {
+
+  .match-card,
+  .result-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .team img {
+    width: 55px;
+    height: 55px;
   }
 }
