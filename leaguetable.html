@@ -81,16 +81,29 @@
 }
 
 /* =========================
-   WHISTLE ROW (FIXED)
+   WHISTLE ROW (MAKE IT POP)
 ========================= */
 .league-table tr.whistle {
-  background: rgba(192,0,0,0.2);
-  border-left: 5px solid var(--primary);
+  background: linear-gradient(90deg, #c00000, #7a0000);
+  border-left: 6px solid #ff2d2d !important;
+
+  transform: scale(1.01); /* subtle lift */
 }
 
+/* TEXT */
 .league-table tr.whistle td {
-  color: #fff; /* 🔥 CRITICAL FIX */
+  color: #fff;
   font-weight: 700;
+}
+
+/* ADD A GLOW EFFECT */
+.league-table tr.whistle {
+  box-shadow: 0 0 12px rgba(255, 45, 45, 0.6);
+}
+
+/* PREVENT HOVER OVERRIDING */
+.league-table tr.whistle:hover {
+  background: linear-gradient(90deg, #c00000, #7a0000);
 }
 /* =========================
    HOVER
