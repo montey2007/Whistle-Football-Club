@@ -505,3 +505,100 @@ section {
     font-weight: 700;
   }
 }
+/* =========================
+   LEAGUE TABLE (FIXED)
+========================= */
+
+.league-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  background: var(--surface); /* match your dark theme */
+  border-radius: var(--radius);
+  overflow: hidden;
+
+  color: #fff; /* force readable text */
+}
+
+/* HEADERS */
+.league-table th {
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* CELLS */
+.league-table th,
+.league-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #2a2a2a;
+  text-align: center;
+}
+
+/* TEAM NAME */
+.league-table td:nth-child(2) {
+  text-align: left;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ROW STRIPING (improves readability massively) */
+.league-table tbody tr:nth-child(even) {
+  background: var(--surface-light);
+}
+
+/* HOVER */
+.league-table tbody tr:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* =========================
+   ZONES
+========================= */
+.league-table tr.promotion {
+  border-left: 4px solid #2e7d32;
+}
+
+.league-table tr.playoff {
+  border-left: 4px solid #f9a825;
+}
+
+.league-table tr.relegation {
+  border-left: 4px solid #c62828;
+}
+
+/* =========================
+   WHISTLE ROW (FIXED PROPERLY)
+========================= */
+.league-table tr.whistle {
+  background: rgba(192,0,0,0.2);
+  border-left: 5px solid var(--primary) !important;
+}
+
+.league-table tr.whistle td {
+  color: #fff; /* 🔥 FIX: no more unreadable red text */
+  font-weight: 700;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+
+  .col-extra {
+    display: none;
+  }
+
+  .league-table th,
+  .league-table td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  .league-table td:nth-child(2) {
+    min-width: 120px;
+  }
+}
