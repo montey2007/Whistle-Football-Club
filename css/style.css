@@ -280,6 +280,19 @@ section {
   background: rgba(192,0,0,0.2);
   border-left: 5px solid var(--primary);
 }
+/* FIXTURES MOBILE LABELS */
+.fixtures-section td:nth-child(1)::before { content: "Date"; }
+.fixtures-section td:nth-child(2)::before { content: "Opponent"; }
+.fixtures-section td:nth-child(3)::before { content: "H/A"; }
+.fixtures-section td:nth-child(4)::before { content: "Competition"; }
+.fixtures-section td:nth-child(5)::before { content: "Kick Off"; }
+/* RESULTS MOBILE LABELS */
+.results-section td:nth-child(1)::before { content: "Date"; }
+.results-section td:nth-child(2)::before { content: "Opponent"; }
+.results-section td:nth-child(3)::before { content: "H/A"; }
+.results-section td:nth-child(4)::before { content: "Score"; }
+.results-section td:nth-child(5)::before { content: "Competition"; }
+.results-section td:nth-child(6)::before { content: "Result"; }
 
 /* =========================
    FOOTER
