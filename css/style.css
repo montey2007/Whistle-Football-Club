@@ -309,12 +309,6 @@ section {
 /* =========================
    LEAGUE TABLE
 ========================= */
-.league-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: scale(1.01);
-  transition: 0.2s;
-}
-
 .league-table tr.whistle {
   background: linear-gradient(90deg, #c00000, #7a0000);
   border-left: 6px solid #ff2d2d !important;
@@ -322,11 +316,6 @@ section {
   transform: scale(1.02);
   position: relative;
   z-index: 2;
-}
-
-.league-table tr.whistle td {
-  color: #fff;
-  font-weight: 700;
 }
 
 .league-table tr.whistle:hover {
