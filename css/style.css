@@ -33,6 +33,11 @@ img {
   padding: 50px 20px;
 }
 
+section {
+  margin-bottom: 20px;
+  position: relative;
+}
+
 /* =========================
    HEADER
 ========================= */
@@ -79,7 +84,7 @@ img {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 22px;
+  gap: 16px;
   padding: 14px;
   margin: 0;
   flex-wrap: wrap;
@@ -90,6 +95,7 @@ img {
   text-decoration: none;
   font-weight: 600;
   position: relative;
+  font-size: 15px;
 }
 
 .navbar a::after {
@@ -114,13 +120,14 @@ img {
 .hero {
   height: 480px;
   background:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
     url("../images/stadium.png") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
+  padding: 20px;
 }
 
 .hero-text {
@@ -129,7 +136,7 @@ img {
 }
 
 .hero h2 {
-  font-size: 54px;
+  font-size: 52px;
   margin-bottom: 10px;
 }
 
@@ -159,8 +166,12 @@ img {
   box-shadow: 0 6px 20px rgba(192,0,0,0.6);
 }
 
+.btn:active {
+  transform: scale(0.97);
+}
+
 /* =========================
-   SECTION TITLES
+   TITLES
 ========================= */
 .section-title {
   font-size: 28px;
@@ -172,10 +183,6 @@ img {
 /* =========================
    SECTIONS
 ========================= */
-section {
-  position: relative;
-}
-
 .club-info { background: #f0f0f0; }
 .next-match { background: #fff; text-align: center; }
 .latest-result { background: #f7f7f7; }
@@ -198,7 +205,7 @@ section {
 .result-card {
   max-width: 750px;
   margin: 40px auto;
-  padding: 35px;
+  padding: 30px;
   border-radius: var(--radius);
   display: flex;
   justify-content: space-between;
@@ -214,11 +221,11 @@ section {
 
 .team {
   text-align: center;
-  width: 140px;
+  width: 130px;
 }
 
 .team img {
-  width: 70px;
+  width: 65px;
   margin-bottom: 8px;
 }
 
@@ -247,9 +254,14 @@ section {
 }
 
 .live-score {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   margin-top: 10px;
+}
+
+.score {
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .countdown {
@@ -262,7 +274,7 @@ section {
 .countdown.finished { color: #aaa; }
 
 /* =========================
-   GRID SYSTEM
+   GRID
 ========================= */
 .info-grid,
 .news-grid {
@@ -358,7 +370,7 @@ td, th {
 }
 
 /* =========================
-   ANIMATIONS
+   ANIMATION
 ========================= */
 @keyframes fadeUp {
   from {
@@ -375,13 +387,8 @@ td, th {
    RESPONSIVE
 ========================= */
 @media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    text-align: center;
-  }
 
-  .match-card,
-  .result-card {
+  .header-container {
     flex-direction: column;
     text-align: center;
   }
@@ -391,16 +398,44 @@ td, th {
   }
 
   .hero h2 {
-    font-size: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero h2 {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .hero p {
     font-size: 16px;
+  }
+
+  .match-card,
+  .result-card {
+    flex-direction: column;
+    padding: 25px 15px;
+    gap: 15px;
+  }
+
+  .team {
+    width: auto;
+  }
+
+  .team img {
+    width: 55px;
+  }
+
+  .live-score {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .navbar ul {
+    gap: 10px;
+  }
+
+  .navbar a {
+    font-size: 14px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
   }
 }
