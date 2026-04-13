@@ -602,3 +602,128 @@ section {
     min-width: 120px;
   }
 }
+
+/* =========================
+   GENERIC RESPONSIVE TABLE (HISTORY)
+========================= */
+
+.responsive-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* HEADERS */
+.responsive-table th {
+  background: var(--primary);
+  padding: 14px;
+  font-size: 13px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* CELLS */
+.responsive-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 14px;
+}
+
+/* STRIPES */
+.responsive-table tbody tr:nth-child(even) {
+  background: var(--surface-light);
+}
+
+/* HOVER */
+.responsive-table tbody tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* =========================
+   MANAGERS TABLE TWEAKS
+========================= */
+
+/* make key columns stand out */
+#managers td:nth-child(1) {
+  font-weight: 600;
+}
+
+#managers td:nth-child(9) {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* =========================
+   MOBILE: CARD LAYOUT
+========================= */
+
+@media (max-width: 768px) {
+
+  .responsive-table table,
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table tbody {
+    display: block;
+  }
+
+  .responsive-table tr {
+    display: block;
+    background: var(--surface);
+    margin-bottom: 15px;
+    padding: 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .responsive-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border: none;
+    font-size: 14px;
+  }
+
+  .responsive-table td::before {
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* PLAYERS TABLE LABELS */
+  #players-of-the-season td:nth-child(1)::before { content: "Season"; }
+  #players-of-the-season td:nth-child(2)::before { content: "Winner"; }
+
+  /* MANAGERS TABLE LABELS */
+  #managers td:nth-child(1)::before { content: "Name"; }
+  #managers td:nth-child(2)::before { content: "Nation"; }
+  #managers td:nth-child(3)::before { content: "From"; }
+  #managers td:nth-child(4)::before { content: "To"; }
+  #managers td:nth-child(5)::before { content: "Matches"; }
+  #managers td:nth-child(6)::before { content: "Won"; }
+  #managers td:nth-child(7)::before { content: "Drawn"; }
+  #managers td:nth-child(8)::before { content: "Lost"; }
+  #managers td:nth-child(9)::before { content: "Win %"; }
+  #managers td:nth-child(10)::before { content: "Honours"; }
+
+  /* highlight key info */
+  #managers td:nth-child(1) {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  #managers td:nth-child(9) {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* HIDE LESS IMPORTANT DATA */
+  .col-hide {
+    display: none !important;
+  }
+}
