@@ -20,10 +20,6 @@
 /* =========================
    GLOBAL
 ========================= */
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -91,11 +87,12 @@ section {
 .navbar ul {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
   padding: 10px 15px;
   margin: 0;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .navbar a {
@@ -105,7 +102,7 @@ section {
   font-size: 14px;
   padding: 8px 14px;
   border-radius: 8px;
-  transition: 0.25s ease;
+  transition: all 0.25s ease;
   position: relative;
 }
 
@@ -116,6 +113,7 @@ section {
 
 .navbar a.active {
   background: var(--primary);
+  color: #fff;
   box-shadow: 0 4px 12px rgba(192, 0, 0, 0.4);
 }
 
@@ -178,7 +176,17 @@ section {
 }
 
 /* =========================
-   CARDS
+   SECTION TITLE
+========================= */
+.section-title {
+  font-size: 26px;
+  margin-bottom: 30px;
+  padding-left: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+/* =========================
+   MATCH CARDS
 ========================= */
 .match-card,
 .result-card {
@@ -194,7 +202,9 @@ section {
 }
 
 .team {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .team img {
@@ -218,6 +228,43 @@ section {
   font-weight: 700;
 }
 
+.next-match .container,
+.latest-result .container {
+  max-width: 900px;
+}
+
+.match-info,
+.result-score {
+  text-align: center;
+}
+
+.next-match .btn,
+.latest-result .btn {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0;
+}
+
+/* =========================
+   NEWS
+========================= */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.news-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+}
+
 /* =========================
    TABLE
 ========================= */
@@ -234,8 +281,8 @@ section {
   background: var(--primary);
   padding: 12px;
   font-size: 13px;
-  text-transform: uppercase;
   text-align: left;
+  text-transform: uppercase;
 }
 
 .table td {
@@ -251,12 +298,10 @@ section {
 .table tbody tr:hover {
   background: rgba(255,255,255,0.05);
 }
-
-/* Hide optional columns ONLY on mobile */
+/* HIDE EXTRA MANAGER COLUMNS ON MOBILE */
 .col-hide {
-  display: table-cell;
+  display: none;
 }
-
 /* =========================
    RESULTS COLORS
 ========================= */
@@ -269,9 +314,16 @@ section {
 ========================= */
 .league-table tr.whistle {
   background: linear-gradient(90deg, #c00000, #7a0000);
-  border-left: 6px solid #ff2d2d;
-  box-shadow: 0 0 15px rgba(255,45,45,0.7);
+  border-left: 6px solid #ff2d2d !important;
+  box-shadow: 0 0 15px rgba(255, 45, 45, 0.7);
   transform: scale(1.02);
+  position: relative;
+  z-index: 2;
+}
+
+.league-table tr.whistle:hover {
+  background: linear-gradient(90deg, #c00000, #7a0000);
+  transform: scale(1.03);
 }
 
 /* =========================
@@ -309,44 +361,38 @@ section {
     font-size: 32px;
   }
 
-  /* 🔥 FULL MOBILE TABLE FIX */
   .table thead {
-    display: none !important;
+    display: none;
   }
-.table td::before {
-  content: attr(data-label);
-}
+
   .table,
   .table tbody,
   .table tr {
     display: block;
-    width: 100%;
   }
 
   .table tr {
+    background: var(--surface);
     margin-bottom: 15px;
     padding: 15px;
     border-radius: var(--radius);
-    background: var(--surface);
     box-shadow: var(--shadow);
   }
 
   .table td {
     display: flex;
     justify-content: space-between;
-    padding: 6px 0;
     border: none;
+    padding: 6px 0;
   }
 
   .table td::before {
-    content: attr(data-label); /* THIS WAS MISSING */
-    font-weight: 600;
     color: var(--muted);
+    font-weight: 600;
   }
 
-  /* hide extra columns */
-  .col-hide {
-    display: none;
+  .navbar ul {
+    gap: 8px;
   }
 
   .navbar a {
@@ -364,6 +410,7 @@ section {
 
 .article-title {
   font-size: 38px;
+  line-height: 1.2;
   margin-bottom: 10px;
 }
 
@@ -374,6 +421,7 @@ section {
 }
 
 .article-image {
+  width: 100%;
   border-radius: var(--radius);
   margin-bottom: 30px;
   box-shadow: var(--shadow);
@@ -391,51 +439,59 @@ section {
 
 .article-body h2 {
   margin-top: 40px;
+  margin-bottom: 15px;
   font-size: 22px;
   border-left: 4px solid var(--primary);
   padding-left: 10px;
 }
 
-.match-info-box,
-.form-box,
-.player-quote {
-  padding: 20px;
-  border-radius: var(--radius);
-  margin: 25px 0;
-}
-
 .match-info-box {
   background: var(--surface-light);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin-bottom: 30px;
   border-left: 4px solid var(--primary);
 }
 
 .form-box {
   background: var(--surface);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin: 25px 0;
   border-left: 4px solid var(--accent);
 }
 
 .player-quote {
+  margin: 25px 0;
+  padding: 20px;
   background: rgba(255,255,255,0.05);
   border-left: 4px solid var(--accent);
   font-style: italic;
+  color: #ddd;
 }
 
 .back-btn {
   display: inline-block;
   margin-top: 30px;
-  padding: 10px 18px;
-  background: var(--primary);
-  color: #fff;
-  border-radius: 6px;
   text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  background: var(--primary);
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: 0.2s;
 }
 
 .back-btn:hover {
   background: var(--accent);
 }
-
-/* REMOVE LEAGUE TABLE HOVER */
+/* REMOVE ALL HOVER EFFECTS FROM LEAGUE TABLE */
 .league-table tr:hover {
   background: inherit !important;
+  transform: none !important;
+}
+
+.league-table tr.whistle:hover {
+  background: linear-gradient(90deg, #c00000, #7a0000) !important;
   transform: none !important;
 }
