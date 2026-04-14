@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whistle FC News</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo"><img src="../images/logo.png" alt="Whistle FC Logo"></div>
+    <div class="club-title"><h1>Whistle Football Club</h1><p>News</p></div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a class="active" href="../news.html">News</a></li>
+    <li><a href="../players.html">Players</a></li>
+    <li><a href="../staff.html">Staff</a></li>
+    <li><a href="../history.html">History</a></li>
+    <li><a href="../fixtures.html">Fixtures</a></li>
+    <li><a href="../results.html">Results</a></li>
+    <li><a href="../leaguetable.html">League Table</a></li>
+  </ul>
+</nav>
+
+<div class="container article">
+
+  <h1 class="article-title">Preview: Whistle FC v Dartley United</h1>
+
+  <p class="article-meta">
+    📅 15 April 2026 | Match Preview
+  </p>
+
+  <img src="../images/dartleypreview.jpg" alt="Whistle FC prepare for Dartley United" class="article-image">
+
+  <div class="match-info-box">
+    <h3>Match Information</h3>
+    <p><strong>Fixture:</strong> Whistle FC vs Dartley United</p>
+    <p><strong>Competition:</strong> EFL League One</p>
+    <p><strong>Date:</strong> Wednesday 15 April 2026</p>
+    <p><strong>Kick-off:</strong> 7:45pm</p>
+    <p><strong>Venue:</strong> Mornflake Stadium</p>
+  </div>
+
+  <div class="article-body">
+
+    <p>
+      Whistle return to league action on Wednesday night as Johannes Hoff Thorup’s side host <strong>Dartley United</strong>, just days after lifting the <strong>Vertu Trophy</strong> at Wembley Stadium.
+    </p>
+
+    <p>
+      The Whistlers produced a memorable performance in the capital on Sunday, defeating <strong>Stockport County</strong> 3-1 to secure the club’s first major trophy of the modern era.
+    </p>
+
+    <p>
+      Goals from Kevin Csoboth and a brace from Max Watters sealed a famous victory under the Wembley arch, capping off a remarkable journey and adding another historic chapter to the club’s story.
+    </p>
+
+    <h2>Wembley Triumph</h2>
+
+    <p>
+      Sunday’s triumph was a landmark moment for Whistle Football Club — a side rebuilt from non-league football now celebrating silverware on the biggest stage.
+    </p>
+
+    <p>
+      The victory also continued an impressive run of form, with Whistle now winning four consecutive matches in all competitions, including league victories over <strong>AFC Wimbledon</strong> and <strong>Peterborough United</strong>.
+    </p>
+
+    <div class="form-box">
+      <h3>Recent Form</h3>
+      <ul>
+        <li><strong>12 Apr 2026:</strong> Whistle FC 3–1 Stockport County (Vertu Trophy Final)</li>
+        <li><strong>6 Apr 2026:</strong> AFC Wimbledon 0–3 Whistle FC</li>
+        <li><strong>3 Apr 2026:</strong> Whistle FC 2–1 Peterborough United</li>
+        <li><strong>21 Mar 2026:</strong> Whistle FC 1–1 Stockport County</li>
+        <li><strong>17 Mar 2026:</strong> Whistle FC 3–2 Exeter City</li>
+      </ul>
+    </div>
+
+    <p>
+      Momentum is firmly with Thorup’s side as attention quickly turns back to the league, where a strong finish could yet push the club into the play-off picture.
+    </p>
+
+    <h2>The Run-In</h2>
+
+    <p>
+      Whistle currently sit 10th in League One with 61 points, level with several sides in a tightly packed mid-table battle.
+    </p>
+
+    <p>
+      With games in hand on some rivals and five fixtures remaining, the opportunity remains to close the gap on the top six and mount a late push.
+    </p>
+
+    <div class="form-box">
+      <h3>Upcoming Fixtures</h3>
+      <ul>
+        <li><strong>15 Apr:</strong> Dartley United (H)</li>
+        <li><strong>18 Apr:</strong> Tiddlyharn Town (A)</li>
+        <li><strong>21 Apr:</strong> Rotherham United (A)</li>
+        <li><strong>25 Apr:</strong> Barnsley (H)</li>
+        <li><strong>2 May:</strong> Bolton Wanderers (A)</li>
+      </ul>
+    </div>
+
+    <h2>Thorup’s Reaction</h2>
+
+    <p>
+      Speaking after the Wembley triumph and ahead of Wednesday’s clash, Head Coach Johannes Hoff Thorup praised his side but quickly shifted focus to the next challenge:
+    </p>
+
+    <blockquote class="player-quote">
+      “It was a special day for the club, for the players and for the supporters. To win at Wembley is something you remember forever, but now we must refocus very quickly.”
+    </blockquote>
+
+    <p>
+      Thorup emphasised the importance of maintaining standards despite the emotional high of lifting the trophy.
+    </p>
+
+    <blockquote class="player-quote">
+      “The challenge now is mentality. We cannot allow ourselves to relax. The best teams celebrate, and then they go again. That is what we want to be.” 
+    </blockquote>
+
+    <p>
+      The Whistle boss also highlighted the opportunity still available in the league table.
+    </p>
+
+    <blockquote class="player-quote">
+      “We are still in a position where we can push. There are games left, and there are points to play for. If we show the same level as we did at Wembley, we can compete with anyone.” 
+    </blockquote>
+
+    <h2>Team News</h2>
+
+    <p>
+      Whistle will be without <strong>Perry Ng</strong> and <strong>Kyriakos Neofytou</strong>, who remain sidelined but are expected to return before the end of the season.
+    </p>
+
+    <p>
+    Johannes Hoff Thorup also reveals that <strong>Mario Tsaousis</strong> has been ruled out for the remainder of the campaign, while <strong>Zac Williams</strong> will be assessed after picking up an injury in training.
+    </p>
+
+    <h2>The Opposition</h2>
+
+    <p>
+      Dartley United arrive battling near the bottom of the table and fighting for survival, making them a dangerous opponent despite their position.
+    </p>
+
+    <p>
+      Whistle will be wary of complacency, particularly given the quick turnaround from Sunday’s final and the emotional toll of such a significant occasion.
+    </p>
+
+    <blockquote class="player-quote">
+      “These are difficult games. When you play a team fighting for their position, you must match their intensity. If we are not ready, it becomes a problem.” 
+    </blockquote>
+
+    <h2>One More Push</h2>
+
+    <p>
+      After the celebrations of Wembley, attention now turns back to the league — and the opportunity to turn a great season into an exceptional one.
+    </p>
+
+    <p>
+      <strong>Back at home. Under the lights. Time to go again.</strong>
+    </p>
+
+  </div>
+        <img src="../images/vertu-final-win.jpg" alt="Whistle FC celebrate Vertu Win" class="article-image">
+
+  <a class="back-btn" href="../news.html">← Back to News</a>
+
+</div>
+
+<footer class="footer">
+© 2026 Whistle Football Club
+</footer>
+
+</body>
+</html>
