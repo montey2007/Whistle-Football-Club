@@ -52,3 +52,14 @@ window.addEventListener("click", function(e) {
 document.getElementById("close-popup").onclick = function() {
   document.getElementById("match-popup").style.display = "none";
 };
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    document.getElementById("match-popup").style.display = "none";
+  }
+});
+window.onload = function() {
+  if (!sessionStorage.getItem("popupShown")) {
+    document.getElementById("match-popup").style.display = "flex";
+    sessionStorage.setItem("popupShown", "true");
+  }
+};
