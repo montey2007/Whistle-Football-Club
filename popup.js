@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <section class="next-match">
         <div class="container">
           <h2 class="section-title">Next Match</h2>
+
           <div class="match-card">
             <div class="team">
               <img id="next-left-logo" alt="">
@@ -30,21 +31,41 @@ document.addEventListener("DOMContentLoaded", function () {
           <a class="btn" href="/fixtures.html">All Fixtures</a>
         </div>
       </section>
+
     </div>
   </div>
   `;
 
+  // Inject popup
   document.body.insertAdjacentHTML("beforeend", popupHTML);
 
   const popup = document.getElementById("match-popup");
   const closeBtn = document.getElementById("close-popup");
+
+  // Close popup (X button)
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+
+  // Close when clicking outside
+  window.addEventListener("click", function (e) {
+    if (e.target === popup) {
+      popup.style.display = "none";
+    }
+  });
+
+  // Close on ESC
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      popup.style.display = "none";
+    }
+  });
 
   // LOAD FIXTURES
   fetch("/fixtures/fixtures.json")
     .then(res => res.json())
     .then(data => {
 
-      // Find next upcoming match
       const now = new Date();
 
       const nextMatch = data.find(match => {
@@ -54,22 +75,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!nextMatch) return;
 
-      // Fill content
+      // TEXT
       document.getElementById("next-left-name").textContent = nextMatch.home;
       document.getElementById("next-right-name").textContent = nextMatch.away;
-
       document.getElementById("next-competition").textContent = nextMatch.competition;
-
-      document.getElementById("next-date").textContent =
-        nextMatch.date + " - " + nextMatch.time;
-
+      document.getElementById("next-date").textContent = `${nextMatch.date} - ${nextMatch.time}`;
       document.getElementById("next-venue").textContent = nextMatch.venue;
 
-      // Images (IMPORTANT: use absolute path)
-      document.getElementById("next-left-logo").src = "/images/" + nextMatch.homelogo;
-      document.getElementById("next-right-logo").src = "/images/" + nextMatch.awaylogo;
+      // LOGOS (FIXED PATH)
+      document.getElementById("next-left-logo").src =
+        "images/logos/" + nextMatch.homelogo;
 
-      // Show popup once
+      document.getElementById("next-right-logo").src =
+        "images/logos/" + nextMatch.awaylogo;
+
+      // SHOW POPUP (only once per session)
       if (!sessionStorage.getItem("popupShown")) {
         popup.style.display = "flex";
         sessionStorage.setItem("popupShown", "true");
@@ -77,24 +97,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     })
     .catch(err => console.error("Error loading fixtures:", err));
-
-  // Close button
-  closeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
-  // Click outside
-  window.addEventListener("click", function (e) {
-    if (e.target === popup) {
-      popup.style.display = "none";
-    }
-  });
-
-  // ESC key
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      popup.style.display = "none";
-    }
-  });
 
 });
