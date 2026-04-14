@@ -68,10 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const now = new Date();
 
-      const nextMatch = data.find(match => {
-        const matchDate = new Date(match.date + "T" + match.time);
-        return match.status === "upcoming" && matchDate >= now;
-      });
+const nextMatch = data
+  .filter(match => match.status === "upcoming")
+  .sort((a, b) => {
+    return new Date(a.date + "T" + a.time) - new Date(b.date + "T" + b.time);
+  })[0];
 
       if (!nextMatch) return;
 
