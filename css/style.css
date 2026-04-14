@@ -313,7 +313,9 @@ section {
   .table thead {
     display: none !important;
   }
-
+.table td::before {
+  content: attr(data-label);
+}
   .table,
   .table tbody,
   .table tr {
