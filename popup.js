@@ -41,6 +41,12 @@ if (!sessionStorage.getItem("popupShown")) {
   document.getElementById("match-popup").style.display = "flex";
   sessionStorage.setItem("popupShown", "true");
 }
+window.addEventListener("click", function(e) {
+  const popup = document.getElementById("match-popup");
+  if (e.target === popup) {
+    popup.style.display = "none";
+  }
+});
 
 // Close button
 document.getElementById("close-popup").onclick = function() {
