@@ -1,22 +1,5 @@
 [
   {
-    "date": "2026-04-15",
-    "time": "19:45",
-    "home": "Whistle FC",
-    "homelogo": "logo.png",
-    "away": "Dartley United",
-    "awaylogo": "northamptonlogo.png",
-    "competition": "League One",
-    "venue": "Mornflake Stadium",
-    "status": "upcoming",
-    "homeScore": 1,
-    "awayScore": 1,
-    "stoppageFirstHalf": 1,
-    "stoppageSecondHalf": 0,
-    "extraTime": false,
-    "penalties": false
-  },
-  {
     "date": "2026-04-18",
     "time": "15:00",
     "home": "Tiddlyahrn Town",
