@@ -190,34 +190,34 @@
 <script>
 
 /* =========================
-   DATA
+   DATA (UPDATED)
 ========================= */
 
 const leagueData = [
-  { position: 1, team: "Lincoln City", played: 41, wins: 27, draws: 9, losses: 5, gf: 77, ga: 35, points: 90 },
-  { position: 2, team: "Cardiff City", played: 40, wins: 23, draws: 9, losses: 8, gf: 74, ga: 42, points: 78 },
-  { position: 3, team: "Bradford City", played: 41, wins: 21, draws: 8, losses: 12, gf: 52, ga: 45, points: 71 },
-  { position: 4, team: "Bolton Wanderers", played: 41, wins: 18, draws: 16, losses: 7, gf: 58, ga: 41, points: 70 },
-  { position: 5, team: "Stockport", played: 40, wins: 19, draws: 10, losses: 11, gf: 58, ga: 49, points: 67 },
-  { position: 6, team: "Stevenage", played: 40, wins: 18, draws: 10, losses: 12, gf: 43, ga: 39, points: 64 },
-  { position: 7, team: "Plymouth Argyle", played: 41, wins: 19, draws: 5, losses: 17, gf: 63, ga: 57, points: 62 },
-  { position: 8, team: "Reading", played: 42, wins: 16, draws: 14, losses: 12, gf: 62, ga: 54, points: 62 },
-  { position: 9, team: "Huddersfield Town", played: 41, wins: 17, draws: 10, losses: 14, gf: 61, ga: 53, points: 61 },
-  { position: 10, team: "Luton Town", played: 41, wins: 17, draws: 10, losses: 14, gf: 55, ga: 51, points: 61 },
-  { position: 11, team: "Wycombe Wanderers", played: 42, wins: 16, draws: 11, losses: 15, gf: 60, ga: 48, points: 59 },
-  { position: 12, team: "Mansfield Town", played: 39, wins: 13, draws: 14, losses: 12, gf: 50, ga: 42, points: 53 },
-  { position: 13, team: "Peterborough United", played: 40, wins: 15, draws: 6, losses: 19, gf: 59, ga: 55, points: 51 },
-  { position: 14, team: "Barnsley", played: 39, wins: 13, draws: 12, losses: 14, gf: 61, ga: 63, points: 51 },
-  { position: 15, team: "Leyton Orient", played: 41, wins: 14, draws: 8, losses: 19, gf: 56, ga: 64, points: 50 },
-  { position: 16, team: "AFC Wimbledon", played: 41, wins: 14, draws: 8, losses: 19, gf: 50, ga: 61, points: 50 },
-  { position: 17, team: "Doncaster Rovers", played: 41, wins: 14, draws: 8, losses: 19, gf: 43, ga: 63, points: 50 },
-  { position: 18, team: "Wigan Athletic", played: 41, wins: 12, draws: 13, losses: 16, gf: 43, ga: 55, points: 49 },
-  { position: 19, team: "Burton Albion", played: 42, wins: 12, draws: 12, losses: 18, gf: 46, ga: 57, points: 48 },
-  { position: 20, team: "Blackpool", played: 42, wins: 13, draws: 9, losses: 20, gf: 49, ga: 65, points: 48 },
-  { position: 21, team: "Exeter City", played: 42, wins: 12, draws: 10, losses: 20, gf: 44, ga: 54, points: 46 },
-  { position: 22, team: "Rotherham United", played: 39, wins: 9, draws: 10, losses: 20, gf: 35, ga: 58, points: 37 },
-  { position: 23, team: "Northampton Town", played: 41, wins: 9, draws: 8, losses: 24, gf: 34, ga: 59, points: 35 },
-  { position: 24, team: "Port Vale", played: 38, wins: 7, draws: 10, losses: 21, gf: 29, ga: 54, points: 31 }
+  { position: 1, team: "Lincoln City", played: 43, wins: 28, draws: 10, losses: 5, gf: 81, ga: 38, points: 94, form: ["D","W","W","W","W","D"] },
+  { position: 2, team: "Cardiff City", played: 43, wins: 25, draws: 10, losses: 8, gf: 80, ga: 44, points: 85, form: ["L","D","D","W","D","W"] },
+  { position: 3, team: "Bolton Wanderers", played: 44, wins: 19, draws: 17, losses: 8, gf: 67, ga: 48, points: 74, form: ["L","W","D","L","W","D"] },
+  { position: 4, team: "Bradford City", played: 43, wins: 21, draws: 9, losses: 13, gf: 54, ga: 48, points: 72, form: ["D","L","W","W","L","D"] },
+  { position: 5, team: "Stockport County", played: 42, wins: 20, draws: 11, losses: 11, gf: 64, ga: 53, points: 71, form: ["D","W","W","D","W","D"] },
+  { position: 6, team: "Stevenage", played: 43, wins: 19, draws: 11, losses: 13, gf: 46, ga: 45, points: 68, form: ["W","D","W","W","L","D"] },
+  { position: 7, team: "Plymouth Argyle", played: 43, wins: 20, draws: 6, losses: 17, gf: 69, ga: 59, points: 66, form: ["W","W","L","W","D","W"] },
+  { position: 8, team: "Luton Town", played: 43, wins: 18, draws: 11, losses: 14, gf: 61, ga: 53, points: 65, form: ["W","D","W","W","W","D"] },
+  { position: 9, team: "Huddersfield Town", played: 44, wins: 17, draws: 13, losses: 14, gf: 69, ga: 60, points: 64, form: ["L","D","W","D","D","D"] },
+  { position: 10, team: "Reading", played: 44, wins: 16, draws: 14, losses: 14, gf: 63, ga: 58, points: 62, form: ["L","W","D","L","L","L"] },
+  { position: 11, team: "Wycombe Wanderers", played: 44, wins: 16, draws: 12, losses: 16, gf: 63, ga: 52, points: 60, form: ["L","W","L","L","D","L"] },
+  { position: 12, team: "Barnsley", played: 42, wins: 14, draws: 14, losses: 14, gf: 65, ga: 67, points: 56, form: ["L","D","L","W","D","D"] },
+  { position: 13, team: "Doncaster Rovers", played: 43, wins: 16, draws: 8, losses: 19, gf: 46, ga: 65, points: 56, form: ["W","W","L","L","W","W"] },
+  { position: 14, team: "Mansfield Town", played: 42, wins: 13, draws: 16, losses: 13, gf: 52, ga: 45, points: 55, form: ["W","W","D","L","D","D"] },
+  { position: 15, team: "Wigan Athletic", played: 43, wins: 14, draws: 13, losses: 16, gf: 49, ga: 56, points: 55, form: ["W","L","D","W","W","W"] },
+  { position: 16, team: "Burton Albion", played: 44, wins: 14, draws: 12, losses: 18, gf: 47, ga: 56, points: 54, form: ["L","W","L","D","D","W"] },
+  { position: 17, team: "Blackpool", played: 44, wins: 15, draws: 9, losses: 20, gf: 52, ga: 65, points: 54, form: ["D","W","W","L","W","W"] },
+  { position: 18, team: "Peterborough United", played: 43, wins: 15, draws: 6, losses: 22, gf: 61, ga: 62, points: 51, form: ["W","D","L","D","L","L"] },
+  { position: 19, team: "Leyton Orient", played: 44, wins: 14, draws: 9, losses: 21, gf: 57, ga: 68, points: 51, form: ["D","D","L","L","D","L"] },
+  { position: 20, team: "AFC Wimbledon", played: 44, wins: 14, draws: 8, losses: 22, gf: 50, ga: 68, points: 50, form: ["L","L","L","L","L","L"] },
+  { position: 21, team: "Exeter City", played: 44, wins: 12, draws: 12, losses: 20, gf: 50, ga: 58, points: 48, form: ["L","D","L","W","D","D"] },
+  { position: 22, team: "Rotherham United", played: 43, wins: 10, draws: 10, losses: 23, gf: 38, ga: 65, points: 40, form: ["L","D","L","L","L","W"] },
+  { position: 23, team: "Port Vale", played: 41, wins: 9, draws: 11, losses: 21, gf: 33, ga: 55, points: 38, form: ["W","L","L","W","D","W"] },
+  { position: 24, team: "Northampton Town", played: 43, wins: 9, draws: 8, losses: 26, gf: 36, ga: 65, points: 35, form: ["L","L","L","L","L","L"] }
 ];
 
 /* =========================
