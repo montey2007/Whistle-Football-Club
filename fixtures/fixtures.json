@@ -1,22 +1,5 @@
 [
   {
-    "date": "2026-04-18",
-    "time": "15:00",
-    "home": "Tiddlyharn Town",
-    "homelogo": "tiddlyharnlogo.png",
-    "away": "Whistle FC",
-    "awaylogo": "logo.png",
-    "competition": "League One",
-    "venue": "Mill Park",
-    "status": "upcoming",
-    "homeScore": 0,
-    "awayScore": 0,
-    "stoppageFirstHalf": 0,
-    "stoppageSecondHalf": 0,
-    "extraTime": false,
-    "penalties": false
-  },
-  {
     "date": "2026-04-21",
     "time": "19:45",
     "home": "Rotherham United",
