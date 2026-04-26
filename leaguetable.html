@@ -13,26 +13,19 @@
 <style>
 
 /* =========================
-   LEAGUE TABLE BASE
-========================= */
-
-/* =========================
-   LEAGUE TABLE (FIXED)
+   LEAGUE TABLE
 ========================= */
 
 .league-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-
   background: var(--surface);
   border-radius: var(--radius);
   overflow: hidden;
-
-  color: var(--text); /* 🔥 FIX: readable text */
+  color: var(--text);
 }
 
-/* HEADERS */
 .league-table th {
   background: #000;
   color: #fff;
@@ -41,7 +34,6 @@
   letter-spacing: 0.5px;
 }
 
-/* CELLS */
 .league-table th,
 .league-table td {
   padding: 12px 10px;
@@ -49,67 +41,40 @@
   text-align: center;
 }
 
-/* TEAM NAME */
 .league-table td:nth-child(2) {
   text-align: left;
   font-weight: 600;
 }
 
-/* STRIPES */
 .league-table tbody tr:nth-child(even) {
   background: var(--surface-light);
 }
 
+/* ZONES */
+.promotion { border-left: 4px solid #2e7d32; }
+.playoff { border-left: 4px solid #f9a825; }
+.relegation { border-left: 4px solid #c62828; }
 
-/* =========================
-   ZONES
-========================= */
-.league-table tr.promotion {
-  border-left: 4px solid #2e7d32;
-}
-
-.league-table tr.playoff {
-  border-left: 4px solid #f9a825;
-}
-
-.league-table tr.relegation {
-  border-left: 4px solid #c62828;
-}
-
-/* =========================
-   WHISTLE ROW (MAKE IT POP)
-========================= */
-.league-table tr.whistle {
+/* WHISTLE ROW */
+.whistle {
   background: linear-gradient(90deg, #c00000, #7a0000);
   border-left: 6px solid #ff2d2d !important;
-
-  transform: scale(1.01); /* subtle lift */
+  transform: scale(1.01);
+  box-shadow: 0 0 12px rgba(255, 45, 45, 0.6);
 }
 
-/* TEXT */
-.league-table tr.whistle td {
+.whistle td {
   color: #fff;
   font-weight: 700;
 }
 
-/* ADD A GLOW EFFECT */
-.league-table tr.whistle {
-  box-shadow: 0 0 12px rgba(255, 45, 45, 0.6);
-}
-
-/* PREVENT HOVER OVERRIDING */
-.league-table tr.whistle:hover {
+.whistle:hover {
   background: linear-gradient(90deg, #c00000, #7a0000);
 }
 
-/* =========================
-   MOBILE
-========================= */
-
+/* MOBILE */
 @media (max-width: 600px) {
-  .col-extra {
-    display: none;
-  }
+  .col-extra { display: none; }
 
   .league-table th,
   .league-table td {
@@ -123,12 +88,10 @@
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="main-header">
   <div class="header-container">
     <div class="logo">
@@ -141,7 +104,6 @@
   </div>
 </header>
 
-<!-- NAV -->
 <nav class="navbar">
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -156,11 +118,9 @@
 </nav>
 
 <div class="container">
-
 <h2 class="section-title">League One Table</h2>
 
 <table class="league-table" id="leagueTable">
-
 <thead>
 <tr>
   <th>Pos</th>
@@ -173,11 +133,8 @@
   <th>Pts</th>
 </tr>
 </thead>
-
 <tbody></tbody>
-
 </table>
-
 </div>
 
 <footer class="footer">
@@ -190,34 +147,34 @@
 <script>
 
 /* =========================
-   DATA (UPDATED)
+   UPDATED DATA
 ========================= */
 
 const leagueData = [
-  { position: 1, team: "Lincoln City", played: 43, wins: 28, draws: 10, losses: 5, gf: 81, ga: 38, points: 94, form: ["D","W","W","W","W","D"] },
-  { position: 2, team: "Cardiff City", played: 43, wins: 25, draws: 10, losses: 8, gf: 80, ga: 44, points: 85, form: ["L","D","D","W","D","W"] },
-  { position: 3, team: "Bolton Wanderers", played: 44, wins: 19, draws: 17, losses: 8, gf: 67, ga: 48, points: 74, form: ["L","W","D","L","W","D"] },
-  { position: 4, team: "Bradford City", played: 43, wins: 21, draws: 9, losses: 13, gf: 54, ga: 48, points: 72, form: ["D","L","W","W","L","D"] },
-  { position: 5, team: "Stockport County", played: 42, wins: 20, draws: 11, losses: 11, gf: 64, ga: 53, points: 71, form: ["D","W","W","D","W","D"] },
-  { position: 6, team: "Stevenage", played: 43, wins: 19, draws: 11, losses: 13, gf: 46, ga: 45, points: 68, form: ["W","D","W","W","L","D"] },
-  { position: 7, team: "Plymouth Argyle", played: 43, wins: 20, draws: 6, losses: 17, gf: 69, ga: 59, points: 66, form: ["W","W","L","W","D","W"] },
-  { position: 8, team: "Luton Town", played: 43, wins: 18, draws: 11, losses: 14, gf: 61, ga: 53, points: 65, form: ["W","D","W","W","W","D"] },
-  { position: 9, team: "Huddersfield Town", played: 44, wins: 17, draws: 13, losses: 14, gf: 69, ga: 60, points: 64, form: ["L","D","W","D","D","D"] },
-  { position: 10, team: "Reading", played: 44, wins: 16, draws: 14, losses: 14, gf: 63, ga: 58, points: 62, form: ["L","W","D","L","L","L"] },
-  { position: 11, team: "Wycombe Wanderers", played: 44, wins: 16, draws: 12, losses: 16, gf: 63, ga: 52, points: 60, form: ["L","W","L","L","D","L"] },
-  { position: 12, team: "Barnsley", played: 42, wins: 14, draws: 14, losses: 14, gf: 65, ga: 67, points: 56, form: ["L","D","L","W","D","D"] },
-  { position: 13, team: "Doncaster Rovers", played: 43, wins: 16, draws: 8, losses: 19, gf: 46, ga: 65, points: 56, form: ["W","W","L","L","W","W"] },
-  { position: 14, team: "Mansfield Town", played: 42, wins: 13, draws: 16, losses: 13, gf: 52, ga: 45, points: 55, form: ["W","W","D","L","D","D"] },
-  { position: 15, team: "Wigan Athletic", played: 43, wins: 14, draws: 13, losses: 16, gf: 49, ga: 56, points: 55, form: ["W","L","D","W","W","W"] },
-  { position: 16, team: "Burton Albion", played: 44, wins: 14, draws: 12, losses: 18, gf: 47, ga: 56, points: 54, form: ["L","W","L","D","D","W"] },
-  { position: 17, team: "Blackpool", played: 44, wins: 15, draws: 9, losses: 20, gf: 52, ga: 65, points: 54, form: ["D","W","W","L","W","W"] },
-  { position: 18, team: "Peterborough United", played: 43, wins: 15, draws: 6, losses: 22, gf: 61, ga: 62, points: 51, form: ["W","D","L","D","L","L"] },
-  { position: 19, team: "Leyton Orient", played: 44, wins: 14, draws: 9, losses: 21, gf: 57, ga: 68, points: 51, form: ["D","D","L","L","D","L"] },
-  { position: 20, team: "AFC Wimbledon", played: 44, wins: 14, draws: 8, losses: 22, gf: 50, ga: 68, points: 50, form: ["L","L","L","L","L","L"] },
-  { position: 21, team: "Exeter City", played: 44, wins: 12, draws: 12, losses: 20, gf: 50, ga: 58, points: 48, form: ["L","D","L","W","D","D"] },
-  { position: 22, team: "Rotherham United", played: 43, wins: 10, draws: 10, losses: 23, gf: 38, ga: 65, points: 40, form: ["L","D","L","L","L","W"] },
-  { position: 23, team: "Port Vale", played: 41, wins: 9, draws: 11, losses: 21, gf: 33, ga: 55, points: 38, form: ["W","L","L","W","D","W"] },
-  { position: 24, team: "Northampton Town", played: 43, wins: 9, draws: 8, losses: 26, gf: 36, ga: 65, points: 35, form: ["L","L","L","L","L","L"] }
+  { team: "Lincoln City", played: 45, wins: 30, draws: 10, losses: 5, gf: 87, ga: 41, points: 100 },
+  { team: "Cardiff City", played: 45, wins: 27, draws: 10, losses: 8, gf: 86, ga: 45, points: 91 },
+  { team: "Bolton Wanderers", played: 45, wins: 19, draws: 18, losses: 8, gf: 68, ga: 49, points: 75 },
+  { team: "Stockport County", played: 44, wins: 21, draws: 11, losses: 12, gf: 67, ga: 55, points: 74 },
+  { team: "Bradford City", played: 45, wins: 21, draws: 11, losses: 13, gf: 56, ga: 50, points: 74 },
+  { team: "Stevenage", played: 45, wins: 20, draws: 12, losses: 13, gf: 48, ga: 46, points: 72 },
+  { team: "Luton Town", played: 45, wins: 20, draws: 11, losses: 14, gf: 65, ga: 54, points: 71 },
+  { team: "Plymouth Argyle", played: 45, wins: 21, draws: 7, losses: 17, gf: 72, ga: 61, points: 70 },
+  { team: "Huddersfield Town", played: 45, wins: 17, draws: 13, losses: 15, gf: 70, ga: 64, points: 64 },
+  { team: "Reading", played: 45, wins: 16, draws: 15, losses: 14, gf: 64, ga: 59, points: 63 },
+  { team: "Mansfield Town", played: 44, wins: 15, draws: 16, losses: 13, gf: 57, ga: 46, points: 61 },
+  { team: "Wycombe Wanderers", played: 45, wins: 16, draws: 12, losses: 17, gf: 66, ga: 56, points: 60 },
+  { team: "Blackpool", played: 45, wins: 16, draws: 9, losses: 20, gf: 53, ga: 65, points: 57 },
+  { team: "Doncaster Rovers", played: 45, wins: 16, draws: 9, losses: 20, gf: 47, ga: 68, points: 57 },
+  { team: "Barnsley", played: 44, wins: 14, draws: 14, losses: 16, gf: 66, ga: 70, points: 56 },
+  { team: "Wigan Athletic", played: 45, wins: 14, draws: 14, losses: 17, gf: 49, ga: 57, points: 56 },
+  { team: "Burton Albion", played: 45, wins: 13, draws: 14, losses: 18, gf: 48, ga: 58, points: 53 },
+  { team: "AFC Wimbledon", played: 45, wins: 15, draws: 8, losses: 22, gf: 51, ga: 68, points: 53 },
+  { team: "Peterborough United", played: 44, wins: 15, draws: 7, losses: 22, gf: 63, ga: 65, points: 52 },
+  { team: "Leyton Orient", played: 45, wins: 14, draws: 9, losses: 22, gf: 57, ga: 69, points: 51 },
+  { team: "Exeter City", played: 45, wins: 12, draws: 13, losses: 20, gf: 51, ga: 59, points: 49 },
+  { team: "Rotherham United", played: 45, wins: 10, draws: 11, losses: 24, gf: 39, ga: 68, points: 41 },
+  { team: "Port Vale", played: 44, wins: 9, draws: 12, losses: 23, gf: 34, ga: 58, points: 39 },
+  { team: "Northampton Town", played: 44, wins: 9, draws: 8, losses: 27, gf: 37, ga: 70, points: 35 }
 ];
 
 /* =========================
@@ -226,23 +183,24 @@ const leagueData = [
 
 const tbody = document.querySelector("#leagueTable tbody");
 
-leagueData.forEach(team => {
+leagueData.forEach((team, index) => {
 
   const row = document.createElement("tr");
 
   const gd = team.gf - team.ga;
 
-  let name = team.team;
-  if (name === "Luton Town") name = "Whistle FC";
+  let name = team.team === "Luton Town" ? "Whistle FC" : team.team;
 
-  if (team.position <= 2) row.classList.add("promotion");
-  else if (team.position <= 6) row.classList.add("playoff");
-  else if (team.position >= 21) row.classList.add("relegation");
+  // ZONES
+  if (index < 2) row.classList.add("promotion");
+  else if (index < 6) row.classList.add("playoff");
+  else if (index >= 20) row.classList.add("relegation");
 
+  // WHISTLE
   if (name === "Whistle FC") row.classList.add("whistle");
 
   row.innerHTML = `
-    <td>${team.position}</td>
+    <td>${index + 1}</td>
     <td>${name}</td>
     <td>${team.played}</td>
     <td class="col-extra">${team.wins}</td>
