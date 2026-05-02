@@ -10,6 +10,67 @@
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+</head>
+
+<body>
+
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo">
+      <img src="images/logo.png" alt="Whistle FC Logo">
+    </div>
+
+    <div class="club-title">
+      <h1>Whistle Football Club</h1>
+      <p>League One Table</p>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="players.html">Players</a></li>
+    <li><a href="staff.html">Staff</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="fixtures.html">Fixtures</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a class="active" href="league-table.html">League Table</a></li>
+  </ul>
+</nav>
+
+<main class="page-content">
+
+  <section class="page-header">
+    <h2>League One Table</h2>
+    <p>2026/27 Season</p>
+  </section>
+
+  <section class="table-section">
+
+    <table id="leagueTable" class="league-table">
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Team</th>
+          <th>Pl</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      </tbody>
+    </table>
+
+  </section>
+
+</main>
+
 <script>
 const leagueData = [
   { team: "Lincoln City", played: 46, wins: 31, draws: 10, losses: 5, gf: 89, ga: 41, points: 103 },
@@ -35,6 +96,46 @@ const leagueData = [
   { team: "Exeter City", played: 46, wins: 12, draws: 13, losses: 21, gf: 52, ga: 61, points: 49 },
   { team: "Port Vale", played: 46, wins: 10, draws: 12, losses: 24, gf: 36, ga: 61, points: 42 },
   { team: "Rotherham", played: 46, wins: 10, draws: 11, losses: 25, gf: 41, ga: 71, points: 41 },
+  { team: "Northampton Town", played: 46, wins: 9, draws: 8, losses: 29, gf: 39, ga: 74, points: 35 }
+];
+
+const tbody = document.querySelector("#leagueTable tbody");
+
+leagueData.forEach((team, index) => {
+  const row = document.createElement("tr");
+  const gd = team.gf - team.ga;
+
+  let name = team.team === "Luton Town" ? "Whistle FC" : team.team;
+
+  if (index < 2) {
+    row.classList.add("promotion");
+  } else if (index < 6) {
+    row.classList.add("playoff");
+  } else if (index >= 20) {
+    row.classList.add("relegation");
+  }
+
+  if (name === "Whistle FC") {
+    row.classList.add("whistle");
+  }
+
+  row.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${name}</td>
+    <td>${team.played}</td>
+    <td>${team.wins}</td>
+    <td>${team.draws}</td>
+    <td>${team.losses}</td>
+    <td>${gd > 0 ? "+" + gd : gd}</td>
+    <td>${team.points}</td>
+  `;
+
+  tbody.appendChild(row);
+});
+</script>
+
+</body>
+</html>  { team: "Rotherham", played: 46, wins: 10, draws: 11, losses: 25, gf: 41, ga: 71, points: 41 },
   { team: "Northampton Town", played: 46, wins: 9, draws: 8, losses: 29, gf: 39, ga: 74, points: 35 }
 ];
 
