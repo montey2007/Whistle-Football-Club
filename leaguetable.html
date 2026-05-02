@@ -10,6 +10,94 @@
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+<style>
+
+/* =========================
+   LEAGUE TABLE
+========================= */
+
+.league-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: var(--text);
+}
+
+.league-table th {
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.league-table th,
+.league-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #2a2a2a;
+  text-align: center;
+}
+
+.league-table td:nth-child(2) {
+  text-align: left;
+  font-weight: 600;
+}
+
+.league-table tbody tr:nth-child(even) {
+  background: var(--surface-light);
+}
+
+/* ZONES */
+.promotion {
+  border-left: 4px solid #2e7d32;
+}
+
+.playoff {
+  border-left: 4px solid #f9a825;
+}
+
+.relegation {
+  border-left: 4px solid #c62828;
+}
+
+/* WHISTLE ROW */
+.whistle {
+  background: linear-gradient(90deg, #c00000, #7a0000);
+  border-left: 6px solid #ff2d2d !important;
+  transform: scale(1.01);
+  box-shadow: 0 0 12px rgba(255, 45, 45, 0.6);
+}
+
+.whistle td {
+  color: #fff;
+  font-weight: 700;
+}
+
+.whistle:hover {
+  background: linear-gradient(90deg, #c00000, #7a0000);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .col-extra {
+    display: none;
+  }
+
+  .league-table th,
+  .league-table td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+
+  .league-table td:nth-child(2) {
+    min-width: 120px;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -36,68 +124,74 @@
     <li><a href="history.html">History</a></li>
     <li><a href="fixtures.html">Fixtures</a></li>
     <li><a href="results.html">Results</a></li>
-    <li><a class="active" href="league-table.html">League Table</a></li>
+    <li><a class="active" href="leaguetable.html">League Table</a></li>
   </ul>
 </nav>
 
-<main class="page-content">
+<div class="container">
+  <h2 class="section-title">League One Table</h2>
 
-  <section class="page-header">
-    <h2>League One Table</h2>
-    <p>2026/27 Season</p>
-  </section>
+  <table class="league-table" id="leagueTable">
+    <thead>
+      <tr>
+        <th>Pos</th>
+        <th>Team</th>
+        <th>P</th>
+        <th class="col-extra">W</th>
+        <th class="col-extra">D</th>
+        <th class="col-extra">L</th>
+        <th>GD</th>
+        <th>Pts</th>
+      </tr>
+    </thead>
 
-  <section class="table-section">
+    <tbody></tbody>
+  </table>
+</div>
 
-    <table id="leagueTable" class="league-table">
-      <thead>
-        <tr>
-          <th>Pos</th>
-          <th>Team</th>
-          <th>Pl</th>
-          <th>W</th>
-          <th>D</th>
-          <th>L</th>
-          <th>GD</th>
-          <th>Pts</th>
-        </tr>
-      </thead>
-
-      <tbody>
-      </tbody>
-    </table>
-
-  </section>
-
-</main>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Whistle Football Club</p>
+    <p>Vitality Stadium | Wetshil, England</p>
+  </div>
+</footer>
 
 <script>
+
+/* =========================
+   UPDATED LEAGUE DATA
+========================= */
+
 const leagueData = [
   { team: "Lincoln City", played: 46, wins: 31, draws: 10, losses: 5, gf: 89, ga: 41, points: 103 },
   { team: "Cardiff City", played: 46, wins: 27, draws: 10, losses: 9, gf: 90, ga: 50, points: 91 },
-  { team: "Stockport", played: 46, wins: 22, draws: 11, losses: 13, gf: 71, ga: 58, points: 77 },
+  { team: "Stockport County", played: 46, wins: 22, draws: 11, losses: 13, gf: 71, ga: 58, points: 77 },
   { team: "Bradford City", played: 46, wins: 22, draws: 11, losses: 13, gf: 58, ga: 51, points: 77 },
-  { team: "Bolton", played: 46, wins: 19, draws: 18, losses: 9, gf: 70, ga: 52, points: 75 },
+  { team: "Bolton Wanderers", played: 46, wins: 19, draws: 18, losses: 9, gf: 70, ga: 52, points: 75 },
   { team: "Stevenage", played: 46, wins: 21, draws: 12, losses: 13, gf: 49, ga: 46, points: 75 },
   { team: "Luton Town", played: 46, wins: 21, draws: 11, losses: 14, gf: 68, ga: 56, points: 74 },
-  { team: "Plymouth", played: 46, wins: 22, draws: 7, losses: 17, gf: 75, ga: 63, points: 73 },
-  { team: "Huddersfield", played: 46, wins: 18, draws: 13, losses: 15, gf: 74, ga: 64, points: 67 },
+  { team: "Plymouth Argyle", played: 46, wins: 22, draws: 7, losses: 17, gf: 75, ga: 63, points: 73 },
+  { team: "Huddersfield Town", played: 46, wins: 18, draws: 13, losses: 15, gf: 74, ga: 64, points: 67 },
   { team: "Mansfield Town", played: 46, wins: 16, draws: 17, losses: 13, gf: 62, ga: 50, points: 65 },
-  { team: "Wycombe", played: 46, wins: 17, draws: 12, losses: 17, gf: 69, ga: 58, points: 63 },
+  { team: "Wycombe Wanderers", played: 46, wins: 17, draws: 12, losses: 17, gf: 69, ga: 58, points: 63 },
   { team: "Reading", played: 46, wins: 16, draws: 15, losses: 15, gf: 64, ga: 60, points: 63 },
   { team: "Blackpool", played: 46, wins: 17, draws: 9, losses: 20, gf: 54, ga: 65, points: 60 },
-  { team: "Doncaster", played: 46, wins: 17, draws: 9, losses: 20, gf: 50, ga: 69, points: 60 },
+  { team: "Doncaster Rovers", played: 46, wins: 17, draws: 9, losses: 20, gf: 50, ga: 69, points: 60 },
   { team: "Barnsley", played: 46, wins: 15, draws: 14, losses: 17, gf: 68, ga: 73, points: 59 },
   { team: "Wigan Athletic", played: 46, wins: 14, draws: 14, losses: 18, gf: 49, ga: 58, points: 56 },
-  { team: "Burton", played: 46, wins: 13, draws: 15, losses: 18, gf: 50, ga: 60, points: 54 },
-  { team: "Peterborough", played: 46, wins: 15, draws: 8, losses: 23, gf: 64, ga: 68, points: 53 },
+  { team: "Burton Albion", played: 46, wins: 13, draws: 15, losses: 18, gf: 50, ga: 60, points: 54 },
+  { team: "Peterborough United", played: 46, wins: 15, draws: 8, losses: 23, gf: 64, ga: 68, points: 53 },
   { team: "AFC Wimbledon", played: 46, wins: 15, draws: 8, losses: 23, gf: 51, ga: 72, points: 53 },
   { team: "Leyton Orient", played: 46, wins: 14, draws: 10, losses: 22, gf: 59, ga: 71, points: 52 },
   { team: "Exeter City", played: 46, wins: 12, draws: 13, losses: 21, gf: 52, ga: 61, points: 49 },
   { team: "Port Vale", played: 46, wins: 10, draws: 12, losses: 24, gf: 36, ga: 61, points: 42 },
-  { team: "Rotherham", played: 46, wins: 10, draws: 11, losses: 25, gf: 41, ga: 71, points: 41 },
+  { team: "Rotherham United", played: 46, wins: 10, draws: 11, losses: 25, gf: 41, ga: 71, points: 41 },
   { team: "Northampton Town", played: 46, wins: 9, draws: 8, losses: 29, gf: 39, ga: 74, points: 35 }
 ];
+
+/* =========================
+   BUILD TABLE
+========================= */
 
 const tbody = document.querySelector("#leagueTable tbody");
 
@@ -123,40 +217,6 @@ leagueData.forEach((team, index) => {
     <td>${index + 1}</td>
     <td>${name}</td>
     <td>${team.played}</td>
-    <td>${team.wins}</td>
-    <td>${team.draws}</td>
-    <td>${team.losses}</td>
-    <td>${gd > 0 ? "+" + gd : gd}</td>
-    <td>${team.points}</td>
-  `;
-
-  tbody.appendChild(row);
-});
-</script>
-
-</body>
-</html>  { team: "Rotherham", played: 46, wins: 10, draws: 11, losses: 25, gf: 41, ga: 71, points: 41 },
-  { team: "Northampton Town", played: 46, wins: 9, draws: 8, losses: 29, gf: 39, ga: 74, points: 35 }
-];
-
-const tbody = document.querySelector("#leagueTable tbody");
-
-leagueData.forEach((team, index) => {
-  const row = document.createElement("tr");
-  const gd = team.gf - team.ga;
-
-  let name = team.team === "Luton Town" ? "Whistle" : team.team;
-
-  if (index < 2) row.classList.add("promotion");
-  else if (index < 6) row.classList.add("playoff");
-  else if (index >= 20) row.classList.add("relegation");
-
-  if (name === "Whistle FC") row.classList.add("whistle");
-
-  row.innerHTML = `
-    <td>${index + 1}</td>
-    <td>${name}</td>
-    <td>${team.played}</td>
     <td class="col-extra">${team.wins}</td>
     <td class="col-extra">${team.draws}</td>
     <td class="col-extra">${team.losses}</td>
@@ -166,7 +226,8 @@ leagueData.forEach((team, index) => {
 
   tbody.appendChild(row);
 });
-   </script>
+
+</script>
 
 </body>
 </html>
