@@ -1,22 +1,5 @@
 [
   {
-    "date": "2026-07-03",
-    "time": "15:00",
-    "home": "Whistle",
-    "homelogo": "logo.png",
-    "away": "Middlesbrough U21",
-    "awaylogo": "middlesbroughlogo.png",
-    "competition": "Friendly",
-    "venue": "Training Ground",
-    "status": "upcoming",
-    "homeScore": 0,
-    "awayScore": 0,
-    "stoppageFirstHalf": 0,
-    "stoppageSecondHalf": 0,
-    "extraTime": false,
-    "penalties": false
-  },
-  {
     "date": "2026-07-11",
     "time": "15:00",
     "home": "Gateshead",
