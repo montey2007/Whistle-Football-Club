@@ -1,10 +1,9 @@
-[
-  {
+ {
     "date": "2026-07-11",
     "time": "15:00",
-    "home": "Gateshead",
+    "home": "Gateshead FC",
     "homelogo": "gatesheadlogo.png",
-    "away": "Whistle",
+    "away": "Whistle FC",
     "awaylogo": "logo.png",
     "competition": "Friendly",
     "venue": "Gateshead International Stadium",
@@ -16,12 +15,12 @@
     "extraTime": false,
     "penalties": false
   },
-  {
+ {
     "date": "2026-07-18",
     "time": "15:00",
     "home": "Tranmere Rovers",
     "homelogo": "tranmerelogo.png",
-    "away": "Whistle",
+    "away": "Whistle FC",
     "awaylogo": "logo.png",
     "competition": "Friendly",
     "venue": "Prenton Park",
@@ -33,15 +32,15 @@
     "extraTime": false,
     "penalties": false
   },
-  {
+ {
     "date": "2026-07-22",
     "time": "14:00 GMT",
     "home": "CD Eldense",
     "homelogo": "cdeldenselogo.png",
-    "away": "Whistle",
+    "away": "Whistle FC",
     "awaylogo": "logo.png",
     "competition": "Friendly",
-    "venue": "Marbella Football Centre",
+      "venue": "Marbella Football Centre",
     "status": "upcoming",
     "homeScore": 0,
     "awayScore": 0,
@@ -50,15 +49,15 @@
     "extraTime": false,
     "penalties": false
   },
-  {
+ {
     "date": "2026-07-26",
     "time": "14:00 GMT",
     "home": "Portsmouth",
     "homelogo": "portsmouthlogo.png",
-    "away": "Whistle",
+    "away": "Whistle FC",
     "awaylogo": "logo.png",
     "competition": "Friendly",
-    "venue": "Marbella Football Centre",
+      "venue": "Marbella Football Centre",
     "status": "upcoming",
     "homeScore": 0,
     "awayScore": 0,
@@ -67,15 +66,15 @@
     "extraTime": false,
     "penalties": false
   },
-  {
+ {
     "date": "2026-08-01",
     "time": "15:00",
-    "home": "Whistle",
+    "home": "Whistle FC",
     "homelogo": "logo.png",
     "away": "Norwich City",
     "awaylogo": "norwichlogo.png",
     "competition": "Friendly",
-    "venue": "Vitality Stadium",
+      "venue": "Vitality Stadium",
     "status": "upcoming",
     "homeScore": 0,
     "awayScore": 0,
@@ -83,5 +82,4 @@
     "stoppageSecondHalf": 0,
     "extraTime": false,
     "penalties": false
-  }
-]
+  },
