@@ -1,21 +1,3 @@
-[
-  {
-    "date": "2026-07-11",
-    "time": "15:00",
-    "home": "Gateshead FC",
-    "homelogo": "gatesheadlogo.png",
-    "away": "Whistle FC",
-    "awaylogo": "logo.png",
-    "competition": "Friendly",
-    "venue": "Gateshead International Stadium",
-    "status": "upcoming",
-    "homeScore": 0,
-    "awayScore": 0,
-    "stoppageFirstHalf": 0,
-    "stoppageSecondHalf": 0,
-    "extraTime": false,
-    "penalties": false
-  },
   {
     "date": "2026-07-18",
     "time": "15:00",
