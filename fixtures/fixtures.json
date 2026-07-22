@@ -1,22 +1,5 @@
 [
   {
-    "date": "2026-07-22",
-    "time": "14:00",
-    "home": "CD Eldense",
-    "homelogo": "cdeldenselogo.png",
-    "away": "Whistle FC",
-    "awaylogo": "logo.png",
-    "competition": "Friendly",
-    "venue": "Marbella Football Centre",
-    "status": "upcoming",
-    "homeScore": 0,
-    "awayScore": 0,
-    "stoppageFirstHalf": 0,
-    "stoppageSecondHalf": 0,
-    "extraTime": false,
-    "penalties": false
-  },
-  {
     "date": "2026-07-26",
     "time": "14:00",
     "home": "Portsmouth",
