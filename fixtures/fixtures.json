@@ -1,38 +1,4 @@
 [
-    {
-    "date": "2026-08-27",
-    "time": "19:30",
-    "home": "Chelsea",
-    "homelogo": "chelsealogo.png",
-    "away": "Whistle FC",
-    "awaylogo": "logo.png",
-    "competition": "EFL Cup",
-    "venue": "Stamford Bridge",
-    "status": "upcoming",
-    "homeScore": 0,
-    "awayScore": 0,
-    "stoppageFirstHalf": 0,
-    "stoppageSecondHalf": 0,
-    "extraTime": false,
-    "penalties": false
-  },
-  {
-    "date": "2026-08-29",
-    "time": "15:00",
-    "home": "Mansfield Town",
-    "homelogo": "mansfieldtownlogo.png",
-    "away": "Whistle FC",
-    "awaylogo": "logo.png",
-    "competition": "League",
-    "venue": "Mansfield Town Stadium",
-    "status": "upcoming",
-    "homeScore": 0,
-    "awayScore": 0,
-    "stoppageFirstHalf": 0,
-    "stoppageSecondHalf": 0,
-    "extraTime": false,
-    "penalties": false
-  },
   {
     "date": "2026-09-01",
     "time": "19:45",
