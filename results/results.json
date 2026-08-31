@@ -1,5 +1,7 @@
 [
-        {"date":"2026-08-22","home":"Whistle FC","homelogo":"logo.png","away":"Notts County","awaylogo":"nottscountylogo.png","score":"2-2","competition":"League One","result":"D","venue":"Vitality Stadium"},
+  {"date":"2026-08-30","home":"Mansfield Town","homelogo":"mansfieldlogo.png","away":"Whistle FC","awaylogo":"logo.png","score":"5-2","competition":"League One","result":"L","venue":"One Call Stadium"},
+  {"date":"2026-08-27","home":"Chelsea FC","homelogo":"chelsealogo.png","away":"Whistle FC","awaylogo":"logo.png","score":"2-0","competition":"EFL Cup","result":"L","venue":"Stamford Bridge"},
+  {"date":"2026-08-22","home":"Whistle FC","homelogo":"logo.png","away":"Notts County","awaylogo":"nottscountylogo.png","score":"2-2","competition":"League One","result":"D","venue":"Vitality Stadium"},
   {"date":"2026-08-20","home":"Tiddlyharn Town","homelogo":"tiddlyharnlogo.png","away":"Whistle FC","awaylogo":"logo.png","score":"3-4","competition":"League One","result":"W","venue":"Mill Park"},
   {"date":"2026-08-08","home":"Gillingham","homelogo":"gillinghamlogo.png","away":"Whistle FC","awaylogo":"logo.png","score":"0-3","competition":"EFL Cup","result":"W","venue":"MEMS Priestfield Stadium"},
   {"date":"2026-07-26","home":"Portsmouth","homelogo":"portsmouthlogo.png","away":"Whistle FC","awaylogo":"logo.png","score":"1-2","competition":"Friendly","result":"W","venue":"Marbella Football Centre"},
